@@ -37,7 +37,7 @@ The repository is designed as a reusable learning resource that helps beginners 
 
 ## 🚀 Live Demo
 
-🔗 **[View Live Site](https://yourusername.github.io/nlp-knowledge-artifact-repo/)**
+🔗 **[View Live Site](https://soha-sayyad.github.io/nlp/)**
 
 *(Replace `yourusername` with your actual GitHub username after deployment)*
 
