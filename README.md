@@ -127,41 +127,6 @@ Also covers environmental considerations of large model training and emerging ef
 
 ---
 
-## 🚀 How to Deploy on GitHub Pages
-
-### Step 1: Create Repository
-1. Go to [github.com](https://github.com) and sign in
-2. Click **+** → **New repository**
-3. Name: `nlp-knowledge-artifact-repo`
-4. Set to **Public**
-5. Click **Create repository**
-
-### Step 2: Upload Files
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/nlp-knowledge-artifact-repo.git
-cd nlp-knowledge-artifact-repo
-
-# Add the files
-cp /path/to/index.html .
-cp /path/to/README.md .
-
-# Commit and push
-git add .
-git commit -m "Initial commit: NLP Knowledge Artifact Repository"
-git push origin main
-```
-
-### Step 3: Enable GitHub Pages
-1. Go to **Settings** → **Pages**
-2. Source: **Deploy from a branch**
-3. Branch: **main** / **(root)**
-4. Click **Save**
-5. Wait 2-5 minutes for deployment
-6. Your site will be live at: `https://yourusername.github.io/nlp-knowledge-artifact-repo/`
-
----
-
 ## 📄 License
 
 **Academic Use Only** — Shah & Anchor Kutchhi Engineering College  
