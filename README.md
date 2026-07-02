@@ -39,16 +39,14 @@ The repository is designed as a reusable learning resource that helps beginners 
 
 🔗 **[View Live Site](https://soha-sayyad.github.io/nlp/)**
 
-*(Replace `yourusername` with your actual GitHub username after deployment)*
-
 ---
 
 ## 👥 Team Members
 
 | Name | Roll No. | Contribution |
 |:---|:---:|:---|
-| **Student A** | 101 | Concept Cards (Tokenization, TF-IDF, Word2Vec, Contextual Embeddings, BERT, One-Hot, BoW, N-Grams), Comparisons (Word2Vec vs FastText, TF vs TF-IDF, One-Hot vs Embeddings), Text-to-Vector Workflow, Reflection A |
-| **Student B** | 102 | Concept Cards (Sentence Segmentation, Case Normalization, Stop-word Removal, Stemming, Lemmatization, Noise Removal, Text Cleaning, TF, IDF, Statistical LMs, Neural LMs), Comparisons (Stemming vs Lemmatization, Statistical vs Neural LMs), Preprocessing & Feature Engineering Workflows, Reflection B |
+| **Soha Sayyad** | 61 | Concept Cards (Tokenization, TF-IDF, Word2Vec, Contextual Embeddings, BERT, One-Hot, BoW, N-Grams), Comparisons (Word2Vec vs FastText, TF vs TF-IDF, One-Hot vs Embeddings), Text-to-Vector Workflow, Reflection A |
+| **Parv Shah** | 65 | Concept Cards (Sentence Segmentation, Case Normalization, Stop-word Removal, Stemming, Lemmatization, Noise Removal, Text Cleaning, TF, IDF, Statistical LMs, Neural LMs), Comparisons (Stemming vs Lemmatization, Statistical vs Neural LMs), Preprocessing & Feature Engineering Workflows, Reflection B |
 
 **Collaborative Work:** Both students contributed equally to repository organization, literature review, sustainability section, and final compilation.
 
