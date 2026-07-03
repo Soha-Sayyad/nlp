@@ -999,6 +999,98 @@
         .scroll-top.visible { opacity: 1; visibility: visible; }
         .scroll-top:hover { transform: translateY(-3px); }
 
+        /* ===== CONCEPT CARD: COMPACT VIEW + MODAL ===== */
+        /* By default, only the first field (Definition) and the header/title show on the card.
+           Everything else (Purpose, Working Principle, Example, pros/cons footer) is revealed
+           only inside the full-details modal. */
+        .concept-card .card-body > div.field:nth-of-type(n+2) { display: none; }
+        .concept-card .card-footer { display: none; }
+        .concept-card .card-body p.card-desc-hint {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-top: 0.75rem;
+        }
+
+        .details-btn {
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 0.65rem 1.25rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.85rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .details-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .details-btn:active { transform: translateY(0); }
+
+        body.modal-open { overflow: hidden; }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.25rem;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+
+        .modal-box {
+            position: relative;
+            background: white;
+            border-radius: var(--radius);
+            max-width: 640px;
+            width: 100%;
+            max-height: 88vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            transform: scale(0.94) translateY(12px);
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .modal-overlay.active .modal-box { transform: scale(1) translateY(0); }
+
+        /* Inside the modal, reveal everything the compact card hides */
+        .modal-box .concept-card { box-shadow: none; border: none; border-radius: 0; }
+        .modal-box .card-body > div.field:nth-of-type(n+2) { display: block !important; }
+        .modal-box .card-footer { display: grid !important; }
+        .modal-box .details-btn { display: none !important; }
+
+        .modal-close-btn {
+            position: sticky;
+            top: 1rem;
+            float: right;
+            margin: 1rem 1rem -2.5rem 0;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(15,23,42,0.08);
+            color: var(--dark);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: var(--transition);
+        }
+        .modal-close-btn:hover { background: rgba(15,23,42,0.16); transform: rotate(90deg); }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .hero-inner { grid-template-columns: 1fr; text-align: center; }
@@ -1036,6 +1128,7 @@
                 right: 50% !important; bottom: -10px !important; top: auto !important;
                 transform: translateX(50%) rotate(90deg) !important;
             }
+            .modal-box { max-height: 92vh; }
         }
     </style>
 <base target="_blank">
@@ -2549,6 +2642,11 @@ BERT encodes this relationship in the contextualized embedding
 
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
 
+<!-- Concept Card Full-Details Modal -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box" id="modalBox"></div>
+</div>
+
 <script>
     // Mobile Navigation
     function toggleNav() {
@@ -2597,6 +2695,64 @@ BERT encodes this relationship in the contextualized embedding
         el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
         observer.observe(el);
     });
+
+    // ===== Concept Card: "View Full Details" button + modal =====
+    function initConceptCardDetails() {
+        document.querySelectorAll('.concept-card').forEach(card => {
+            const body = card.querySelector('.card-body');
+            if (!body || body.querySelector('.details-btn')) return;
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'details-btn';
+            btn.innerHTML = '<i class="fas fa-expand"></i> View Full Details';
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openCardModal(card);
+            });
+            body.appendChild(btn);
+        });
+    }
+
+    function openCardModal(card) {
+        const overlay = document.getElementById('modalOverlay');
+        const modalBox = document.getElementById('modalBox');
+
+        // Clone the full card (header + all fields + pros/cons footer)
+        const clone = card.cloneNode(true);
+        // Make sure the clone is visible regardless of scroll-animation state
+        clone.style.opacity = '1';
+        clone.style.transform = 'none';
+        clone.style.display = 'flex';
+
+        modalBox.innerHTML = '';
+
+        const closeBtn = document.createElement('button');
+        closeBtn.type = 'button';
+        closeBtn.className = 'modal-close-btn';
+        closeBtn.setAttribute('aria-label', 'Close');
+        closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+        closeBtn.addEventListener('click', closeCardModal);
+
+        modalBox.appendChild(closeBtn);
+        modalBox.appendChild(clone);
+
+        overlay.classList.add('active');
+        document.body.classList.add('modal-open');
+    }
+
+    function closeCardModal() {
+        document.getElementById('modalOverlay').classList.remove('active');
+        document.body.classList.remove('modal-open');
+    }
+
+    document.getElementById('modalOverlay').addEventListener('click', (e) => {
+        if (e.target.id === 'modalOverlay') closeCardModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeCardModal();
+    });
+
+    initConceptCardDetails();
 </script>
 </body>
 </html>
