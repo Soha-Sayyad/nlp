@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comparative Model Analysis | NLP Repository</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/section_b.css">
     <base target="_blank">
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <a href="../index.html" target="_self" class="nav-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></a>
-                <ul class="nav-links" id="navLinks"> <li><a href="../index.html" target="_self" class="">Home</a></li> <li><a href="../index.html#concepts" target="_self" class="">Concepts</a></li> <li><a href="../index.html#comparisons" target="_self" class="active">Comparisons</a></li> <li><a href="../index.html#workflows" target="_self" class="">Workflows</a></li> <li><a href="../index.html#applications" target="_self" class="">Applications</a></li> <li><a href="../index.html#research" target="_self" class="">Research</a></li> <li><a href="../index.html#sustainability" target="_self" class="">Sustainability</a></li> <li><a href="../index.html#contributions" target="_self" class="">Contributions</a></li> <li><a href="../index.html#reflections" target="_self" class="">Reflections</a></li> </ul>
+        <a href="../index.html" target="_self" class="nav-brand"><i class="fas fa-brain"></i><span>NLP
+                Repository</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../index.html" target="_self" class="">Home</a></li>
+            <li><a href="../index.html#concepts" target="_self" class="">Concepts</a></li>
+            <li><a href="../index.html#comparisons" target="_self" class="active">Comparisons</a></li>
+            <li><a href="../index.html#workflows" target="_self" class="">Workflows</a></li>
+            <li><a href="../index.html#applications" target="_self" class="">Applications</a></li>
+            <li><a href="../index.html#research" target="_self" class="">Research</a></li>
+            <li><a href="../index.html#sustainability" target="_self" class="">Sustainability</a></li>
+            <li><a href="../index.html#contributions" target="_self" class="">Contributions</a></li>
+            <li><a href="../index.html#reflections" target="_self" class="">Reflections</a></li>
+        </ul>
         <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
     </nav>
 
-<!-- Section B: Comparative Analysis -->
+    <!-- Section B: Comparative Analysis -->
     <section id="comparisons" class="section section-alt">
         <div class="container">
             <div class="section-header">
@@ -51,61 +66,50 @@
                         <tbody>
                             <tr>
                                 <td><strong>Definition</strong></td>
-                                <td>Heuristic suffix stripping to root form</td>
-                                <td>Dictionary-based reduction to canonical lemma</td>
+                                <td><strong>Chops off suffixes</strong> using simple rules to find the root.</td>
+                                <td><strong>Looks up words in a dictionary</strong> to find their actual base form.</td>
                             </tr>
                             <tr>
                                 <td><strong>Working Mechanism</strong></td>
-                                <td>Rule-based suffix removal (Porter, Snowball, Lancaster). No understanding of word
-                                    meaning.</td>
-                                <td>Morphological analysis using WordNet + POS tags to find valid dictionary forms.</td>
+                                <td>• Uses basic <strong>chopping rules</strong>.<br>• Doesn’t care about word grammar
+                                    or meaning.</td>
+                                <td>• Does <strong>morphological analysis</strong>.<br>• Checks POS tags and WordNet
+                                    context.</td>
                             </tr>
                             <tr>
                                 <td><strong>Output Example</strong></td>
-                                <td class="badge-bad">"university" → "univers" (non-word)<br>"running" → "run"</td>
-                                <td class="badge-good">"university" → "university" (valid)<br>"running" → "run" (verb)
+                                <td class="badge-bad">running → <strong>run</strong><br>university →
+                                    <strong>univers</strong> (broken word)
+                                </td>
+                                <td class="badge-good">running → <strong>run</strong> (verb tag)<br>university →
+                                    <strong>university</strong> (valid word)
                                 </td>
                             </tr>
                             <tr>
                                 <td><strong>Computational Complexity</strong></td>
-                                <td class="badge-good">O(n) per word — very fast</td>
-                                <td class="badge-info">O(n × log|V|) — slower (dictionary lookup)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Speed</strong></td>
-                                <td class="badge-good">~1M words/sec</td>
-                                <td class="badge-bad">~100K words/sec</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Memory</strong></td>
-                                <td class="badge-good">Low (only rules stored)</td>
-                                <td class="badge-bad">Higher (dictionary + POS tagger)</td>
+                                <td class="badge-good"><strong>O(n)</strong> — super fast rule checks</td>
+                                <td class="badge-info"><strong>O(n log |V|)</strong> — slower dictionary searches</td>
                             </tr>
                             <tr>
                                 <td><strong>Strengths</strong></td>
-                                <td>• Extremely fast<br>• No external dependencies<br>• Effective for IR systems</td>
-                                <td>• Linguistically accurate<br>• Preserves semantic meaning<br>• Handles irregular
-                                    forms correctly</td>
+                                <td>• Blazing <strong>fast execution</strong>.<br>• Zero external database
+                                    dependency.<br>• Simple, quick search index builder.</td>
+                                <td>• <strong>100% grammatically correct</strong>.<br>• Keeps semantic meaning
+                                    safe.<br>• Correctly maps irregular verbs.</td>
                             </tr>
                             <tr>
                                 <td><strong>Weaknesses</strong></td>
-                                <td>• Over-stemming causes false matches<br>• Produces non-dictionary words<br>• No
-                                    semantic understanding</td>
-                                <td>• Slower processing<br>• Requires POS tags for accuracy<br>• Dictionary may miss
-                                    domain terms</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Best Applications</strong></td>
-                                <td>Search engines, information retrieval, spam filtering, keyword extraction</td>
-                                <td>Sentiment analysis, chatbots, machine translation, clinical/legal NLP</td>
+                                <td>• <strong>Over-chopping</strong> merges unrelated words.<br>• Creates weird
+                                    non-words.<br>• Blind to context.</td>
+                                <td>• <strong>Noticeably slower</strong>.<br>• Needs POS tagging to work well.<br>•
+                                    Misses slang or new domain terms.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="verdict"><i class="fas fa-gavel"></i>
-                    <div><strong>Verdict:</strong> Use <strong>Stemming</strong> for large-scale information retrieval
-                        where speed matters. Use <strong>Lemmatization</strong> for tasks requiring semantic precision
-                        and linguistic accuracy.</div>
+                    <div><strong>Verdict:</strong> Choose <strong>Stemming</strong> to speed up huge search indices;
+                        choose <strong>Lemmatization</strong> when you need grammatically correct base words.</div>
                 </div>
             </div>
 
@@ -122,51 +126,51 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><strong>Formula</strong></td>
-                                <td>TF(t,d) = count(t,d) / |d|</td>
-                                <td>TF-IDF(t,d,D) = TF(t,d) × log(N/df(t))</td>
-                            </tr>
+
                             <tr>
                                 <td><strong>Scope</strong></td>
-                                <td>Document-local only</td>
-                                <td>Document-local + Corpus-global</td>
+                                <td><strong>Single document</strong> (local counts)</td>
+                                <td>Across the <strong>entire corpus</strong> (local vs global ratio)</td>
                             </tr>
                             <tr>
                                 <td><strong>Common Words</strong></td>
-                                <td class="badge-bad">Favors "the", "is" (high TF)</td>
-                                <td class="badge-good">Automatically downweights them</td>
+                                <td class="badge-bad">Favors useless <strong>fillers</strong> (like "the", "and")</td>
+                                <td class="badge-good"><strong>Safely ignores</strong> common filler words</td>
                             </tr>
                             <tr>
                                 <td><strong>Computational Complexity</strong></td>
-                                <td class="badge-good">O(|d|) per document</td>
-                                <td class="badge-info">O(|d| + |D|) — needs corpus stats</td>
+                                <td class="badge-good"><strong>O(|d|)</strong> — local scan per doc</td>
+                                <td class="badge-info"><strong>O(|d| + |D|)</strong> — needs extra corpus-wide stats
+                                </td>
                             </tr>
                             <tr>
                                 <td><strong>Strengths</strong></td>
-                                <td>• Simple and intuitive<br>• Fast to compute<br>• Good for within-doc analysis</td>
-                                <td>• Balances local and global importance<br>• Better discrimination between docs<br>•
-                                    Industry standard for IR</td>
+                                <td>• <strong>Super simple</strong> to write and run.<br>• Quick within-doc
+                                    analysis.<br>• Length-scaled counts.</td>
+                                <td>• Filters out <strong>global noise</strong> words.<br>• Highlights top diagnostic
+                                    words.<br>•
+                                    Gold standard document classifier vector.</td>
                             </tr>
                             <tr>
                                 <td><strong>Weaknesses</strong></td>
-                                <td>• Cannot distinguish document types<br>• Biased by document length<br>• No corpus
-                                    context</td>
-                                <td>• Still ignores word order<br>• Assumes term independence<br>• Sensitive to corpus
-                                    composition</td>
+                                <td>• Fails to identify <strong>word importance</strong>.<br>• Skewed by long
+                                    articles.<br>• Ignores
+                                    global corpus context.</td>
+                                <td>• Blind to <strong>word arrangements</strong>.<br>• Assumes words are
+                                    independent.<br>• Sensitive
+                                    to corpus shifts.</td>
                             </tr>
                             <tr>
                                 <td><strong>Best Applications</strong></td>
-                                <td>Single document keyword extraction, basic text statistics</td>
-                                <td>Search engine ranking, document clustering, text classification, plagiarism
-                                    detection</td>
+                                <td>Basic term counters, <strong>single text logs</strong></td>
+                                <td>Web search engines, <strong>document classifier baselines</strong></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="verdict"><i class="fas fa-gavel"></i>
-                    <div><strong>Verdict:</strong> Use <strong>TF-IDF</strong> for almost all information retrieval and
-                        document classification tasks. TF alone is insufficient for cross-document comparison.</div>
+                    <div><strong>Verdict:</strong> Use <strong>TF-IDF</strong> instead of plain TF to prevent common
+                        fillers from ruining your document scores.</div>
                 </div>
             </div>
 
@@ -185,61 +189,54 @@
                         <tbody>
                             <tr>
                                 <td><strong>Definition</strong></td>
-                                <td>Neural word embedding using CBOW or Skip-gram</td>
-                                <td>Extension using character n-gram representations</td>
+                                <td>Predicts embeddings using a <strong>window context</strong> (CBOW/Skip-gram).</td>
+                                <td>Extends Word2Vec by learning embeddings for <strong>subword character
+                                        strings</strong>.</td>
                             </tr>
                             <tr>
                                 <td><strong>Working Mechanism</strong></td>
-                                <td>Learns word vectors by predicting context/target. Each word has a single vector.
-                                </td>
-                                <td>Represents words as sum of word vector + character n-gram vectors. Shares subword
-                                    info.</td>
+                                <td>• Adjusts weights based on adjacent words.<br>• Gives <strong>exactly one vector per
+                                        word</strong>.</td>
+                                <td>• Sums word and character <strong>n-gram vectors</strong>.<br>• Captures subword
+                                    shapes.</td>
                             </tr>
                             <tr>
                                 <td><strong>OOV Handling</strong></td>
-                                <td class="badge-bad">Cannot handle OOV (random vector)</td>
-                                <td class="badge-good">Handles OOV via subword composition</td>
+                                <td class="badge-bad"><strong>Fails completely</strong> (assigns random vector)</td>
+                                <td class="badge-good"><strong>Guarantees results</strong> by building unseen words from
+                                    subparts</td>
                             </tr>
                             <tr>
                                 <td><strong>Model Size</strong></td>
-                                <td class="badge-good">Smaller (only word vectors)</td>
-                                <td class="badge-bad">Larger (word + n-gram vectors)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Training Speed</strong></td>
-                                <td>Faster (Python gensim)</td>
-                                <td>Highly optimized C++ implementation</td>
+                                <td class="badge-good"><strong>Very light</strong> (only full words stored)</td>
+                                <td class="badge-bad"><strong>Huge footprint</strong> (stores word + n-gram fragments)
+                                </td>
                             </tr>
                             <tr>
                                 <td><strong>Strengths</strong></td>
-                                <td>• Better semantic relationships<br>• Smaller footprint<br>• Mature ecosystem
-                                    (gensim)</td>
-                                <td>• Handles OOV and rare words<br>• Better for morphologically rich languages<br>•
-                                    Built-in text classifier</td>
+                                <td>• Learns clean <strong>semantic relations</strong>.<br>• Super lightweight
+                                    files.<br>• Mature library libraries.</td>
+                                <td>• Handles <strong>misspellings</strong> and unseen words.<br>• Excels on
+                                    code/medical terms.<br>• Fast built-in classifiers.</td>
                             </tr>
                             <tr>
                                 <td><strong>Weaknesses</strong></td>
-                                <td>• Single vector per word (polysemy)<br>• No subword information<br>• Poor for rare
-                                    words</td>
-                                <td>• Slightly worse semantic performance<br>• Subword noise for short words<br>• Still
-                                    context-independent</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Best Applications</strong></td>
-                                <td>General English NLP, semantic similarity, recommendation systems</td>
-                                <td>Multilingual apps, morphologically complex languages, specialized domains</td>
+                                <td>• <strong>Unseen words</strong> crash accuracy.<br>• Blind to word suffixes.<br>•
+                                    Fails on polysemy.</td>
+                                <td>• <strong>Heavy memory requirements</strong>.<br>• Adds subword noise on small
+                                    words.<br>• No contextual meanings.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="verdict"><i class="fas fa-gavel"></i>
-                    <div><strong>Verdict:</strong> Use <strong>Word2Vec</strong> for general-purpose English NLP. Use
-                        <strong>FastText</strong> for multilingual applications, morphologically complex languages, or
-                        domains with many rare/technical terms.</div>
+                    <div><strong>Verdict:</strong> Go with <strong>Word2Vec</strong> if your vocabulary is clean and
+                        static; choose <strong>FastText</strong> if you have spelling mistakes or rare technical terms.
+                    </div>
                 </div>
             </div>
 
-            <!-- Tab 4: Statistical vs Neural -->
+            <!-- Tab 4: Statistical vs Neural LMs -->
             <div id="tab4" class="tab-panel">
                 <h3 style="margin-bottom:1.5rem;font-size:1.3rem;">Statistical vs Neural Language Models</h3>
                 <div class="comp-table-wrap">
@@ -254,55 +251,52 @@
                         <tbody>
                             <tr>
                                 <td><strong>Definition</strong></td>
-                                <td>Probability models based on observed word frequencies</td>
-                                <td>Deep learning models learning distributed representations</td>
+                                <td>Rely on <strong>frequency counts</strong> of word sequences (n-grams).</td>
+                                <td>Learn deep representing parameters using <strong>neural network weights</strong>.
+                                </td>
                             </tr>
                             <tr>
                                 <td><strong>Working Mechanism</strong></td>
-                                <td>Count-based frequency estimation with smoothing</td>
-                                <td>Neural network forward passes with backpropagation</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Data Requirements</strong></td>
-                                <td class="badge-good">Works with limited data</td>
-                                <td class="badge-bad">Requires large corpora</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Interpretability</strong></td>
-                                <td class="badge-good">High — easy to debug</td>
-                                <td class="badge-bad">Low — black-box nature</td>
+                                <td>• Counts sequences in text.<br>• Adjusts scores with <strong>smoothing
+                                        tricks</strong>.</td>
+                                <td>• Learns pattern weights via <strong>backpropagation</strong>.<br>• Uses dense
+                                    embedding vectors.
+                                </td>
                             </tr>
                             <tr>
                                 <td><strong>Long-range Dependencies</strong></td>
-                                <td class="badge-bad">Cannot capture</td>
-                                <td class="badge-good">Captures via attention/LSTM</td>
+                                <td class="badge-bad"><strong>Zero memory</strong> (looks back N-1 words only)</td>
+                                <td class="badge-good"><strong>Succeeds</strong> (attention mechanism remembers distant
+                                    thoughts)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Interpretability</strong></td>
+                                <td class="badge-good"><strong>Highly transparent</strong> (check probability ratios)
+                                </td>
+                                <td class="badge-bad"><strong>Total black box</strong> (millions of hidden weights)</td>
                             </tr>
                             <tr>
                                 <td><strong>Strengths</strong></td>
-                                <td>• Interpretable and debuggable<br>• Fast inference<br>• No GPU required<br>• Easy to
-                                    implement</td>
-                                <td>• Semantic generalization<br>• Transfer learning capability<br>• State-of-the-art
-                                    performance<br>• Handles unseen combinations</td>
+                                <td>• <strong>Instant training</strong>.<br>• Tiny memory load (no GPU).<br>• Fully
+                                    debuggable predictions.</td>
+                                <td>• Amazing <strong>semantic extrapolation</strong>.<br>• Transfer learning
+                                    capabilities.<br>• SOTA
+                                    output quality.</td>
                             </tr>
                             <tr>
                                 <td><strong>Weaknesses</strong></td>
-                                <td>• Data sparsity (zero probabilities)<br>• No semantic understanding<br>• Exponential
-                                    storage growth<br>• Limited context window</td>
-                                <td>• Computationally expensive<br>• Requires large training data<br>• Environmental
-                                    impact<br>• Hallucination risks</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Best Applications</strong></td>
-                                <td>Spell checkers, keyboard autocomplete, resource-constrained environments</td>
-                                <td>Machine translation, chatbots, text summarization, code generation</td>
+                                <td>• <strong>Zero probability</strong> for unseen text.<br>• Context size is
+                                    limited.<br>• Size bloats exponentially.</td>
+                                <td>• <strong>Huge GPU costs</strong>.<br>• Needs vast training steps.<br>•
+                                    Hallucinations risk.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="verdict"><i class="fas fa-gavel"></i>
-                    <div><strong>Verdict:</strong> Use <strong>Statistical models</strong> for resource-constrained,
-                        interpretable, or small-data scenarios. Use <strong>Neural models</strong> for tasks requiring
-                        deep semantic understanding.</div>
+                    <div><strong>Verdict:</strong> Stick to <strong>Statistical LMs</strong> for ultra-light keyboard
+                        search suggest bots; use <strong>Neural LMs</strong> for complex text generators and chatbots.
+                    </div>
                 </div>
             </div>
 
@@ -319,67 +313,56 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><strong>Dimensionality</strong></td>
-                                <td class="badge-bad">|V| (10K–1M+)</td>
-                                <td class="badge-good">Fixed small (50–1024)</td>
-                            </tr>
+
                             <tr>
                                 <td><strong>Sparsity</strong></td>
-                                <td class="badge-bad">Extremely sparse (99.99% zeros)</td>
-                                <td class="badge-good">Dense (all non-zero)</td>
+                                <td class="badge-bad"><strong>Extremely sparse</strong> (mostly zeros)</td>
+                                <td class="badge-good"><strong>100% dense</strong> floating points</td>
                             </tr>
                             <tr>
                                 <td><strong>Semantic Info</strong></td>
-                                <td class="badge-bad">None — purely symbolic</td>
-                                <td class="badge-good">Rich — captures meaning, analogy</td>
+                                <td class="badge-bad"><strong>Zero</strong> (all words are perpendicular vectors)</td>
+                                <td class="badge-good"><strong>High</strong> (closeness maps matching meaning)</td>
                             </tr>
                             <tr>
                                 <td><strong>Memory Efficiency</strong></td>
-                                <td class="badge-bad">Very poor</td>
-                                <td class="badge-good">Excellent</td>
+                                <td class="badge-bad"><strong>Terrible</strong> (wastes massive arrays)</td>
+                                <td class="badge-good"><strong>Highly efficient</strong> dense matrix grids</td>
                             </tr>
                             <tr>
                                 <td><strong>Generalization</strong></td>
-                                <td class="badge-bad">None</td>
-                                <td class="badge-good">Strong — similar words cluster</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Training</strong></td>
-                                <td class="badge-good">None required</td>
-                                <td class="badge-bad">Requires large corpus + time</td>
+                                <td class="badge-bad"><strong>Fails</strong> (no concept of word closeness)</td>
+                                <td class="badge-good"><strong>Excellent</strong> (unseen words group logically)</td>
                             </tr>
                             <tr>
                                 <td><strong>Strengths</strong></td>
-                                <td>• Simple and unambiguous<br>• No implied ordinal relationship<br>• Works with any
-                                    vocabulary</td>
-                                <td>• Captures semantic relationships<br>• Enables similarity queries<br>• Compact
-                                    representation</td>
+                                <td>• Simple dictionary lookup keys.<br>• Zero prep or training needed.<br>• Extremely
+                                    deterministic.</td>
+                                <td>• Captures <strong>synonyms</strong> easily.<br>• Shrinks vector arrays.<br>• Learns
+                                    analogy puzzles.</td>
                             </tr>
                             <tr>
                                 <td><strong>Weaknesses</strong></td>
-                                <td>• Curse of dimensionality<br>• No semantic meaning<br>• Cannot handle OOV</td>
-                                <td>• Requires training data<br>• Polysemy issue<br>• Static for non-contextual</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Best Applications</strong></td>
-                                <td>Very small vocabularies, baseline experiments, categorical features</td>
-                                <td>All modern NLP: search, classification, translation, generation</td>
+                                <td>• <strong>Array size blows up</strong> for broad vocabularies.<br>• Blind to
+                                    relation
+                                    meanings.<br>• Crashes on new words.</td>
+                                <td>• <strong>Pricey training cycles</strong>.<br>• Fails on context shifts.<br>•
+                                    Black-box vector weights.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="verdict"><i class="fas fa-gavel"></i>
-                    <div><strong>Verdict:</strong> <strong>One-Hot Encoding</strong> is obsolete for NLP. <strong>Word
-                            Embeddings</strong> are the universal standard for all production NLP systems.</div>
+                    <div><strong>Verdict:</strong> Avoid using <strong>One-Hot Encoding</strong> for sequence models;
+                        <strong>Word Embeddings</strong> are the industry standard for NLP inputs.
+                    </div>
                 </div>
             </div>
 
         </div>
     </section>
 
-    
-<!-- Footer -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></div>
