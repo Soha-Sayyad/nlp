@@ -1,0 +1,119 @@
+/* ===== RESEARCH ===== */
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.research-card {
+    background: #FFFDFB;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    padding: 1.75rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.research-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.research-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+}
+
+.research-card.research::before {
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+.research-card.industry::before {
+    background: linear-gradient(90deg, var(--success), var(--accent));
+}
+
+.research-card.framework::before {
+    background: linear-gradient(90deg, var(--warning), var(--accent));
+}
+
+.research-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    margin-bottom: 0.75rem;
+}
+
+.research-card.research .research-badge {
+    background: #FFE0CE;
+    color: #8E3E26;
+}
+
+.research-card.industry .research-badge {
+    background: #E6EBDA;
+    color: #616C4A;
+}
+
+.research-card.framework .research-badge {
+    background: #F5E8D3;
+    color: #7A5320;
+}
+
+.research-card h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.155rem;
+    font-weight: 750;
+    margin-bottom: 0.75rem;
+    color: var(--dark);
+    line-height: 1.35;
+}
+
+.research-card p {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--dark);
+    opacity: 0.85;
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+}
+
+.research-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.r-tag {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    background: #FAF6F2;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    color: var(--gray);
+    font-weight: 600;
+}
+
+.code-snippet {
+    background: #2D2320;
+    /* Warm dark espresso */
+    color: #F5EAE4;
+    padding: 1.1rem;
+    border-radius: var(--radius-sm);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    margin-top: 0.75rem;
+    overflow-x: auto;
+    border: 1px solid rgba(239, 223, 213, 0.12);
+}

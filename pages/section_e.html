@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research & Industry Insights | NLP Repository</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/section_e.css">
+    <base target="_blank">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="../index.html" target="_self" class="nav-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></a>
+                <ul class="nav-links" id="navLinks"> <li><a href="../index.html" target="_self" class="">Home</a></li> <li><a href="../index.html#concepts" target="_self" class="">Concepts</a></li> <li><a href="../index.html#comparisons" target="_self" class="">Comparisons</a></li> <li><a href="../index.html#workflows" target="_self" class="">Workflows</a></li> <li><a href="../index.html#applications" target="_self" class="">Applications</a></li> <li><a href="../index.html#research" target="_self" class="active">Research</a></li> <li><a href="../index.html#sustainability" target="_self" class="">Sustainability</a></li> <li><a href="../index.html#contributions" target="_self" class="">Contributions</a></li> <li><a href="../index.html#reflections" target="_self" class="">Reflections</a></li> </ul>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+    </nav>
+
+<!-- Section E: Research & Industry -->
+    <section id="research" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label"><i class="fas fa-flask"></i> Section E</div>
+                <h2 class="section-title">Research & Industry Insights</h2>
+                <p class="section-desc">Recent research developments, industrial applications, and open-source
+                    frameworks shaping the future of NLP.</p>
+            </div>
+
+            <div class="research-grid">
+                <div class="research-card research">
+                    <div class="research-badge">Research 2024-2026</div>
+                    <h3>Retrieval-Augmented Generation (RAG)</h3>
+                    <p>Combines dense retrieval (embeddings) with generative models to ground LLM outputs in external
+                        knowledge, reducing hallucination and enabling real-time knowledge updates without retraining.
+                    </p>
+                    <div class="research-tags">
+                        <span class="r-tag">Hallucination Reduction</span>
+                        <span class="r-tag">Knowledge Grounding</span>
+                    </div>
+                </div>
+
+                <div class="research-card research">
+                    <div class="research-badge">Research 2024-2026</div>
+                    <h3>Mixture of Experts (MoE)</h3>
+                    <p>Sparse activation architectures (Mixtral 8x7B) use only a subset of parameters per token,
+                        reducing compute by 60% while maintaining GPT-4-level performance. Addresses sustainability
+                        concerns.</p>
+                    <div class="research-tags">
+                        <span class="r-tag">Sustainable AI</span>
+                        <span class="r-tag">Efficient Inference</span>
+                    </div>
+                </div>
+
+                <div class="research-card industry">
+                    <div class="research-badge">Industry</div>
+                    <h3>Microsoft Copilot</h3>
+                    <p>Integrates GPT-4 across Office 365 (Word, Excel, Outlook) for document drafting, email
+                        composition, and meeting summarization. Serves 400M+ users, demonstrating enterprise NLP at
+                        scale.</p>
+                    <div class="research-tags">
+                        <span class="r-tag">Enterprise AI</span>
+                        <span class="r-tag">400M+ Users</span>
+                    </div>
+                </div>
+
+                <div class="research-card industry">
+                    <div class="research-badge">Industry</div>
+                    <h3>DeepL Translator</h3>
+                    <p>Uses proprietary Transformer architectures with advanced attention mechanisms. Rated above Google
+                        Translate by professional translators, showcasing domain-specific preprocessing importance.</p>
+                    <div class="research-tags">
+                        <span class="r-tag">Translation</span>
+                        <span class="r-tag">Professional Grade</span>
+                    </div>
+                </div>
+
+                <div class="research-card framework" style="grid-column: span 2;">
+                    <div class="research-badge">Open Source Framework</div>
+                    <h3>Hugging Face Transformers</h3>
+                    <p>The most widely adopted open-source library for state-of-the-art NLP, providing 500,000+
+                        pre-trained models (BERT, GPT, T5, LLaMA) with unified APIs for PyTorch, TensorFlow, and JAX.
+                    </p>
+                    <div class="research-tags">
+                        <span class="r-tag">500K+ Models</span>
+                        <span class="r-tag">200K+ GitHub Stars</span>
+                        <span class="r-tag">1B+ Monthly Downloads</span>
+                    </div>
+                    <div class="code-snippet">from transformers import pipeline<br>classifier =
+                        pipeline("sentiment-analysis")<br>result = classifier("I love NLP!")<br># Output: [{'label':
+                        'POSITIVE', 'score': 0.9998}]</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+<!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></div>
+            <div class="footer-info">
+                <p>Shah & Anchor Kutchhi Engineering College</p>
+                <p>Autonomous Institute Affiliated to University of Mumbai</p>
+                <p>Bestowed with the University of Mumbai's Best College Honor A.Y. 2024-25</p>
+            </div>
+            <div><a href="https://www.sakec.ac.in" target="_blank" class="footer-link"><i class="fas fa-globe"></i>
+                    www.sakec.ac.in</a></div>
+        </div>
+        <div class="footer-bottom">
+            <p> CMCOR1PE301.1 | A.Y. 2026-27 | TY B.Tech | Semester V</p>
+            <p class="ai-note"><i class="fas fa-robot"></i> AI-Assisted Content Generation Declared | All External
+                Sources Cited | Academic Integrity Maintained</p>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i
+            class="fas fa-arrow-up"></i></button>
+
+    <!-- Concept Card Full-Details Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box" id="modalBox"></div>
+    </div>
+
+    <script src="../script.js" defer></script>
+</body>
+
+</html>

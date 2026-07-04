@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP Workflow Pipelines | NLP Repository</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/section_c.css">
+    <base target="_blank">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="../index.html" target="_self" class="nav-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></a>
+                <ul class="nav-links" id="navLinks"> <li><a href="../index.html" target="_self" class="">Home</a></li> <li><a href="../index.html#concepts" target="_self" class="">Concepts</a></li> <li><a href="../index.html#comparisons" target="_self" class="">Comparisons</a></li> <li><a href="../index.html#workflows" target="_self" class="active">Workflows</a></li> <li><a href="../index.html#applications" target="_self" class="">Applications</a></li> <li><a href="../index.html#research" target="_self" class="">Research</a></li> <li><a href="../index.html#sustainability" target="_self" class="">Sustainability</a></li> <li><a href="../index.html#contributions" target="_self" class="">Contributions</a></li> <li><a href="../index.html#reflections" target="_self" class="">Reflections</a></li> </ul>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+    </nav>
+
+<!-- Section C: Workflow Diagrams -->
+    <section id="workflows" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label"><i class="fas fa-project-diagram"></i> Section C</div>
+                <h2 class="section-title">Workflow Diagrams</h2>
+                <p class="section-desc">Visual pipeline explanations for text preprocessing, feature engineering, and
+                    text-to-vector transformation processes.</p>
+            </div>
+
+            <div class="workflow-grid">
+                <!-- Workflow 1: Preprocessing -->
+                <div class="workflow-card">
+                    <div class="workflow-header">
+                        <h3><i class="fas fa-filter"></i> Complete Text Preprocessing Pipeline</h3>
+                    </div>
+                    <div class="workflow-body">
+                        <div class="pipeline">
+                            <div class="pipe-step">
+                                <div class="step-num">1</div>
+                                <div>
+                                    <div class="step-text">Raw Text Input</div>
+                                    <div class="step-detail">"I can't wait 4 the new iPhone!!! 😍 https://apple.com"
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
+                            <div class="pipe-step">
+                                <div class="step-num">2</div>
+                                <div>
+                                    <div class="step-text">Noise Removal</div>
+                                    <div class="step-detail">Remove URLs, HTML tags, emojis, special characters</div>
+                                </div>
+                            </div>
+                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
+                            <div class="pipe-step">
+                                <div class="step-num">3</div>
+                                <div>
+                                    <div class="step-text">Text Cleaning</div>
+                                    <div class="step-detail">Fix encoding, expand contractions, handle numbers</div>
+                                </div>
+                            </div>
+                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
+                            <div class="pipe-step">
+                                <div class="step-num">4</div>
+                                <div>
+                                    <div class="step-text">Case Normalization</div>
+                                    <div class="step-detail">Convert to lowercase (or Truecasing for NER)</div>
+                                </div>
+                            </div>
+                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
+                            <div class="pipe-step">
+                                <div class="step-num">5</div>
+                                <div>
+                                    <div class="step-text">Sentence Segmentation</div>
+                                    <div class="step-detail">Split on boundaries, handle abbreviations</div>
+                                </div>
+                            </div>
+                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
+                            <div class="pipe-step">
+                                <div class="step-num">6</div>
+                                <div>
+                                    <div class="step-text">Tokenization</div>
+                                    <div class="step-detail">Word-level or subword (BPE/WordPiece)</div>
+                                </div>
+                            </div>
+                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
+                            <div class="pipe-step">
+                                <div class="step-num">7</div>
+                                <div>
+                                    <div class="step-text">Stop-word Removal</div>
+                                    <div class="step-detail">Filter common words, preserve negation if needed</div>
+                                </div>
+                            </div>
+                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
+                            <div class="pipe-step">
+                                <div class="step-num">8</div>
+                                <div>
+                                    <div class="step-text">Stemming / Lemmatization</div>
+                                    <div class="step-detail">Reduce to root form (fast heuristic or accurate dictionary)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
+                            <div class="pipe-step final">
+                                <div class="step-num"><i class="fas fa-check"></i></div>
+                                <div>
+                                    <div class="step-text">Clean Tokens Ready for Model</div>
+                                    <div class="step-detail">["can", "not", "wait", "new", "iphone"]</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workflow 2: Feature Engineering -->
+                <div class="workflow-card">
+                    <div class="workflow-header">
+                        <h3><i class="fas fa-cogs"></i> Feature Engineering Pipeline</h3>
+                    </div>
+                    <div class="workflow-body">
+                        <div class="pipeline">
+                            <div class="pipe-step">
+                                <div class="step-num">1</div>
+                                <div>
+                                    <div class="step-text">Clean Tokens from Preprocessing</div>
+                                    <div class="step-detail">["machine", "learning", "is", "transforming", "healthcare"]
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
+                            <div class="pipe-step">
+                                <div class="step-num">2</div>
+                                <div>
+                                    <div class="step-text">Frequency-Based Features</div>
+                                    <div class="step-detail">Bag of Words — Count matrix of word occurrences</div>
+                                </div>
+                            </div>
+                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
+                            <div class="pipe-step">
+                                <div class="step-num">3</div>
+                                <div>
+                                    <div class="step-text">N-Gram Features</div>
+                                    <div class="step-detail">Bigrams, Trigrams — Capture local word order and phrases
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
+                            <div class="pipe-step">
+                                <div class="step-num">4</div>
+                                <div>
+                                    <div class="step-text">Statistical Weighted Features</div>
+                                    <div class="step-detail">TF-IDF — Balance local and global importance</div>
+                                </div>
+                            </div>
+                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
+                            <div class="pipe-step">
+                                <div class="step-num">5</div>
+                                <div>
+                                    <div class="step-text">Feature Selection (Optional)</div>
+                                    <div class="step-detail">Chi-square, Mutual Information, L1 Regularization</div>
+                                </div>
+                            </div>
+                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
+                            <div class="pipe-step final">
+                                <div class="step-num"><i class="fas fa-check"></i></div>
+                                <div>
+                                    <div class="step-text">Features Ready for ML Model</div>
+                                    <div class="step-detail">Shape: (n_documents, n_features)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workflow 3: Text-to-Vector -->
+                <div class="workflow-card" style="grid-column: 1 / -1;">
+                    <div class="workflow-header">
+                        <h3><i class="fas fa-vector-square"></i> Text-to-Vector Transformation Process</h3>
+                    </div>
+                    <div class="workflow-body">
+                        <div class="evo-flow">
+                            <div class="evo-stage">
+                                <div class="evo-label">Symbolic</div>
+                                <div class="evo-title">One-Hot / BoW</div>
+                                <div class="evo-items">
+                                    <span class="evo-item">Sparse Binary Vectors</span>
+                                    <span class="evo-item">|V| = 50,000 dims</span>
+                                    <span class="evo-item">No Semantics</span>
+                                    <span class="evo-item">No Context</span>
+                                </div>
+                            </div>
+                            <div class="evo-stage">
+                                <div class="evo-label">Distributed</div>
+                                <div class="evo-title">Word2Vec / FastText</div>
+                                <div class="evo-items">
+                                    <span class="evo-item">Dense 300-dim Vectors</span>
+                                    <span class="evo-item">Semantic Similarity</span>
+                                    <span class="evo-item">Vector Arithmetic</span>
+                                    <span class="evo-item">Static Context</span>
+                                </div>
+                            </div>
+                            <div class="evo-stage active">
+                                <div class="evo-label">Contextual</div>
+                                <div class="evo-title">BERT / GPT</div>
+                                <div class="evo-items">
+                                    <span class="evo-item">Dense 768-dim Vectors</span>
+                                    <span class="evo-item">Context-Dependent</span>
+                                    <span class="evo-item">Polysemy Solved</span>
+                                    <span class="evo-item">Transfer Learning</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top:1.5rem;text-align:center;color:var(--gray);font-size:0.9rem;">
+                            <i class="fas fa-arrow-right" style="margin:0 0.5rem;"></i> Evolution: Symbolic (2010) →
+                            Distributed (2013) → Contextual (2018+)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+<!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></div>
+            <div class="footer-info">
+                <p>Shah & Anchor Kutchhi Engineering College</p>
+                <p>Autonomous Institute Affiliated to University of Mumbai</p>
+                <p>Bestowed with the University of Mumbai's Best College Honor A.Y. 2024-25</p>
+            </div>
+            <div><a href="https://www.sakec.ac.in" target="_blank" class="footer-link"><i class="fas fa-globe"></i>
+                    www.sakec.ac.in</a></div>
+        </div>
+        <div class="footer-bottom">
+            <p> CMCOR1PE301.1 | A.Y. 2026-27 | TY B.Tech | Semester V</p>
+            <p class="ai-note"><i class="fas fa-robot"></i> AI-Assisted Content Generation Declared | All External
+                Sources Cited | Academic Integrity Maintained</p>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i
+            class="fas fa-arrow-up"></i></button>
+
+    <!-- Concept Card Full-Details Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box" id="modalBox"></div>
+    </div>
+
+    <script src="../script.js" defer></script>
+</body>
+
+</html>

@@ -1,2758 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NLP Knowledge Artifact Repository | SAKEC</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1e40af;
-            --secondary: #7c3aed;
-            --accent: #06b6d4;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 1px 3px rgba(0,0,0,0.1);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
-            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1);
-            --radius: 12px;
-            --radius-sm: 8px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background: var(--light);
-            overflow-x: hidden;
-        }
-
-        /* ===== NAVIGATION ===== */
-        .navbar {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(12px);
-            padding: 0.75rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow-md);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
-        }
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-decoration: none;
-        }
-        .nav-brand i { font-size: 1.4rem; }
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 0.25rem;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            font-size: 0.85rem;
-            padding: 0.5rem 0.75rem;
-            border-radius: var(--radius-sm);
-            transition: var(--transition);
-        }
-        .nav-links a:hover { color: var(--primary); background: rgba(37,99,235,0.08); }
-        .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; padding: 0.5rem; }
-        .hamburger span { width: 22px; height: 2.5px; background: var(--dark); border-radius: 3px; transition: var(--transition); }
-
-        /* ===== HERO ===== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 7rem 2rem 4rem;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #7c3aed 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-        .hero-inner {
-            max-width: 1200px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 0.75rem;
-            background: linear-gradient(to right, #fff, #c7d2fe);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero-content h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            opacity: 0.85;
-            margin-bottom: 1.25rem;
-        }
-        .hero-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 2rem;
-        }
-        .meta-badge {
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            backdrop-filter: blur(5px);
-        }
-        .cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .cta-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: white;
-            color: var(--primary-dark);
-            padding: 0.875rem 1.75rem;
-            border-radius: var(--radius);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: var(--shadow-xl);
-        }
-        .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 25px 30px -5px rgba(0,0,0,0.3); }
-        .cta-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: transparent;
-            color: white;
-            padding: 0.875rem 1.75rem;
-            border-radius: var(--radius);
-            text-decoration: none;
-            font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.3);
-            transition: var(--transition);
-        }
-        .cta-secondary:hover { background: rgba(255,255,255,0.1); }
-
-        .hero-visual {
-            position: relative;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .orbit-container {
-            position: relative;
-            width: 320px;
-            height: 320px;
-        }
-        .orbit-center {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100px; height: 100px;
-            background: linear-gradient(135deg, var(--accent), var(--primary));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            box-shadow: 0 0 40px rgba(6,182,212,0.4);
-            z-index: 10;
-        }
-        .orbit-ring {
-            position: absolute;
-            inset: 0;
-            border: 2px dashed rgba(255,255,255,0.15);
-            border-radius: 50%;
-            animation: spin 20s linear infinite;
-        }
-        .orbit-item {
-            position: absolute;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            white-space: nowrap;
-            animation: float 4s ease-in-out infinite;
-        }
-        .orbit-item:nth-child(2) { top: 0; left: 50%; transform: translateX(-50%); animation-delay: 0s; }
-        .orbit-item:nth-child(3) { top: 20%; right: -10%; animation-delay: 0.5s; }
-        .orbit-item:nth-child(4) { bottom: 20%; right: -10%; animation-delay: 1s; }
-        .orbit-item:nth-child(5) { bottom: 0; left: 50%; transform: translateX(-50%); animation-delay: 1.5s; }
-        .orbit-item:nth-child(6) { bottom: 20%; left: -10%; animation-delay: 2s; }
-        .orbit-item:nth-child(7) { top: 20%; left: -10%; animation-delay: 2.5s; }
-
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-10px) scale(1.05); }
-        }
-
-        /* ===== COURSE INFO BAR ===== */
-        .course-bar {
-            background: white;
-            border-bottom: 1px solid var(--border);
-            padding: 1.5rem 2rem;
-        }
-        .course-bar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-        .course-stat {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            border-radius: var(--radius-sm);
-            background: var(--light);
-        }
-        .stat-icon {
-            width: 44px; height: 44px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.1rem;
-        }
-        .stat-label { font-size: 0.75rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px; }
-        .stat-value { font-size: 1.1rem; font-weight: 700; color: var(--dark); }
-
-        /* ===== SECTIONS ===== */
-        .section { padding: 5rem 2rem; }
-        .section-alt { background: #f1f5f9; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .section-header {
-            margin-bottom: 3rem;
-            max-width: 700px;
-        }
-        .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 0.35rem 1rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-        .section-title {
-            font-size: 2.25rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 0.75rem;
-            line-height: 1.2;
-        }
-        .section-desc {
-            color: var(--gray);
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
-        /* ===== CONCEPT CARDS ===== */
-        .filter-bar {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-        .filter-pill {
-            padding: 0.5rem 1.25rem;
-            border: 1.5px solid var(--border);
-            background: white;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-        .filter-pill:hover { border-color: var(--primary); color: var(--primary); }
-        .filter-pill.active {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border-color: transparent;
-            box-shadow: var(--shadow-md);
-        }
-
-        .concept-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 1.5rem;
-        }
-        .concept-card {
-            background: white;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-        }
-        .concept-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-xl);
-            border-color: rgba(37,99,235,0.2);
-        }
-        .card-header {
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .card-header::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            opacity: 0.08;
-        }
-        .card-header.preprocessing { background: linear-gradient(135deg, #dbeafe, #eff6ff); }
-        .card-header.preprocessing::before { background: #2563eb; }
-        .card-header.feature { background: linear-gradient(135deg, #f3e8ff, #faf5ff); }
-        .card-header.feature::before { background: #7c3aed; }
-        .card-header.representation { background: linear-gradient(135deg, #ccfbf1, #f0fdfa); }
-        .card-header.representation::before { background: #06b6d4; }
-        .card-header.models { background: linear-gradient(135deg, #fef3c7, #fffbeb); }
-        .card-header.models::before { background: #f59e0b; }
-
-        .card-id {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--dark);
-            opacity: 0.5;
-            position: relative;
-        }
-        .card-tag {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            position: relative;
-        }
-        .card-tag.preprocessing { background: #bfdbfe; color: #1e40af; }
-        .card-tag.feature { background: #ddd6fe; color: #5b21b6; }
-        .card-tag.representation { background: #99f6e4; color: #0f766e; }
-        .card-tag.models { background: #fde68a; color: #92400e; }
-
-        .card-body { padding: 1.25rem 1.5rem; flex: 1; }
-        .card-body h3 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-        .field { margin-bottom: 1rem; }
-        .field:last-child { margin-bottom: 0; }
-        .field-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--primary);
-            margin-bottom: 0.35rem;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        .field-label i { font-size: 0.8rem; }
-        .field p {
-            font-size: 0.9rem;
-            color: #475569;
-            line-height: 1.6;
-        }
-        .code-block {
-            background: #0f172a;
-            color: #e2e8f0;
-            padding: 0.75rem 1rem;
-            border-radius: var(--radius-sm);
-            font-family: 'Fira Code', monospace;
-            font-size: 0.8rem;
-            line-height: 1.5;
-            overflow-x: auto;
-            margin-top: 0.5rem;
-        }
-        .code-block .comment { color: #64748b; }
-        .code-block .keyword { color: #c084fc; }
-        .code-block .string { color: #4ade80; }
-        .code-block .number { color: #fbbf24; }
-
-        .card-footer {
-            padding: 1rem 1.5rem;
-            background: #f8fafc;
-            border-top: 1px solid var(--border);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        .footer-col h4 {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.4rem;
-        }
-        .footer-col.pros h4 { color: var(--success); }
-        .footer-col.cons h4 { color: var(--danger); }
-        .footer-col ul {
-            list-style: none;
-            font-size: 0.8rem;
-            color: #475569;
-        }
-        .footer-col li {
-            padding: 0.15rem 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.4rem;
-        }
-        .footer-col li::before {
-            content: '';
-            width: 5px; height: 5px;
-            border-radius: 50%;
-            margin-top: 0.4rem;
-            flex-shrink: 0;
-        }
-        .footer-col.pros li::before { background: var(--success); }
-        .footer-col.cons li::before { background: var(--danger); }
-
-        /* ===== COMPARISONS ===== */
-        .tab-nav {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            overflow-x: auto;
-            padding-bottom: 0.5rem;
-            scrollbar-width: none;
-        }
-        .tab-nav::-webkit-scrollbar { display: none; }
-        .tab-btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            background: white;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            color: var(--dark);
-        }
-        .tab-btn:hover { background: var(--light); }
-        .tab-btn.active {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            box-shadow: var(--shadow-md);
-        }
-        .tab-panel {
-            display: none;
-            animation: fadeIn 0.4s ease;
-        }
-        .tab-panel.active { display: block; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .comp-table-wrap {
-            overflow-x: auto;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-md);
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--border);
-        }
-        .comp-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            font-size: 0.9rem;
-        }
-        .comp-table th {
-            background: var(--dark);
-            color: white;
-            padding: 1rem 1.25rem;
-            text-align: left;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .comp-table td {
-            padding: 1rem 1.25rem;
-            border-bottom: 1px solid var(--border);
-            color: #334155;
-            vertical-align: top;
-        }
-        .comp-table tr:last-child td { border-bottom: none; }
-        .comp-table tr:hover { background: #f8fafc; }
-        .comp-table td:first-child {
-            font-weight: 600;
-            color: var(--dark);
-            width: 160px;
-            background: #f8fafc;
-        }
-        .col-left { border-left: 3px solid var(--primary); }
-        .col-right { border-left: 3px solid var(--secondary); }
-        .badge-good { color: var(--success); font-weight: 600; }
-        .badge-bad { color: var(--danger); font-weight: 600; }
-        .badge-info { color: var(--primary); font-weight: 600; }
-
-        .verdict {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 1.25rem 1.5rem;
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        .verdict i { font-size: 1.5rem; flex-shrink: 0; }
-        .verdict strong { font-weight: 700; }
-
-        /* ===== WORKFLOWS ===== */
-        .workflow-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        .workflow-card {
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border);
-            overflow: hidden;
-        }
-        .workflow-header {
-            padding: 1.25rem 1.5rem;
-            background: linear-gradient(135deg, var(--dark), #334155);
-            color: white;
-        }
-        .workflow-header h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .workflow-body { padding: 1.5rem; }
-
-        .pipeline {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-        .pipe-step {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.875rem 1rem;
-            background: var(--light);
-            border-radius: var(--radius-sm);
-            border: 1.5px solid var(--border);
-            transition: var(--transition);
-        }
-        .pipe-step:hover { border-color: var(--primary); background: #eff6ff; }
-        .pipe-step.final {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border-color: transparent;
-            font-weight: 600;
-        }
-        .step-num {
-            width: 28px; height: 28px;
-            background: white;
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: 700;
-            flex-shrink: 0;
-            box-shadow: var(--shadow);
-        }
-        .pipe-step.final .step-num { background: rgba(255,255,255,0.2); color: white; }
-        .step-text { font-size: 0.9rem; font-weight: 500; }
-        .step-detail { font-size: 0.75rem; color: var(--gray); margin-top: 0.15rem; }
-        .pipe-step.final .step-detail { color: rgba(255,255,255,0.8); }
-        .pipe-arrow {
-            text-align: center;
-            color: var(--gray);
-            font-size: 1.2rem;
-            padding: 0.25rem 0;
-        }
-
-        .evo-flow {
-            display: flex;
-            align-items: stretch;
-            gap: 0;
-        }
-        .evo-stage {
-            flex: 1;
-            padding: 1.25rem;
-            text-align: center;
-            border: 2px solid var(--border);
-            position: relative;
-        }
-        .evo-stage:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
-        .evo-stage:last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
-        .evo-stage.active {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border-color: transparent;
-        }
-        .evo-stage:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            right: -10px; top: 50%;
-            transform: translateY(-50%);
-            width: 0; height: 0;
-            border-top: 10px solid transparent;
-            border-bottom: 10px solid transparent;
-            border-left: 10px solid var(--border);
-            z-index: 2;
-        }
-        .evo-stage.active:not(:last-child)::after { border-left-color: var(--secondary); }
-        .evo-label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-            opacity: 0.7;
-        }
-        .evo-title { font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
-        .evo-items { display: flex; flex-direction: column; gap: 0.35rem; }
-        .evo-item {
-            font-size: 0.8rem;
-            padding: 0.35rem 0.75rem;
-            background: rgba(255,255,255,0.15);
-            border-radius: 50px;
-        }
-        .evo-stage:not(.active) .evo-item { background: #f1f5f9; }
-
-        /* ===== APPLICATIONS ===== */
-        .app-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        .app-card {
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            overflow: hidden;
-            transition: var(--transition);
-        }
-        .app-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); }
-        .app-top {
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            border-bottom: 1px solid var(--border);
-        }
-        .app-icon-box {
-            width: 50px; height: 50px;
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            color: white;
-        }
-        .app-icon-box.search { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
-        .app-icon-box.chat { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
-        .app-icon-box.sentiment { background: linear-gradient(135deg, #10b981, #059669); }
-        .app-icon-box.translate { background: linear-gradient(135deg, #f59e0b, #d97706); }
-        .app-icon-box.summarize { background: linear-gradient(135deg, #ef4444, #dc2626); }
-        .app-icon-box.clinical { background: linear-gradient(135deg, #06b6d4, #0891b2); }
-        .app-title { font-size: 1.1rem; font-weight: 700; }
-        .app-body { padding: 1.25rem 1.5rem; }
-        .app-field { margin-bottom: 0.75rem; }
-        .app-field:last-child { margin-bottom: 0; }
-        .app-field strong {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--gray);
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-        .app-field p { font-size: 0.9rem; color: #475569; line-height: 1.5; }
-
-        /* ===== RESEARCH ===== */
-        .research-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        .research-card {
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            padding: 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .research-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 4px;
-        }
-        .research-card.research::before { background: linear-gradient(90deg, var(--primary), var(--secondary)); }
-        .research-card.industry::before { background: linear-gradient(90deg, var(--success), var(--accent)); }
-        .research-card.framework::before { background: linear-gradient(90deg, var(--warning), var(--danger)); }
-        .research-badge {
-            display: inline-block;
-            padding: 0.2rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.75rem;
-        }
-        .research-card.research .research-badge { background: #dbeafe; color: #1e40af; }
-        .research-card.industry .research-badge { background: #d1fae5; color: #065f46; }
-        .research-card.framework .research-badge { background: #fef3c7; color: #92400e; }
-        .research-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--dark); }
-        .research-card p { font-size: 0.9rem; color: #475569; line-height: 1.6; margin-bottom: 1rem; }
-        .research-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-        .r-tag {
-            font-size: 0.75rem;
-            padding: 0.25rem 0.6rem;
-            background: var(--light);
-            border-radius: 50px;
-            color: var(--gray);
-            font-weight: 500;
-        }
-        .code-snippet {
-            background: #0f172a;
-            color: #e2e8f0;
-            padding: 1rem;
-            border-radius: var(--radius-sm);
-            font-family: 'Fira Code', monospace;
-            font-size: 0.8rem;
-            margin-top: 0.75rem;
-            overflow-x: auto;
-        }
-
-        /* ===== SUSTAINABILITY ===== */
-        .sdg-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-        .sdg-card {
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            padding: 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .sdg-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 5px;
-        }
-        .sdg-card:nth-child(1)::before { background: #e5243b; }
-        .sdg-card:nth-child(2)::before { background: #dda63a; }
-        .sdg-card:nth-child(3)::before { background: #4c9f38; }
-        .sdg-num {
-            position: absolute;
-            top: 1rem; right: 1rem;
-            font-size: 2.5rem;
-            font-weight: 800;
-            opacity: 0.08;
-        }
-        .sdg-card h4 { font-size: 1rem; margin-bottom: 0.5rem; }
-        .sdg-card:nth-child(1) h4 { color: #e5243b; }
-        .sdg-card:nth-child(2) h4 { color: #b45309; }
-        .sdg-card:nth-child(3) h4 { color: #15803d; }
-        .sdg-card p { font-size: 0.9rem; color: #475569; line-height: 1.6; }
-
-        .essay-box {
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border);
-            padding: 2.5rem;
-        }
-        .essay-box h3 {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.25rem;
-            color: var(--success);
-            margin-bottom: 1.5rem;
-        }
-        .essay-box p {
-            font-size: 1rem;
-            color: #475569;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-            text-align: justify;
-        }
-        .essay-box p:last-child { margin-bottom: 0; }
-        .essay-box strong { color: var(--dark); }
-
-        /* ===== CONTRIBUTION MATRIX ===== */
-        .matrix-wrap {
-            overflow-x: auto;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border);
-        }
-        .matrix-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            font-size: 0.9rem;
-        }
-        .matrix-table th {
-            background: var(--dark);
-            color: white;
-            padding: 1rem;
-            text-align: left;
-            font-weight: 600;
-        }
-        .matrix-table td {
-            padding: 1rem;
-            border-bottom: 1px solid var(--border);
-            color: #334155;
-        }
-        .matrix-table tr:last-child td { border-bottom: none; }
-        .matrix-table tr:nth-child(even) { background: #f8fafc; }
-        .matrix-table td:first-child { font-weight: 600; color: var(--dark); }
-
-        /* ===== REFLECTIONS ===== */
-        .reflection-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-        }
-        .reflection-card {
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border);
-            padding: 2rem;
-        }
-        .reflection-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--border);
-        }
-        .reflection-avatar {
-            width: 50px; height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
-        .reflection-meta h4 { font-size: 1.1rem; color: var(--dark); }
-        .reflection-meta span { font-size: 0.85rem; color: var(--gray); }
-        .reflection-body p {
-            font-size: 0.95rem;
-            color: #475569;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-            text-align: justify;
-        }
-        .reflection-body p:last-child { margin-bottom: 0; }
-        .highlight-text {
-            background: linear-gradient(120deg, #dbeafe 0%, #dbeafe 100%);
-            background-repeat: no-repeat;
-            background-size: 100% 40%;
-            background-position: 0 88%;
-            padding: 0 0.2rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 2rem 1.5rem;
-        }
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            gap: 2rem;
-            align-items: start;
-            margin-bottom: 2rem;
-        }
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-        .footer-info p { opacity: 0.6; font-size: 0.85rem; margin-bottom: 0.25rem; }
-        .footer-link {
-            color: white;
-            opacity: 0.6;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-        .footer-link:hover { opacity: 1; }
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1.5rem;
-            text-align: center;
-            opacity: 0.5;
-            font-size: 0.8rem;
-        }
-        .ai-note { color: var(--accent); margin-top: 0.5rem; }
-
-        /* ===== SCROLL TO TOP ===== */
-        .scroll-top {
-            position: fixed;
-            bottom: 2rem; right: 2rem;
-            width: 48px; height: 48px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            box-shadow: var(--shadow-xl);
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            z-index: 999;
-        }
-        .scroll-top.visible { opacity: 1; visibility: visible; }
-        .scroll-top:hover { transform: translateY(-3px); }
-
-        /* ===== CONCEPT CARD: COMPACT VIEW + MODAL ===== */
-        /* By default, only the first field (Definition) and the header/title show on the card.
-           Everything else (Purpose, Working Principle, Example, pros/cons footer) is revealed
-           only inside the full-details modal. */
-        .concept-card .card-body > div.field:nth-of-type(n+2) { display: none; }
-        .concept-card .card-footer { display: none; }
-        .concept-card .card-body p.card-desc-hint {
-            font-size: 0.8rem;
-            color: var(--gray);
-            margin-top: 0.75rem;
-        }
-
-        .details-btn {
-            margin-top: 1rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            width: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            padding: 0.65rem 1.25rem;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: 0.85rem;
-            font-family: inherit;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .details-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .details-btn:active { transform: translateY(0); }
-
-        body.modal-open { overflow: hidden; }
-
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(15, 23, 42, 0.55);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 1.25rem;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.25s ease, visibility 0.25s ease;
-        }
-        .modal-overlay.active { opacity: 1; visibility: visible; }
-
-        .modal-box {
-            position: relative;
-            background: white;
-            border-radius: var(--radius);
-            max-width: 640px;
-            width: 100%;
-            max-height: 88vh;
-            overflow-y: auto;
-            box-shadow: var(--shadow-xl);
-            transform: scale(0.94) translateY(12px);
-            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .modal-overlay.active .modal-box { transform: scale(1) translateY(0); }
-
-        /* Inside the modal, reveal everything the compact card hides */
-        .modal-box .concept-card { box-shadow: none; border: none; border-radius: 0; }
-        .modal-box .card-body > div.field:nth-of-type(n+2) { display: block !important; }
-        .modal-box .card-footer { display: grid !important; }
-        .modal-box .details-btn { display: none !important; }
-
-        .modal-close-btn {
-            position: sticky;
-            top: 1rem;
-            float: right;
-            margin: 1rem 1rem -2.5rem 0;
-            width: 36px; height: 36px;
-            border-radius: 50%;
-            border: none;
-            background: rgba(15,23,42,0.08);
-            color: var(--dark);
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            transition: var(--transition);
-        }
-        .modal-close-btn:hover { background: rgba(15,23,42,0.16); transform: rotate(90deg); }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .hero-inner { grid-template-columns: 1fr; text-align: center; }
-            .hero-visual { display: none; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .cta-group { justify-content: center; }
-            .course-bar-inner { grid-template-columns: repeat(2, 1fr); }
-            .sdg-row { grid-template-columns: 1fr; }
-            .reflection-grid { grid-template-columns: 1fr; }
-            .footer-inner { grid-template-columns: 1fr; text-align: center; }
-        }
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 60px; right: -100%;
-                width: 100%; height: calc(100vh - 60px);
-                background: white;
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem 0;
-                transition: var(--transition);
-                box-shadow: var(--shadow-xl);
-            }
-            .nav-links.active { right: 0; }
-            .hamburger { display: flex; }
-            .hero { padding: 6rem 1.5rem 2rem; }
-            .hero-content h1 { font-size: 2rem; }
-            .section { padding: 3rem 1.5rem; }
-            .section-title { font-size: 1.75rem; }
-            .concept-grid { grid-template-columns: 1fr; }
-            .course-bar-inner { grid-template-columns: 1fr; }
-            .evo-flow { flex-direction: column; }
-            .evo-stage { border-radius: var(--radius-sm) !important; }
-            .evo-stage:not(:last-child)::after {
-                right: 50% !important; bottom: -10px !important; top: auto !important;
-                transform: translateX(50%) rotate(90deg) !important;
-            }
-            .modal-box { max-height: 92vh; }
-        }
-    </style>
-<base target="_blank">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/section_a.css">
+    <link rel="stylesheet" href="css/section_b.css">
+    <link rel="stylesheet" href="css/section_c.css">
+    <link rel="stylesheet" href="css/section_d.css">
+    <link rel="stylesheet" href="css/section_e.css">
+    <link rel="stylesheet" href="css/section_f.css">
+    <link rel="stylesheet" href="css/section_g.css">
+    <link rel="stylesheet" href="css/section_h.css">
+    <base target="_blank">
 </head>
+
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" target="_self" class="nav-brand"><i class="fas fa-brain"></i><span>NLP
+                Repository</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" target="_self" class="active">Home</a></li>
+            <li><a href="#concepts" target="_self" class="">Concepts</a></li>
+            <li><a href="#comparisons" target="_self" class="">Comparisons</a></li>
+            <li><a href="#workflows" target="_self" class="">Workflows</a></li>
+            <li><a href="#applications" target="_self" class="">Applications</a></li>
+            <li><a href="#research" target="_self" class="">Research</a></li>
+            <li><a href="#sustainability" target="_self" class="">Sustainability</a></li>
+            <li><a href="#contributions" target="_self" class="">Contributions</a></li>
+            <li><a href="#reflections" target="_self" class="">Reflections</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+    </nav>
 
-<!-- Navigation -->
-<nav class="navbar">
-    <a href="#" class="nav-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></a>
-    <ul class="nav-links" id="navLinks">
-        <li><a href="#concepts">Concepts</a></li>
-        <li><a href="#comparisons">Comparisons</a></li>
-        <li><a href="#workflows">Workflows</a></li>
-        <li><a href="#applications">Applications</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#sustainability">Sustainability</a></li>
-        <li><a href="#contributions">Contributions</a></li>
-    </ul>
-    <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
-</nav>
-
-<!-- Hero -->
-<header class="hero">
-    <div class="hero-inner">
-        <div class="hero-content">
-            <h1>Natural Language Processing</h1>
-            <h2>Knowledge Artifact Repository</h2>
-            <div class="hero-meta">
-                <span class="meta-badge"><i class="fas fa-university"></i> University of Mumbai</span>
-                <span class="meta-badge"><i class="fas fa-award"></i> Best College Honor</span>
-                <span class="meta-badge"><i class="fas fa-code"></i> CMCOR1PE301.1</span>
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <h1>Natural Language Processing</h1>
+                <h2>Knowledge Artifact Repository</h2>
+                <div class="hero-meta">
+                    <span class="meta-badge"><i class="fas fa-university"></i> University of Mumbai</span>
+                    <span class="meta-badge"><i class="fas fa-award"></i> Best College Honor</span>
+                    <span class="meta-badge"><i class="fas fa-code"></i> CMCOR1PE301.1</span>
+                </div>
+                <div class="cta-group">
+                    <a href="#concepts" target="_self" class="cta-primary">Explore Repository <i
+                            class="fas fa-arrow-down"></i></a>
+                    <a href="https://www.sakec.ac.in" target="_blank" class="cta-secondary"><i class="fas fa-globe"></i>
+                        SAKEC</a>
+                </div>
             </div>
-            <div class="cta-group">
-                <a href="#concepts" class="cta-primary">Explore Repository <i class="fas fa-arrow-down"></i></a>
-                <a href="https://www.sakec.ac.in" target="_blank" class="cta-secondary"><i class="fas fa-globe"></i> SAKEC</a>
+            <div class="hero-visual">
+                <div class="orbit-container">
+                    <div class="orbit-ring"></div>
+                    <div class="orbit-item">Tokenization</div>
+                    <div class="orbit-item">TF-IDF</div>
+                    <div class="orbit-item">Word2Vec</div>
+                    <div class="orbit-item">BERT</div>
+                    <div class="orbit-item">Transformers</div>
+                    <div class="orbit-item">FastText</div>
+                    <div class="orbit-center"><i class="fas fa-atom"></i></div>
+                </div>
             </div>
         </div>
-        <div class="hero-visual">
-            <div class="orbit-container">
-                <div class="orbit-ring"></div>
-                <div class="orbit-item">Tokenization</div>
-                <div class="orbit-item">TF-IDF</div>
-                <div class="orbit-item">Word2Vec</div>
-                <div class="orbit-item">BERT</div>
-                <div class="orbit-item">Transformers</div>
-                <div class="orbit-item">FastText</div>
-                <div class="orbit-center"><i class="fas fa-atom"></i></div>
-            </div>
-        </div>
-    </div>
-</header>
+    </header>
 
-<!-- Course Info -->
-<div class="course-bar">
-    <div class="course-bar-inner">
-        <div class="course-stat"><div class="stat-icon"><i class="fas fa-code"></i></div><div><div class="stat-label">Course Code</div><div class="stat-value">CMCOR1PE301.1</div></div></div>
-        <div class="course-stat"><div class="stat-icon"><i class="fas fa-calendar"></i></div><div><div class="stat-label">Academic Year</div><div class="stat-value">2026-27</div></div></div>
-        <div class="course-stat"><div class="stat-icon"><i class="fas fa-layer-group"></i></div><div><div class="stat-label">Semester</div><div class="stat-value">V</div></div></div>
-        <div class="course-stat"><div class="stat-icon"><i class="fas fa-graduation-cap"></i></div><div><div class="stat-label">Class</div><div class="stat-value">TY B.Tech</div></div></div>
-    </div>
-</div>
-
-<!-- Section A: Concept Cards -->
-<section id="concepts" class="section">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label"><i class="fas fa-cards-blank"></i> Section A</div>
-            <h2 class="section-title">Concept Cards</h2>
-            <p class="section-desc">Systematic one-page artifacts explaining fundamental NLP concepts with definitions, working principles, examples, and real-world applications.</p>
-        </div>
-
-        <div class="filter-bar">
-            <button class="filter-pill active" onclick="filterConcepts('all', this)">All Concepts</button>
-            <button class="filter-pill" onclick="filterConcepts('preprocessing', this)">Text Preprocessing</button>
-            <button class="filter-pill" onclick="filterConcepts('feature', this)">Feature Engineering</button>
-            <button class="filter-pill" onclick="filterConcepts('representation', this)">Language Representation</button>
-            <button class="filter-pill" onclick="filterConcepts('models', this)">Language Models</button>
-        </div>
-
-        <div class="concept-grid" id="conceptGrid">
-
-            <!-- A.1 Sentence Segmentation -->
-            <div class="concept-card" data-cat="preprocessing">
-                <div class="card-header preprocessing">
-                    <span class="card-id">A.1</span>
-                    <span class="card-tag preprocessing">Preprocessing</span>
-                </div>
-                <div class="card-body">
-                    <h3>Sentence Segmentation</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>The process of splitting a large body of text into individual sentences based on boundary detection using punctuation marks and contextual cues.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To break down unstructured text into manageable, semantically complete units that can be processed independently by downstream NLP tasks.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p>Uses rule-based heuristics (punctuation + capital letters), regex patterns, or ML models (CRF, BiLSTM) to identify boundaries. Handles abbreviations like "Dr.", "U.S.A." via exception lists.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Input</span>
-"Dr. Smith visited the U.S.A. yesterday. He loved it!"
-<span class="comment"># Output</span>
-[<span class="string">"Dr. Smith visited the U.S.A. yesterday."</span>, <span class="string">"He loved it!"</span>]
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Foundation for all downstream NLP</li><li>Enables parallel processing</li><li>Isolates semantic units</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Ambiguity with abbreviations</li><li>Fails on informal text</li><li>Multi-language challenges</li></ul>
-                    </div>
+    <!-- Course Info -->
+    <div class="course-bar">
+        <div class="course-bar-inner">
+            <div class="course-stat">
+                <div class="stat-icon"><i class="fas fa-code"></i></div>
+                <div>
+                    <div class="stat-label">Course Code</div>
+                    <div class="stat-value">CMCOR1PE301.1</div>
                 </div>
             </div>
-
-            <!-- A.2 Tokenization -->
-            <div class="concept-card" data-cat="preprocessing">
-                <div class="card-header preprocessing">
-                    <span class="card-id">A.2</span>
-                    <span class="card-tag preprocessing">Preprocessing</span>
-                </div>
-                <div class="card-body">
-                    <h3>Tokenization</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>Breaking text into smaller units (tokens): words, subwords, or characters that serve as basic input for NLP models.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To convert continuous text into discrete, structured elements that algorithms can process, count, and analyze mathematically.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p><strong>Word:</strong> Splits on whitespace/punctuation. <strong>Subword (BPE/WordPiece):</strong> Handles OOV by breaking into frequent units. <strong>Character:</strong> Each char is a token.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Word-level</span>
-[<span class="string">"Tokenization"</span>, <span class="string">"is"</span>, <span class="string">"fundamental"</span>, <span class="string">"!"</span>]
-<span class="comment"># BPE subword</span>
-[<span class="string">"Token"</span>, <span class="string">"ization"</span>, <span class="string">"is"</span>, <span class="string">"fundamental"</span>]
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Standardizes model input</li><li>Subword handles OOV words</li><li>Enables vocabulary creation</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Word-level: large vocabulary</li><li>Character-level loses meaning</li><li>Language-dependent</li></ul>
-                    </div>
+            <div class="course-stat">
+                <div class="stat-icon"><i class="fas fa-calendar"></i></div>
+                <div>
+                    <div class="stat-label">Academic Year</div>
+                    <div class="stat-value">2026-27</div>
                 </div>
             </div>
-
-            <!-- A.3 Case Normalization -->
-            <div class="concept-card" data-cat="preprocessing">
-                <div class="card-header preprocessing">
-                    <span class="card-id">A.3</span>
-                    <span class="card-tag preprocessing">Preprocessing</span>
-                </div>
-                <div class="card-body">
-                    <h3>Case Normalization</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>Converting all text to a uniform case (typically lowercase) so the same word in different cases is treated identically.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To reduce vocabulary size and prevent the model from treating "Apple", "apple", and "APPLE" as three different words.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p>Simple string transformation: <code>text.lower()</code>. Advanced: Truecasing preserves proper nouns; case can be a feature for POS tagging.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Input</span>
-"The Apple CEO announced new Apple products."
-<span class="comment"># Lowercase</span>
-"the apple ceo announced new apple products"
-<span class="comment"># Truecasing (preserves proper nouns)</span>
-"The Apple CEO announced new Apple products"
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Reduces vocabulary size</li><li>Improves generalization</li><li>Computationally trivial O(n)</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Loses semantic info (US vs us)</li><li>NER may suffer</li><li>Sentiment intensity lost</li></ul>
-                    </div>
+            <div class="course-stat">
+                <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
+                <div>
+                    <div class="stat-label">Semester</div>
+                    <div class="stat-value">V</div>
                 </div>
             </div>
-
-            <!-- A.4 Stop-word Removal -->
-            <div class="concept-card" data-cat="preprocessing">
-                <div class="card-header preprocessing">
-                    <span class="card-id">A.4</span>
-                    <span class="card-tag preprocessing">Preprocessing</span>
-                </div>
-                <div class="card-body">
-                    <h3>Stop-word Removal</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>Filtering out high-frequency, low-information words (articles, prepositions, conjunctions) that do not contribute significantly to semantic meaning.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To reduce noise, decrease dimensionality, and help models focus on content-bearing words that carry actual meaning.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p>Uses predefined language-specific lists (NLTK: 179 English stopwords) or corpus-derived frequency thresholds. Domain-specific stopwords can be added.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Input</span>
-"The quick brown fox jumps over the lazy dog"
-<span class="comment"># After removal</span>
-[<span class="string">"quick"</span>, <span class="string">"brown"</span>, <span class="string">"fox"</span>, <span class="string">"jumps"</span>, <span class="string">"lazy"</span>, <span class="string">"dog"</span>]
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Reduces feature space 20-40%</li><li>Improves processing speed</li><li>Enhances signal-to-noise</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Removes negation ("not")</li><li>Phrase meaning lost</li><li>Domain-dependent</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.5 Stemming -->
-            <div class="concept-card" data-cat="preprocessing">
-                <div class="card-header preprocessing">
-                    <span class="card-id">A.5</span>
-                    <span class="card-tag preprocessing">Preprocessing</span>
-                </div>
-                <div class="card-body">
-                    <h3>Stemming</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>A heuristic process that chops off the ends of words to reduce them to their root form (stem), often resulting in non-dictionary words.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To normalize different grammatical forms of a word to a common base, reducing vocabulary size and treating morphological variants as the same term.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p><strong>Porter Stemmer:</strong> 5 phases of rule-based suffix stripping. <strong>Snowball:</strong> Improved Porter. <strong>Lancaster:</strong> More aggressive, faster.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Input</span>
-[<span class="string">"running"</span>, <span class="string">"runs"</span>, <span class="string">"runner"</span>]
-<span class="comment"># Porter</span>
-[<span class="string">"run"</span>, <span class="string">"run"</span>, <span class="string">"runner"</span>]
-<span class="comment"># Lancaster (aggressive)</span>
-[<span class="string">"run"</span>, <span class="string">"run"</span>, <span class="string">"run"</span>]
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Very fast O(n) per word</li><li>No dictionary required</li><li>Effective for IR systems</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Over-stemming: false matches</li><li>Under-stemming: misses forms</li><li>Produces non-words</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.6 Lemmatization -->
-            <div class="concept-card" data-cat="preprocessing">
-                <div class="card-header preprocessing">
-                    <span class="card-id">A.6</span>
-                    <span class="card-tag preprocessing">Preprocessing</span>
-                </div>
-                <div class="card-body">
-                    <h3>Lemmatization</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>A morphological analysis process that reduces words to their canonical dictionary form (lemma) using vocabulary and morphological analysis.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To normalize words while preserving their valid linguistic form and part-of-speech, ensuring semantic accuracy in downstream tasks.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p>Uses lexical databases (WordNet) and POS tagging. "better" → "good" (JJR), "running" → "run" (verb) or "running" (noun). Requires POS tags for accuracy.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Input</span>
-[<span class="string">"running"</span>, <span class="string">"better"</span>, <span class="string">"geese"</span>, <span class="string">"was"</span>]
-<span class="comment"># Output</span>
-[<span class="string">"run"</span>, <span class="string">"good"</span>, <span class="string">"goose"</span>, <span class="string">"be"</span>]
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Valid dictionary words</li><li>Handles irregular forms</li><li>Preserves semantic meaning</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Slower than stemming</li><li>Requires POS tags</li><li>Dictionary coverage gaps</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.7 Noise Removal -->
-            <div class="concept-card" data-cat="preprocessing">
-                <div class="card-header preprocessing">
-                    <span class="card-id">A.7</span>
-                    <span class="card-tag preprocessing">Preprocessing</span>
-                </div>
-                <div class="card-body">
-                    <h3>Noise Removal</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>The process of eliminating irrelevant, distracting, or malformed elements from text data that do not contribute to the intended NLP task.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To clean raw text from artifacts like HTML tags, URLs, special characters, emojis, and encoding errors that can confuse models.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p>Regex-based: Remove URLs, HTML tags, special chars. Library-based: BeautifulSoup for HTML, emoji library for emoji conversion. Heuristic: Fix encoding.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Input</span>
-"Check out https://example.com! <b>Great</b> deal!!!"
-<span class="comment"># After noise removal</span>
-"Check out Great deal"
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Improves data quality</li><li>Reduces model confusion</li><li>Standardizes input format</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>May remove useful info (emojis)</li><li>Over-cleaning strips patterns</li><li>Domain-specific rules needed</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.8 Text Cleaning -->
-            <div class="concept-card" data-cat="preprocessing">
-                <div class="card-header preprocessing">
-                    <span class="card-id">A.8</span>
-                    <span class="card-tag preprocessing">Preprocessing</span>
-                </div>
-                <div class="card-body">
-                    <h3>Text Cleaning</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>A comprehensive process encompassing multiple preprocessing steps to transform raw, unstructured text into clean, structured data ready for analysis.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To ensure data quality, consistency, and compatibility with NLP algorithms by addressing all forms of textual irregularities systematically.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p>Pipeline: (1) Handle encoding → (2) Remove HTML → (3) Expand contractions → (4) Normalize case → (5) Remove noise → (6) Fix spelling → (7) Standardize whitespace.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Raw</span>
-"I can't wait 4 the new iPhone!!! Visit: apple.com"
-<span class="comment"># Cleaned</span>
-"i cannot wait for the new iphone visit apple com"
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Systematic quality assurance</li><li>Reproducible across datasets</li><li>Customizable per domain</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Lossy process</li><li>Requires domain expertise</li><li>Order of operations matters</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.9 Bag of Words -->
-            <div class="concept-card" data-cat="feature">
-                <div class="card-header feature">
-                    <span class="card-id">A.9</span>
-                    <span class="card-tag feature">Feature Engineering</span>
-                </div>
-                <div class="card-body">
-                    <h3>Bag of Words (BoW)</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>A text representation model describing the occurrence of words within a document, disregarding grammar and word order but keeping multiplicity.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To convert text into a fixed-length numerical vector that ML algorithms can process, capturing word frequency as a feature.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p>Build vocabulary from all unique words. For each document, create a vector of size |V| where each position represents word count/frequency.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Corpus</span>
-[<span class="string">"I love NLP"</span>, <span class="string">"NLP is great"</span>]
-<span class="comment"># Vocabulary: {I:0, love:1, NLP:2, is:3, great:4}</span>
-<span class="comment"># Doc1 vector</span>
-[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>]
-<span class="comment"># Doc2 vector</span>
-[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>]
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Simple to implement</li><li>Effective for classification</li><li>Works with small datasets</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Ignores word order</li><li>High dimensionality</li><li>Sparse vectors</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.10 N-Grams -->
-            <div class="concept-card" data-cat="feature">
-                <div class="card-header feature">
-                    <span class="card-id">A.10</span>
-                    <span class="card-tag feature">Feature Engineering</span>
-                </div>
-                <div class="card-body">
-                    <h3>N-Grams</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>A contiguous sequence of n items (words or characters) from a given text sample, used to capture local word order and contextual information.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To preserve some sequential information and local context that unigram models lose, improving representation quality.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p>Extract all n-length sliding windows from tokenized text. Unigram (n=1), Bigram (n=2), Trigram (n=3).</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Text: "The quick brown fox"</span>
-<span class="comment"># Bigrams</span>
-[<span class="string">"The quick"</span>, <span class="string">"quick brown"</span>, <span class="string">"brown fox"</span>]
-<span class="comment"># Trigrams</span>
-[<span class="string">"The quick brown"</span>, <span class="string">"quick brown fox"</span>]
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Captures local word order</li><li>Improves over BoW</li><li>Simple to implement</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Exponential feature growth</li><li>Data sparsity for high n</li><li>Misses long-range deps</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.11 TF -->
-            <div class="concept-card" data-cat="feature">
-                <div class="card-header feature">
-                    <span class="card-id">A.11</span>
-                    <span class="card-tag feature">Feature Engineering</span>
-                </div>
-                <div class="card-body">
-                    <h3>Term Frequency (TF)</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>A statistical measure indicating how frequently a term occurs in a document, normalized by document length.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To quantify the importance of a word within a specific document, assuming frequent words are more relevant to the topic.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p><strong>Normalized TF:</strong> count(t,d) / total words in d. <strong>Log normalization:</strong> log(1 + count(t,d)) to dampen high frequencies.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Doc: "NLP is great. NLP is the future." (10 words)</span>
-TF(<span class="string">"NLP"</span>) = <span class="number">2</span>/<span class="number">10</span> = <span class="number">0.2</span>
-TF(<span class="string">"is"</span>) = <span class="number">2</span>/<span class="number">10</span> = <span class="number">0.2</span>
-TF(<span class="string">"future"</span>) = <span class="number">1</span>/<span class="number">10</span> = <span class="number">0.1</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Simple and intuitive</li><li>Computationally efficient</li><li>Foundation for TF-IDF</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Favors common words</li><li>No corpus-level info</li><li>Sensitive to doc length</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.12 IDF -->
-            <div class="concept-card" data-cat="feature">
-                <div class="card-header feature">
-                    <span class="card-id">A.12</span>
-                    <span class="card-tag feature">Feature Engineering</span>
-                </div>
-                <div class="card-body">
-                    <h3>Inverse Document Frequency (IDF)</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>A measure of how rare or common a word is across an entire corpus, used to downweight frequent words and upweight rare, discriminative terms.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To identify words that are distinctive to specific documents, helping distinguish between documents by penalizing corpus-common words.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p>IDF(t,D) = log(N / df(t)) where N = total documents, df(t) = documents containing term t. Higher IDF = more distinctive.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Corpus: 1000 documents</span>
-<span class="string">"the"</span> in <span class="number">990</span> docs → IDF = log(<span class="number">1000</span>/<span class="number">990</span>) ≈ <span class="number">0.01</span>
-<span class="string">"quantum"</span> in <span class="number">5</span> docs → IDF = log(<span class="number">1000</span>/<span class="number">5</span>) ≈ <span class="number">5.3</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Identifies discriminative words</li><li>Reduces common word impact</li><li>Grounded in information theory</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Assumes term independence</li><li>Sensitive to corpus size</li><li>Cannot handle new docs</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.13 TF-IDF -->
-            <div class="concept-card" data-cat="feature">
-                <div class="card-header feature">
-                    <span class="card-id">A.13</span>
-                    <span class="card-tag feature">Feature Engineering</span>
-                </div>
-                <div class="card-body">
-                    <h3>TF-IDF</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>A numerical statistic reflecting how important a word is to a document in a corpus, combining local importance (TF) with global rarity (IDF).</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To create a weighted representation highlighting words that are frequent in a specific document but rare across the corpus.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p>TF-IDF(t,d,D) = TF(t,d) × IDF(t,D). High TF-IDF = important and distinctive word for that document.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Document about "Machine Learning"</span>
-<span class="string">"learning"</span>: TF=<span class="number">0.1</span>, IDF=<span class="number">2.5</span> → TF-IDF = <span class="number">0.25</span>
-<span class="string">"the"</span>: TF=<span class="number">0.15</span>, IDF=<span class="number">0.01</span> → TF-IDF = <span class="number">0.0015</span>
-<span class="string">"neural"</span>: TF=<span class="number">0.05</span>, IDF=<span class="number">4.0</span> → TF-IDF = <span class="number">0.20</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Balances local & global</li><li>Downweights common words</li><li>Intuitive and interpretable</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Ignores word order</li><li>Cannot capture synonymy</li><li>Static weights</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.14 One-Hot Encoding -->
-            <div class="concept-card" data-cat="representation">
-                <div class="card-header representation">
-                    <span class="card-id">A.14</span>
-                    <span class="card-tag representation">Representation</span>
-                </div>
-                <div class="card-body">
-                    <h3>One-Hot Encoding</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>A representation where each word is a binary vector with a single "1" at its index and "0" everywhere else.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To convert categorical text data into a numerical format that ML models can process, treating each word as an independent category.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p>Vocabulary size = V. Each word is a V-dimensional vector. "apple" at index 5 → [0,0,0,0,0,1,0,0,...,0]. No semantic relationship.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Vocabulary: ["cat", "dog", "bird"]</span>
-<span class="string">"cat"</span>  → [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>]
-<span class="string">"dog"</span>  → [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>]
-<span class="string">"bird"</span> → [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]
-<span class="comment"># |V| = 50,000 dims each!</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Simple and unambiguous</li><li>No ordinal relationship</li><li>Easy to implement</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Curse of dimensionality</li><li>No semantic meaning</li><li>Extremely sparse</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.15 Word Embeddings -->
-            <div class="concept-card" data-cat="representation">
-                <div class="card-header representation">
-                    <span class="card-id">A.15</span>
-                    <span class="card-tag representation">Representation</span>
-                </div>
-                <div class="card-body">
-                    <h3>Word Embeddings</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>Dense, low-dimensional vector representations of words where semantically similar words are mapped to nearby points in vector space.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To capture semantic and syntactic relationships between words, enabling models to generalize based on meaning rather than just co-occurrence.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p>Neural networks learn to predict words from context. Similar words have similar vector directions. Analogies via vector arithmetic: king - man + woman ≈ queen.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># "king" → [0.2, -0.5, 0.8, ..., 0.1] (300-dim)</span>
-<span class="comment"># Cosine similarities</span>
-sim(<span class="string">"king"</span>, <span class="string">"queen"</span>) ≈ <span class="number">0.75</span>
-sim(<span class="string">"king"</span>, <span class="string">"apple"</span>) ≈ <span class="number">0.05</span>
-<span class="comment"># Vector arithmetic</span>
-<span class="string">"king"</span> - <span class="string">"man"</span> + <span class="string">"woman"</span> ≈ <span class="string">"queen"</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Captures semantic relationships</li><li>Dense vectors (low dim)</li><li>Enables analogies</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Polysemy problem</li><li>Static representations</li><li>Requires large corpora</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.16 Word2Vec -->
-            <div class="concept-card" data-cat="representation">
-                <div class="card-header representation">
-                    <span class="card-id">A.16</span>
-                    <span class="card-tag representation">Representation</span>
-                </div>
-                <div class="card-body">
-                    <h3>Word2Vec</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>A shallow neural network model (Google, 2013) that learns word embeddings by predicting words from their context (CBOW) or context from words (Skip-gram).</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To produce high-quality, dense word representations that capture semantic and syntactic relationships efficiently.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p><strong>CBOW:</strong> Predicts target from context (faster, frequent words). <strong>Skip-gram:</strong> Predicts context from target (rare words). Uses negative sampling.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Training: "The cat sat on the mat"</span>
-<span class="comment"># Skip-gram (window=2)</span>
-Input: <span class="string">"sat"</span> → Predict: [<span class="string">"The"</span>, <span class="string">"cat"</span>, <span class="string">"on"</span>, <span class="string">"the"</span>]
-<span class="comment"># Result</span>
-<span class="string">"cat"</span> and <span class="string">"dog"</span> have high cosine similarity
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Efficient on large corpora</li><li>Captures semantic + syntactic</li><li>Vector arithmetic analogies</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Single vector per word</li><li>No subword info</li><li>Context-independent</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.17 FastText -->
-            <div class="concept-card" data-cat="representation">
-                <div class="card-header representation">
-                    <span class="card-id">A.17</span>
-                    <span class="card-tag representation">Representation</span>
-                </div>
-                <div class="card-body">
-                    <h3>FastText</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>An extension of Word2Vec (Facebook AI, 2016) representing words as bags of character n-grams, enabling embeddings for rare and OOV words.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To overcome Word2Vec's OOV limitation by incorporating subword information, effective for morphologically rich languages.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p>Each word = itself + character n-grams. "apple" → &lt;ap, app, ppl, ple, le&gt; + "apple". Vector = sum of all n-gram vectors.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Word: "university"</span>
-Subwords (n=<span class="number">3</span>): &lt;un, uni, niv, ive, ver, ers, rsi, sit, ity, ty&gt;
-Vector = sum(subword vectors)
-<span class="comment"># OOV: "universities"</span>
-Shares n-grams with <span class="string">"university"</span> → can be represented!
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Handles OOV words</li><li>Good for rich morphology</li><li>Fast C++ implementation</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Worse on semantic tasks</li><li>Larger model size</li><li>Subword noise for short words</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.18 Contextual Embeddings -->
-            <div class="concept-card" data-cat="representation">
-                <div class="card-header representation">
-                    <span class="card-id">A.18</span>
-                    <span class="card-tag representation">Representation</span>
-                </div>
-                <div class="card-body">
-                    <h3>Contextual Embeddings</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>Dynamic word representations where the vector for a word changes based on its surrounding context, addressing the polysemy problem.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To generate context-dependent representations capturing different meanings of the same word in different sentences.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p><strong>ELMo:</strong> BiLSTM-based. <strong>BERT:</strong> Masked LM + next sentence prediction. <strong>GPT:</strong> Autoregressive Transformer. Context via self-attention.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Sentence 1</span>
-"I sat by the river <span class="keyword">bank</span>."
-<span class="comment"># Sentence 2</span>
-"I deposited money at the <span class="keyword">bank</span>."
-<span class="comment"># "bank" has DIFFERENT vectors!</span>
-Cosine similarity between the two ≈ <span class="number">0.3</span> (low)
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Solves polysemy</li><li>State-of-the-art performance</li><li>Transfer learning paradigm</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Computationally expensive</li><li>Large model sizes</li><li>Black-box nature</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.19 Statistical Language Models -->
-            <div class="concept-card" data-cat="models">
-                <div class="card-header models">
-                    <span class="card-id">A.19</span>
-                    <span class="card-tag models">Language Models</span>
-                </div>
-                <div class="card-body">
-                    <h3>Statistical Language Models</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>Language models that estimate the probability of word sequences using statistical methods based on observed frequencies in training corpora.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To predict the next word in a sequence or evaluate the likelihood of given text, forming the foundation for speech recognition and MT.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p>N-gram models: P(w_n | w_1...w_{n-1}) ≈ count(w_1...w_n) / count(w_1...w_{n-1}). Smoothing: Laplace, Kneser-Ney for unseen n-grams.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Bigram model</span>
-P(<span class="string">"learning"</span> | <span class="string">"machine"</span>) = 
-  count(<span class="string">"machine learning"</span>) / count(<span class="string">"machine"</span>)
-<span class="comment"># If "machine learning" = 50, "machine" = 200</span>
-P = <span class="number">50</span>/<span class="number">200</span> = <span class="number">0.25</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Simple and interpretable</li><li>Fast inference</li><li>Works with small data</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Data sparsity</li><li>No semantic understanding</li><li>Exponential storage growth</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.20 Neural Language Models -->
-            <div class="concept-card" data-cat="models">
-                <div class="card-header models">
-                    <span class="card-id">A.20</span>
-                    <span class="card-tag models">Language Models</span>
-                </div>
-                <div class="card-body">
-                    <h3>Neural Language Models</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>Language models using neural networks (RNNs, LSTMs, GRUs) to learn distributed representations and predict word probabilities.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To overcome data sparsity and generalization limitations of statistical n-gram models by learning continuous representations.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p>RNN/LSTM processes text sequentially, maintaining hidden state. Embedding layer converts words to dense vectors. Output: softmax over vocabulary.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># Input: "The cat sat on the..."</span>
-Embedding: <span class="string">"The"</span> → [<span class="number">0.1</span>, <span class="number">-0.3</span>, ...]
-LSTM processes sequence, hidden state captures context
-Output: P(<span class="string">"mat"</span>)=<span class="number">0.4</span>, P(<span class="string">"chair"</span>)=<span class="number">0.2</span>, ...
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Long-range dependencies</li><li>Generalizes to unseen combos</li><li>Dense representations</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Sequential = slow training</li><li>Vanishing gradients</li><li>Limited context window</li></ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- A.21 Transformer-Based Representations -->
-            <div class="concept-card" data-cat="models">
-                <div class="card-header models">
-                    <span class="card-id">A.21</span>
-                    <span class="card-tag models">Language Models</span>
-                </div>
-                <div class="card-body">
-                    <h3>Transformer-Based Representations</h3>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-book"></i> Definition</div>
-                        <p>Deep learning architectures based on the Transformer mechanism (self-attention) that process entire sequences in parallel.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
-                        <p>To achieve state-of-the-art performance across NLP tasks by capturing global dependencies and enabling transfer learning.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
-                        <p>Self-Attention: Attention(Q,K,V) = softmax(QK^T/√d_k)V. Multi-Head Attention captures different relationship types. Positional Encoding injects order.</p>
-                    </div>
-                    <div class="field">
-                        <div class="field-label"><i class="fas fa-code"></i> Example</div>
-                        <div class="code-block">
-<span class="comment"># "The animal didn't cross the street because it was too tired."</span>
-Self-attention allows <span class="string">"it"</span> to attend strongly to <span class="string">"animal"</span>
-(not <span class="string">"street"</span>)
-BERT encodes this relationship in the contextualized embedding
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="footer-col pros">
-                        <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
-                        <ul><li>Parallel processing</li><li>Global dependencies</li><li>Transfer learning</li><li>Scalable to billions</li></ul>
-                    </div>
-                    <div class="footer-col cons">
-                        <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
-                        <ul><li>Quadratic O(n²) complexity</li><li>Massive compute needs</li><li>Environmental concerns</li></ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- Section B: Comparative Analysis -->
-<section id="comparisons" class="section section-alt">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label"><i class="fas fa-scale-balanced"></i> Section B</div>
-            <h2 class="section-title">Comparative Analysis</h2>
-            <p class="section-desc">In-depth comparisons of NLP techniques across working mechanisms, computational complexity, strengths, weaknesses, and suitable applications.</p>
-        </div>
-
-        <div class="tab-nav">
-            <button class="tab-btn active" onclick="showTab('tab1', this)">Stemming vs Lemmatization</button>
-            <button class="tab-btn" onclick="showTab('tab2', this)">TF vs TF-IDF</button>
-            <button class="tab-btn" onclick="showTab('tab3', this)">Word2Vec vs FastText</button>
-            <button class="tab-btn" onclick="showTab('tab4', this)">Statistical vs Neural LMs</button>
-            <button class="tab-btn" onclick="showTab('tab5', this)">One-Hot vs Embeddings</button>
-        </div>
-
-        <!-- Tab 1: Stemming vs Lemmatization -->
-        <div id="tab1" class="tab-panel active">
-            <h3 style="margin-bottom:1.5rem;font-size:1.3rem;">Stemming vs Lemmatization</h3>
-            <div class="comp-table-wrap">
-                <table class="comp-table">
-                    <thead><tr><th>Criteria</th><th class="col-left">Stemming</th><th class="col-right">Lemmatization</th></tr></thead>
-                    <tbody>
-                        <tr><td><strong>Definition</strong></td><td>Heuristic suffix stripping to root form</td><td>Dictionary-based reduction to canonical lemma</td></tr>
-                        <tr><td><strong>Working Mechanism</strong></td><td>Rule-based suffix removal (Porter, Snowball, Lancaster). No understanding of word meaning.</td><td>Morphological analysis using WordNet + POS tags to find valid dictionary forms.</td></tr>
-                        <tr><td><strong>Output Example</strong></td><td class="badge-bad">"university" → "univers" (non-word)<br>"running" → "run"</td><td class="badge-good">"university" → "university" (valid)<br>"running" → "run" (verb)</td></tr>
-                        <tr><td><strong>Computational Complexity</strong></td><td class="badge-good">O(n) per word — very fast</td><td class="badge-info">O(n × log|V|) — slower (dictionary lookup)</td></tr>
-                        <tr><td><strong>Speed</strong></td><td class="badge-good">~1M words/sec</td><td class="badge-bad">~100K words/sec</td></tr>
-                        <tr><td><strong>Memory</strong></td><td class="badge-good">Low (only rules stored)</td><td class="badge-bad">Higher (dictionary + POS tagger)</td></tr>
-                        <tr><td><strong>Strengths</strong></td><td>• Extremely fast<br>• No external dependencies<br>• Effective for IR systems</td><td>• Linguistically accurate<br>• Preserves semantic meaning<br>• Handles irregular forms correctly</td></tr>
-                        <tr><td><strong>Weaknesses</strong></td><td>• Over-stemming causes false matches<br>• Produces non-dictionary words<br>• No semantic understanding</td><td>• Slower processing<br>• Requires POS tags for accuracy<br>• Dictionary may miss domain terms</td></tr>
-                        <tr><td><strong>Best Applications</strong></td><td>Search engines, information retrieval, spam filtering, keyword extraction</td><td>Sentiment analysis, chatbots, machine translation, clinical/legal NLP</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="verdict"><i class="fas fa-gavel"></i><div><strong>Verdict:</strong> Use <strong>Stemming</strong> for large-scale information retrieval where speed matters. Use <strong>Lemmatization</strong> for tasks requiring semantic precision and linguistic accuracy.</div></div>
-        </div>
-
-        <!-- Tab 2: TF vs TF-IDF -->
-        <div id="tab2" class="tab-panel">
-            <h3 style="margin-bottom:1.5rem;font-size:1.3rem;">TF vs TF-IDF</h3>
-            <div class="comp-table-wrap">
-                <table class="comp-table">
-                    <thead><tr><th>Criteria</th><th class="col-left">Term Frequency (TF)</th><th class="col-right">TF-IDF</th></tr></thead>
-                    <tbody>
-                        <tr><td><strong>Formula</strong></td><td>TF(t,d) = count(t,d) / |d|</td><td>TF-IDF(t,d,D) = TF(t,d) × log(N/df(t))</td></tr>
-                        <tr><td><strong>Scope</strong></td><td>Document-local only</td><td>Document-local + Corpus-global</td></tr>
-                        <tr><td><strong>Common Words</strong></td><td class="badge-bad">Favors "the", "is" (high TF)</td><td class="badge-good">Automatically downweights them</td></tr>
-                        <tr><td><strong>Computational Complexity</strong></td><td class="badge-good">O(|d|) per document</td><td class="badge-info">O(|d| + |D|) — needs corpus stats</td></tr>
-                        <tr><td><strong>Strengths</strong></td><td>• Simple and intuitive<br>• Fast to compute<br>• Good for within-doc analysis</td><td>• Balances local and global importance<br>• Better discrimination between docs<br>• Industry standard for IR</td></tr>
-                        <tr><td><strong>Weaknesses</strong></td><td>• Cannot distinguish document types<br>• Biased by document length<br>• No corpus context</td><td>• Still ignores word order<br>• Assumes term independence<br>• Sensitive to corpus composition</td></tr>
-                        <tr><td><strong>Best Applications</strong></td><td>Single document keyword extraction, basic text statistics</td><td>Search engine ranking, document clustering, text classification, plagiarism detection</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="verdict"><i class="fas fa-gavel"></i><div><strong>Verdict:</strong> Use <strong>TF-IDF</strong> for almost all information retrieval and document classification tasks. TF alone is insufficient for cross-document comparison.</div></div>
-        </div>
-
-        <!-- Tab 3: Word2Vec vs FastText -->
-        <div id="tab3" class="tab-panel">
-            <h3 style="margin-bottom:1.5rem;font-size:1.3rem;">Word2Vec vs FastText</h3>
-            <div class="comp-table-wrap">
-                <table class="comp-table">
-                    <thead><tr><th>Criteria</th><th class="col-left">Word2Vec</th><th class="col-right">FastText</th></tr></thead>
-                    <tbody>
-                        <tr><td><strong>Definition</strong></td><td>Neural word embedding using CBOW or Skip-gram</td><td>Extension using character n-gram representations</td></tr>
-                        <tr><td><strong>Working Mechanism</strong></td><td>Learns word vectors by predicting context/target. Each word has a single vector.</td><td>Represents words as sum of word vector + character n-gram vectors. Shares subword info.</td></tr>
-                        <tr><td><strong>OOV Handling</strong></td><td class="badge-bad">Cannot handle OOV (random vector)</td><td class="badge-good">Handles OOV via subword composition</td></tr>
-                        <tr><td><strong>Model Size</strong></td><td class="badge-good">Smaller (only word vectors)</td><td class="badge-bad">Larger (word + n-gram vectors)</td></tr>
-                        <tr><td><strong>Training Speed</strong></td><td>Faster (Python gensim)</td><td>Highly optimized C++ implementation</td></tr>
-                        <tr><td><strong>Strengths</strong></td><td>• Better semantic relationships<br>• Smaller footprint<br>• Mature ecosystem (gensim)</td><td>• Handles OOV and rare words<br>• Better for morphologically rich languages<br>• Built-in text classifier</td></tr>
-                        <tr><td><strong>Weaknesses</strong></td><td>• Single vector per word (polysemy)<br>• No subword information<br>• Poor for rare words</td><td>• Slightly worse semantic performance<br>• Subword noise for short words<br>• Still context-independent</td></tr>
-                        <tr><td><strong>Best Applications</strong></td><td>General English NLP, semantic similarity, recommendation systems</td><td>Multilingual apps, morphologically complex languages, specialized domains</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="verdict"><i class="fas fa-gavel"></i><div><strong>Verdict:</strong> Use <strong>Word2Vec</strong> for general-purpose English NLP. Use <strong>FastText</strong> for multilingual applications, morphologically complex languages, or domains with many rare/technical terms.</div></div>
-        </div>
-
-        <!-- Tab 4: Statistical vs Neural -->
-        <div id="tab4" class="tab-panel">
-            <h3 style="margin-bottom:1.5rem;font-size:1.3rem;">Statistical vs Neural Language Models</h3>
-            <div class="comp-table-wrap">
-                <table class="comp-table">
-                    <thead><tr><th>Criteria</th><th class="col-left">Statistical (N-gram)</th><th class="col-right">Neural (RNN/Transformer)</th></tr></thead>
-                    <tbody>
-                        <tr><td><strong>Definition</strong></td><td>Probability models based on observed word frequencies</td><td>Deep learning models learning distributed representations</td></tr>
-                        <tr><td><strong>Working Mechanism</strong></td><td>Count-based frequency estimation with smoothing</td><td>Neural network forward passes with backpropagation</td></tr>
-                        <tr><td><strong>Data Requirements</strong></td><td class="badge-good">Works with limited data</td><td class="badge-bad">Requires large corpora</td></tr>
-                        <tr><td><strong>Interpretability</strong></td><td class="badge-good">High — easy to debug</td><td class="badge-bad">Low — black-box nature</td></tr>
-                        <tr><td><strong>Long-range Dependencies</strong></td><td class="badge-bad">Cannot capture</td><td class="badge-good">Captures via attention/LSTM</td></tr>
-                        <tr><td><strong>Strengths</strong></td><td>• Interpretable and debuggable<br>• Fast inference<br>• No GPU required<br>• Easy to implement</td><td>• Semantic generalization<br>• Transfer learning capability<br>• State-of-the-art performance<br>• Handles unseen combinations</td></tr>
-                        <tr><td><strong>Weaknesses</strong></td><td>• Data sparsity (zero probabilities)<br>• No semantic understanding<br>• Exponential storage growth<br>• Limited context window</td><td>• Computationally expensive<br>• Requires large training data<br>• Environmental impact<br>• Hallucination risks</td></tr>
-                        <tr><td><strong>Best Applications</strong></td><td>Spell checkers, keyboard autocomplete, resource-constrained environments</td><td>Machine translation, chatbots, text summarization, code generation</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="verdict"><i class="fas fa-gavel"></i><div><strong>Verdict:</strong> Use <strong>Statistical models</strong> for resource-constrained, interpretable, or small-data scenarios. Use <strong>Neural models</strong> for tasks requiring deep semantic understanding.</div></div>
-        </div>
-
-        <!-- Tab 5: One-Hot vs Embeddings -->
-        <div id="tab5" class="tab-panel">
-            <h3 style="margin-bottom:1.5rem;font-size:1.3rem;">One-Hot Encoding vs Word Embeddings</h3>
-            <div class="comp-table-wrap">
-                <table class="comp-table">
-                    <thead><tr><th>Criteria</th><th class="col-left">One-Hot Encoding</th><th class="col-right">Word Embeddings</th></tr></thead>
-                    <tbody>
-                        <tr><td><strong>Dimensionality</strong></td><td class="badge-bad">|V| (10K–1M+)</td><td class="badge-good">Fixed small (50–1024)</td></tr>
-                        <tr><td><strong>Sparsity</strong></td><td class="badge-bad">Extremely sparse (99.99% zeros)</td><td class="badge-good">Dense (all non-zero)</td></tr>
-                        <tr><td><strong>Semantic Info</strong></td><td class="badge-bad">None — purely symbolic</td><td class="badge-good">Rich — captures meaning, analogy</td></tr>
-                        <tr><td><strong>Memory Efficiency</strong></td><td class="badge-bad">Very poor</td><td class="badge-good">Excellent</td></tr>
-                        <tr><td><strong>Generalization</strong></td><td class="badge-bad">None</td><td class="badge-good">Strong — similar words cluster</td></tr>
-                        <tr><td><strong>Training</strong></td><td class="badge-good">None required</td><td class="badge-bad">Requires large corpus + time</td></tr>
-                        <tr><td><strong>Strengths</strong></td><td>• Simple and unambiguous<br>• No implied ordinal relationship<br>• Works with any vocabulary</td><td>• Captures semantic relationships<br>• Enables similarity queries<br>• Compact representation</td></tr>
-                        <tr><td><strong>Weaknesses</strong></td><td>• Curse of dimensionality<br>• No semantic meaning<br>• Cannot handle OOV</td><td>• Requires training data<br>• Polysemy issue<br>• Static for non-contextual</td></tr>
-                        <tr><td><strong>Best Applications</strong></td><td>Very small vocabularies, baseline experiments, categorical features</td><td>All modern NLP: search, classification, translation, generation</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="verdict"><i class="fas fa-gavel"></i><div><strong>Verdict:</strong> <strong>One-Hot Encoding</strong> is obsolete for NLP. <strong>Word Embeddings</strong> are the universal standard for all production NLP systems.</div></div>
-        </div>
-
-    </div>
-</section>
-
-<!-- Section C: Workflow Diagrams -->
-<section id="workflows" class="section">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label"><i class="fas fa-project-diagram"></i> Section C</div>
-            <h2 class="section-title">Workflow Diagrams</h2>
-            <p class="section-desc">Visual pipeline explanations for text preprocessing, feature engineering, and text-to-vector transformation processes.</p>
-        </div>
-
-        <div class="workflow-grid">
-            <!-- Workflow 1: Preprocessing -->
-            <div class="workflow-card">
-                <div class="workflow-header"><h3><i class="fas fa-filter"></i> Complete Text Preprocessing Pipeline</h3></div>
-                <div class="workflow-body">
-                    <div class="pipeline">
-                        <div class="pipe-step"><div class="step-num">1</div><div><div class="step-text">Raw Text Input</div><div class="step-detail">"I can't wait 4 the new iPhone!!! 😍 https://apple.com"</div></div></div>
-                        <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                        <div class="pipe-step"><div class="step-num">2</div><div><div class="step-text">Noise Removal</div><div class="step-detail">Remove URLs, HTML tags, emojis, special characters</div></div></div>
-                        <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                        <div class="pipe-step"><div class="step-num">3</div><div><div class="step-text">Text Cleaning</div><div class="step-detail">Fix encoding, expand contractions, handle numbers</div></div></div>
-                        <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                        <div class="pipe-step"><div class="step-num">4</div><div><div class="step-text">Case Normalization</div><div class="step-detail">Convert to lowercase (or Truecasing for NER)</div></div></div>
-                        <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                        <div class="pipe-step"><div class="step-num">5</div><div><div class="step-text">Sentence Segmentation</div><div class="step-detail">Split on boundaries, handle abbreviations</div></div></div>
-                        <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                        <div class="pipe-step"><div class="step-num">6</div><div><div class="step-text">Tokenization</div><div class="step-detail">Word-level or subword (BPE/WordPiece)</div></div></div>
-                        <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                        <div class="pipe-step"><div class="step-num">7</div><div><div class="step-text">Stop-word Removal</div><div class="step-detail">Filter common words, preserve negation if needed</div></div></div>
-                        <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                        <div class="pipe-step"><div class="step-num">8</div><div><div class="step-text">Stemming / Lemmatization</div><div class="step-detail">Reduce to root form (fast heuristic or accurate dictionary)</div></div></div>
-                        <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                        <div class="pipe-step final"><div class="step-num"><i class="fas fa-check"></i></div><div><div class="step-text">Clean Tokens Ready for Model</div><div class="step-detail">["can", "not", "wait", "new", "iphone"]</div></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Workflow 2: Feature Engineering -->
-            <div class="workflow-card">
-                <div class="workflow-header"><h3><i class="fas fa-cogs"></i> Feature Engineering Pipeline</h3></div>
-                <div class="workflow-body">
-                    <div class="pipeline">
-                        <div class="pipe-step"><div class="step-num">1</div><div><div class="step-text">Clean Tokens from Preprocessing</div><div class="step-detail">["machine", "learning", "is", "transforming", "healthcare"]</div></div></div>
-                        <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                        <div class="pipe-step"><div class="step-num">2</div><div><div class="step-text">Frequency-Based Features</div><div class="step-detail">Bag of Words — Count matrix of word occurrences</div></div></div>
-                        <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                        <div class="pipe-step"><div class="step-num">3</div><div><div class="step-text">N-Gram Features</div><div class="step-detail">Bigrams, Trigrams — Capture local word order and phrases</div></div></div>
-                        <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                        <div class="pipe-step"><div class="step-num">4</div><div><div class="step-text">Statistical Weighted Features</div><div class="step-detail">TF-IDF — Balance local and global importance</div></div></div>
-                        <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                        <div class="pipe-step"><div class="step-num">5</div><div><div class="step-text">Feature Selection (Optional)</div><div class="step-detail">Chi-square, Mutual Information, L1 Regularization</div></div></div>
-                        <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                        <div class="pipe-step final"><div class="step-num"><i class="fas fa-check"></i></div><div><div class="step-text">Features Ready for ML Model</div><div class="step-detail">Shape: (n_documents, n_features)</div></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Workflow 3: Text-to-Vector -->
-            <div class="workflow-card" style="grid-column: 1 / -1;">
-                <div class="workflow-header"><h3><i class="fas fa-vector-square"></i> Text-to-Vector Transformation Process</h3></div>
-                <div class="workflow-body">
-                    <div class="evo-flow">
-                        <div class="evo-stage">
-                            <div class="evo-label">Symbolic</div>
-                            <div class="evo-title">One-Hot / BoW</div>
-                            <div class="evo-items">
-                                <span class="evo-item">Sparse Binary Vectors</span>
-                                <span class="evo-item">|V| = 50,000 dims</span>
-                                <span class="evo-item">No Semantics</span>
-                                <span class="evo-item">No Context</span>
-                            </div>
-                        </div>
-                        <div class="evo-stage">
-                            <div class="evo-label">Distributed</div>
-                            <div class="evo-title">Word2Vec / FastText</div>
-                            <div class="evo-items">
-                                <span class="evo-item">Dense 300-dim Vectors</span>
-                                <span class="evo-item">Semantic Similarity</span>
-                                <span class="evo-item">Vector Arithmetic</span>
-                                <span class="evo-item">Static Context</span>
-                            </div>
-                        </div>
-                        <div class="evo-stage active">
-                            <div class="evo-label">Contextual</div>
-                            <div class="evo-title">BERT / GPT</div>
-                            <div class="evo-items">
-                                <span class="evo-item">Dense 768-dim Vectors</span>
-                                <span class="evo-item">Context-Dependent</span>
-                                <span class="evo-item">Polysemy Solved</span>
-                                <span class="evo-item">Transfer Learning</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-top:1.5rem;text-align:center;color:var(--gray);font-size:0.9rem;">
-                        <i class="fas fa-arrow-right" style="margin:0 0.5rem;"></i> Evolution: Symbolic (2010) → Distributed (2013) → Contextual (2018+)
-                    </div>
+            <div class="course-stat">
+                <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div>
+                    <div class="stat-label">Class</div>
+                    <div class="stat-value">TY B.Tech</div>
                 </div>
             </div>
         </div>
     </div>
-</section>
 
-<!-- Section D: Real-World Applications -->
-<section id="applications" class="section section-alt">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label"><i class="fas fa-rocket"></i> Section D</div>
-            <h2 class="section-title">Real-World Applications</h2>
-            <p class="section-desc">NLP applications where Week 1 concepts are foundational, with explanations of relevant techniques, necessity, and expected benefits.</p>
-        </div>
-
-        <div class="app-grid">
-            <div class="app-card">
-                <div class="app-top">
-                    <div class="app-icon-box search"><i class="fas fa-search"></i></div>
-                    <div class="app-title">Search Engines</div>
-                </div>
-                <div class="app-body">
-                    <div class="app-field"><strong>Relevant Concepts</strong><p>Tokenization, Stop-word Removal, TF-IDF, Word Embeddings, BERT</p></div>
-                    <div class="app-field"><strong>Why Needed</strong><p>Must understand queries and match to relevant documents. Raw text matching fails due to synonymy and polysemy.</p></div>
-                    <div class="app-field"><strong>Expected Benefits</strong><p>TF-IDF ensures distinctive query terms rank higher; embeddings enable semantic search beyond keywords; BERT understands query context (e.g., "jaguar" as animal vs. car).</p></div>
-                </div>
+    <!-- Hub Dashboard Section -->
+    <section id="dashboard" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label"><i class="fas fa-th-large"></i> Repository Hub</div>
+                <h2 class="section-title">Knowledge Architecture</h2>
+                <p class="section-desc">Explore the structured learning materials, comparisons, workflows, and
+                    reflections compiled from Week 1 Natural Language Processing analysis.</p>
             </div>
 
-            <div class="app-card">
-                <div class="app-top">
-                    <div class="app-icon-box chat"><i class="fas fa-robot"></i></div>
-                    <div class="app-title">Chatbots & Conversational AI</div>
-                </div>
-                <div class="app-body">
-                    <div class="app-field"><strong>Relevant Concepts</strong><p>Lemmatization, Word Embeddings, Transformers, Contextual Embeddings, Intent Classification</p></div>
-                    <div class="app-field"><strong>Why Needed</strong><p>Must parse user intent, maintain conversation context, and generate coherent responses across multi-turn dialogues.</p></div>
-                    <div class="app-field"><strong>Expected Benefits</strong><p>Embeddings map similar intents together; Transformers maintain context across turns; GPT-4 generates human-like responses at scale.</p></div>
-                </div>
-            </div>
-
-            <div class="app-card">
-                <div class="app-top">
-                    <div class="app-icon-box sentiment"><i class="fas fa-smile"></i></div>
-                    <div class="app-title">Sentiment Analysis</div>
-                </div>
-                <div class="app-body">
-                    <div class="app-field"><strong>Relevant Concepts</strong><p>Text Cleaning, Lemmatization, Contextual Embeddings, TF-IDF</p></div>
-                    <div class="app-field"><strong>Why Needed</strong><p>Requires clean text to identify opinion-bearing words. Lemmatization preserves negation. Contextual embeddings distinguish slang from literal meaning.</p></div>
-                    <div class="app-field"><strong>Expected Benefits</strong><p>Automated analysis of millions of reviews; real-time brand monitoring; feature-specific sentiment extraction (e.g., "battery life" → positive).</p></div>
-                </div>
-            </div>
-
-            <div class="app-card">
-                <div class="app-top">
-                    <div class="app-icon-box translate"><i class="fas fa-language"></i></div>
-                    <div class="app-title">Machine Translation</div>
-                </div>
-                <div class="app-body">
-                    <div class="app-field"><strong>Relevant Concepts</strong><p>Subword Tokenization (BPE/SentencePiece), Neural LMs, Attention, Contextual Embeddings</p></div>
-                    <div class="app-field"><strong>Why Needed</strong><p>Requires understanding source semantics and generating target text. Subword tokenization handles rare words across languages.</p></div>
-                    <div class="app-field"><strong>Expected Benefits</strong><p>Near-human quality for many language pairs; real-time translation between 100+ languages; proper handling of technical terms and names.</p></div>
-                </div>
-            </div>
-
-            <div class="app-card">
-                <div class="app-top">
-                    <div class="app-icon-box summarize"><i class="fas fa-compress-alt"></i></div>
-                    <div class="app-title">Text Summarization</div>
-                </div>
-                <div class="app-body">
-                    <div class="app-field"><strong>Relevant Concepts</strong><p>Sentence Segmentation, TF-IDF, Extractive vs. Abstractive, BART/T5/PEGASUS</p></div>
-                    <div class="app-field"><strong>Why Needed</strong><p>Must identify salient information and condense it. TF-IDF scores sentence importance; abstractive models generate novel summary sentences.</p></div>
-                    <div class="app-field"><strong>Expected Benefits</strong><p>Condense 10-page documents to 1-paragraph summaries; process thousands of articles automatically; generate fluent, connected summaries via T5.</p></div>
-                </div>
-            </div>
-
-            <div class="app-card">
-                <div class="app-top">
-                    <div class="app-icon-box clinical"><i class="fas fa-heartbeat"></i></div>
-                    <div class="app-title">Clinical NLP</div>
-                </div>
-                <div class="app-body">
-                    <div class="app-field"><strong>Relevant Concepts</strong><p>Text Cleaning (medical abbreviations), Lemmatization, NER, BioBERT/ClinicalBERT</p></div>
-                    <div class="app-field"><strong>Why Needed</strong><p>Medical records contain noisy, abbreviated text with life-critical information. Precision is paramount.</p></div>
-                    <div class="app-field"><strong>Expected Benefits</strong><p>Accurate extraction of diagnoses and medications; automated ICD-10 coding; large-scale EHR analysis for drug discovery; real-time drug interaction alerts.</p></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Section E: Research & Industry -->
-<section id="research" class="section">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label"><i class="fas fa-flask"></i> Section E</div>
-            <h2 class="section-title">Research & Industry Insights</h2>
-            <p class="section-desc">Recent research developments, industrial applications, and open-source frameworks shaping the future of NLP.</p>
-        </div>
-
-        <div class="research-grid">
-            <div class="research-card research">
-                <div class="research-badge">Research 2024-2026</div>
-                <h3>Retrieval-Augmented Generation (RAG)</h3>
-                <p>Combines dense retrieval (embeddings) with generative models to ground LLM outputs in external knowledge, reducing hallucination and enabling real-time knowledge updates without retraining.</p>
-                <div class="research-tags">
-                    <span class="r-tag">Hallucination Reduction</span>
-                    <span class="r-tag">Knowledge Grounding</span>
-                </div>
-            </div>
-
-            <div class="research-card research">
-                <div class="research-badge">Research 2024-2026</div>
-                <h3>Mixture of Experts (MoE)</h3>
-                <p>Sparse activation architectures (Mixtral 8x7B) use only a subset of parameters per token, reducing compute by 60% while maintaining GPT-4-level performance. Addresses sustainability concerns.</p>
-                <div class="research-tags">
-                    <span class="r-tag">Sustainable AI</span>
-                    <span class="r-tag">Efficient Inference</span>
-                </div>
-            </div>
-
-            <div class="research-card industry">
-                <div class="research-badge">Industry</div>
-                <h3>Microsoft Copilot</h3>
-                <p>Integrates GPT-4 across Office 365 (Word, Excel, Outlook) for document drafting, email composition, and meeting summarization. Serves 400M+ users, demonstrating enterprise NLP at scale.</p>
-                <div class="research-tags">
-                    <span class="r-tag">Enterprise AI</span>
-                    <span class="r-tag">400M+ Users</span>
-                </div>
-            </div>
-
-            <div class="research-card industry">
-                <div class="research-badge">Industry</div>
-                <h3>DeepL Translator</h3>
-                <p>Uses proprietary Transformer architectures with advanced attention mechanisms. Rated above Google Translate by professional translators, showcasing domain-specific preprocessing importance.</p>
-                <div class="research-tags">
-                    <span class="r-tag">Translation</span>
-                    <span class="r-tag">Professional Grade</span>
-                </div>
-            </div>
-
-            <div class="research-card framework" style="grid-column: span 2;">
-                <div class="research-badge">Open Source Framework</div>
-                <h3>Hugging Face Transformers</h3>
-                <p>The most widely adopted open-source library for state-of-the-art NLP, providing 500,000+ pre-trained models (BERT, GPT, T5, LLaMA) with unified APIs for PyTorch, TensorFlow, and JAX.</p>
-                <div class="research-tags">
-                    <span class="r-tag">500K+ Models</span>
-                    <span class="r-tag">200K+ GitHub Stars</span>
-                    <span class="r-tag">1B+ Monthly Downloads</span>
-                </div>
-                <div class="code-snippet">from transformers import pipeline<br>classifier = pipeline("sentiment-analysis")<br>result = classifier("I love NLP!")<br># Output: [{'label': 'POSITIVE', 'score': 0.9998}]</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Section F: Sustainability -->
-<section id="sustainability" class="section section-alt">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label"><i class="fas fa-leaf"></i> Section F</div>
-            <h2 class="section-title">Sustainability & Societal Impact</h2>
-            <p class="section-desc">How NLP contributes to sustainable development and societal well-being, aligned with UN Sustainable Development Goals.</p>
-        </div>
-
-        <div class="sdg-row">
-            <div class="sdg-card">
-                <div class="sdg-num">4</div>
-                <h4>Quality Education</h4>
-                <p>NLP-powered intelligent tutoring systems adapt to individual learning styles, provide immediate feedback on writing, and translate educational materials into local languages. For students with disabilities, text-to-speech and speech-to-text systems enable access to education previously impossible.</p>
-            </div>
-            <div class="sdg-card">
-                <div class="sdg-num">10</div>
-                <h4>Reduced Inequalities</h4>
-                <p>With over 7,000 languages yet digital content dominated by fewer than 100, NLP translation systems democratize access. Projects like Google's "1,000 Languages Initiative" and Meta's "No Language Left Behind" support low-resource languages from Swahili to Quechua.</p>
-            </div>
-            <div class="sdg-card">
-                <div class="sdg-num">3</div>
-                <h4>Good Health & Well-being</h4>
-                <p>Clinical NLP extracts structured information from unstructured medical records, enabling large-scale analysis of treatment effectiveness. During COVID-19, NLP analyzed thousands of research papers rapidly to identify potential treatments.</p>
-            </div>
-        </div>
-
-        <div class="essay-box">
-            <h3><i class="fas fa-seedling"></i> How NLP Can Contribute to Society and Sustainable Development</h3>
-            <p>Natural Language Processing stands at the intersection of technological innovation and human empowerment, offering transformative potential for sustainable development across multiple dimensions. As we advance into an increasingly digital world, NLP technologies serve as critical bridges—connecting people across linguistic barriers, democratizing access to information, and enabling data-driven solutions to global challenges.</p>
-            <p><strong>Language Accessibility and Inclusion</strong> represent perhaps the most profound societal contribution of NLP. With over 7,000 languages spoken worldwide, yet digital content dominated by fewer than 100, digital inequality perpetuates economic and educational disparities. NLP-powered translation systems—built upon the preprocessing, embedding, and Transformer foundations covered in Week 1—are now enabling real-time communication across languages that previously lacked digital resources. Projects like Google's "1,000 Languages Initiative" and Meta's "No Language Left Behind" leverage subword tokenization and multilingual embeddings to support low-resource languages from Swahili to Quechua. This democratization of language technology directly supports <strong>UN Sustainable Development Goal 10 (Reduced Inequalities)</strong> by ensuring that speakers of minority languages can access educational content, government services, and economic opportunities previously available only to dominant language speakers.</p>
-            <p><strong>Educational Inclusion</strong> represents another critical frontier. NLP-powered intelligent tutoring systems can adapt to individual learning styles, provide immediate feedback on writing assignments, and translate educational materials into local languages. For students with disabilities, text-to-speech and speech-to-text systems—underpinned by the language modeling concepts from Week 1—enable access to education that was previously impossible. Tools like Grammarly and AI writing assistants help students develop language skills, while automated essay scoring systems provide consistent, bias-mitigated feedback at scale. These applications align with <strong>SDG 4 (Quality Education)</strong>, particularly in resource-constrained settings where qualified teachers are scarce.</p>
-            <p><strong>Assistive Technologies</strong> transform lives for millions with visual, auditory, or cognitive impairments. Screen readers enhanced with NLP can now understand context and read with appropriate intonation rather than mechanical speech. For individuals with autism or social communication difficulties, NLP-powered applications can interpret social cues in text and suggest appropriate responses. Real-time captioning systems enable deaf and hard-of-hearing individuals to participate fully in meetings, lectures, and media consumption. These technologies embody the principle that technological advancement must serve human dignity and inclusion.</p>
-            <p><strong>Healthcare and Public Health</strong> applications of NLP are accelerating medical research and improving patient outcomes. Clinical NLP systems extract structured information from unstructured medical records, enabling large-scale analysis of treatment effectiveness and adverse drug reactions. During the COVID-19 pandemic, NLP was instrumental in rapidly analyzing thousands of research papers to identify potential treatments—a process that would have taken humans years. Public health surveillance systems monitor social media and news reports to detect disease outbreaks faster than traditional reporting mechanisms. These applications support <strong>SDG 3 (Good Health and Well-being)</strong>.</p>
-            <p><strong>Citizen Services and Governance</strong> benefit from NLP through automated multilingual chatbots that provide 24/7 access to government information, intelligent document processing that reduces bureaucratic delays, and sentiment analysis that helps policymakers understand public opinion. In India, the Bhashini platform uses NLP to deliver government services in 22 scheduled languages, ensuring that language is not a barrier to accessing constitutional rights.</p>
-            <p><strong>Environmental Sustainability</strong> considerations are increasingly important. The training of large Transformer models consumes significant energy—training GPT-3 emitted an estimated 552 tons of CO₂. However, the field is responding with more efficient architectures (Mixture of Experts, quantization, distillation), renewable energy-powered data centers, and carbon-aware training schedules. The societal benefits of NLP—reducing travel through virtual meetings, optimizing supply chains through intelligent document processing, and accelerating climate research—must be weighed against these environmental costs.</p>
-            <p>In conclusion, NLP is not merely a technical discipline but a powerful tool for social good. By ensuring that language technology serves all of humanity—not just wealthy, English-speaking populations—we can build a more equitable, informed, and sustainable world. The foundational concepts learned in Week 1—preprocessing, representation, and modeling—are the building blocks of these transformative applications.</p>
-        </div>
-    </div>
-</section>
-
-<!-- Section G: Contributions -->
-<section id="contributions" class="section">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label"><i class="fas fa-users"></i> Section G</div>
-            <h2 class="section-title">Individual Contribution Matrix</h2>
-            <p class="section-desc">Clear documentation of each team member's contributions across all repository sections.</p>
-        </div>
-
-        <div class="matrix-wrap">
-            <table class="matrix-table">
-                <thead>
-                    <tr>
-                        <th>Student Name</th>
-                        <th>Roll No.</th>
-                        <th>Concept Cards</th>
-                        <th>Comparative Analysis</th>
-                        <th>Workflow Diagram</th>
-                        <th>Reflection Note</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Student A</strong></td>
-                        <td>101</td>
-                        <td>Tokenization, TF-IDF, Word2Vec, Contextual Embeddings, BERT, One-Hot, BoW, N-Grams</td>
-                        <td>Word2Vec vs FastText, TF vs TF-IDF, One-Hot vs Embeddings</td>
-                        <td>Text-to-Vector Transformation Process</td>
-                        <td>Reflection Note A</td>
-                        <td><strong>50%</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Student B</strong></td>
-                        <td>102</td>
-                        <td>Sentence Segmentation, Case Normalization, Stop-word Removal, Stemming, Lemmatization, Noise Removal, Text Cleaning, TF, IDF, Statistical LMs, Neural LMs</td>
-                        <td>Stemming vs Lemmatization, Statistical vs Neural LMs</td>
-                        <td>Complete Preprocessing Pipeline, Feature Engineering Pipeline</td>
-                        <td>Reflection Note B</td>
-                        <td><strong>50%</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <p style="margin-top:1.5rem;color:var(--gray);font-size:0.9rem;"><i class="fas fa-info-circle"></i> Both students contributed equally to repository organization, literature review, sustainability section, and final compilation. All content was collaboratively reviewed for accuracy.</p>
-    </div>
-</section>
-
-<!-- Section H: Reflections -->
-<section id="reflections" class="section section-alt">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-label"><i class="fas fa-pen-fancy"></i> Section H</div>
-            <h2 class="section-title">Reflection Notes</h2>
-            <p class="section-desc">Critical reflections on learning outcomes, challenges faced, and future applications of Week 1 NLP concepts.</p>
-        </div>
-
-        <div class="reflection-grid">
-            <div class="reflection-card">
-                <div class="reflection-header">
-                    <div class="reflection-avatar">A</div>
-                    <div class="reflection-meta">
-                        <h4>Reflection Note A — Student A</h4>
-                        <span>Roll No. 101 | Concept Cards & Comparisons Lead</span>
+            <div class="category-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                <div class="category-card"
+                    style="display: flex; flex-direction: column; gap: 0.85rem; padding: 1.75rem; background: white; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <div class="category-icon preprocessing"
+                        style="width: 56px; height: 56px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; background: linear-gradient(135deg, var(--primary), var(--accent));">
+                        <i class="fas fa-filter"></i>
                     </div>
+                    <h3>Concept Cards</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6; flex: 1;">Study the 21 unique concept
+                        cards across Text Preprocessing, Feature Engineering, Embeddings, and Language Models.</p>
+                    <a href="#concepts" target="_self" style="text-decoration: none;" class="category-view-btn"><i
+                            class="fas fa-arrow-right"></i> Open Concepts</a>
                 </div>
-                <div class="reflection-body">
-                    <p>Working on this Knowledge Artifact Repository deepened my understanding of how NLP preprocessing and representation techniques form an <span class="highlight-text">interconnected pipeline</span> rather than isolated steps. Initially, I viewed tokenization and vectorization as mechanical procedures, but researching their interactions revealed critical dependencies—poor tokenization directly degrades embedding quality, and preprocessing choices must align with the downstream model architecture.</p>
-                    <p>Creating the <span class="highlight-text">Word2Vec vs FastText</span> comparison was particularly illuminating. I discovered that the "better" model depends entirely on the use case—Word2Vec excels at semantic relationships in English, while FastText's subword handling makes it indispensable for morphologically rich languages. This nuanced understanding would not have emerged from textbook reading alone.</p>
-                    <p>The workflow diagrams forced me to think systematically about pipeline design. I realized that preprocessing is not one-size-fits-all—a sentiment analysis pipeline must preserve negation words during stop-word removal, while an information retrieval pipeline might prioritize aggressive stemming for speed.</p>
-                    <p>Looking forward, I plan to explore how these Week 1 foundations enable modern LLMs. Understanding that BERT's contextual embeddings are built upon the same tokenization and attention principles we studied makes the field feel accessible rather than magical. I intend to implement these concepts in a mini-project: building a semantic search engine for academic papers using TF-IDF and sentence embeddings.</p>
-                </div>
-            </div>
 
-            <div class="reflection-card">
-                <div class="reflection-header">
-                    <div class="reflection-avatar">B</div>
-                    <div class="reflection-meta">
-                        <h4>Reflection Note B — Student B</h4>
-                        <span>Roll No. 102 | Preprocessing & Workflows Lead</span>
+                <div class="category-card"
+                    style="display: flex; flex-direction: column; gap: 0.85rem; padding: 1.75rem; background: white; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <div class="category-icon feature"
+                        style="width: 56px; height: 56px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; background: linear-gradient(135deg, var(--primary), var(--accent));">
+                        <i class="fas fa-chart-bar"></i>
                     </div>
+                    <h3>Comparative Analysis</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6; flex: 1;">Side-by-side matrices
+                        detailing trade-offs of major NLP tools: Lemmatization vs. Stemming, and Word2Vec vs. FastText.
+                    </p>
+                    <a href="#comparisons" target="_self" style="text-decoration: none;" class="category-view-btn"><i
+                            class="fas fa-arrow-right"></i> Open Comparisons</a>
                 </div>
-                <div class="reflection-body">
-                    <p>This repository project transformed my perspective on NLP from <span class="highlight-text">"using black-box libraries"</span> to "understanding why each step matters." The Stemming vs Lemmatization comparison challenged my assumption that "more accurate is always better"—I now appreciate that stemming's speed advantage makes it the right choice for search engines processing billions of queries, while lemmatization is essential for clinical NLP where "univers" vs "university" could change a diagnosis.</p>
-                    <p>Designing the <span class="highlight-text">Complete Preprocessing Pipeline</span> diagram revealed the critical importance of step ordering. I initially placed stop-word removal before tokenization, which would have been impossible. This mistake taught me that pipeline design requires both theoretical knowledge and practical implementation awareness. The order of operations matters significantly—encoding normalization must precede tokenization, and lemmatization requires POS tags that can only be generated from properly tokenized input.</p>
-                    <p>Researching BERT and Transformer architectures for the concept card was the most challenging yet rewarding part. Understanding how self-attention replaces sequential processing with parallel computation helped me grasp why modern NLP is so much faster than RNN-based approaches. The mathematical elegance of the attention mechanism—softmax(QK<sup>T</sup>/√d<sub>k</sub>)V—belies its profound impact.</p>
-                    <p>I was particularly struck by the <span class="highlight-text">sustainability implications</span> of our research. Learning that training GPT-3 emitted 552 tons of CO₂ made me critically evaluate whether every large model is necessary. The emergence of efficient architectures like Mixture of Experts and model distillation techniques gives me hope that the field is maturing toward responsible innovation.</p>
-                    <p>For future application, I plan to build a multilingual chatbot for rural healthcare in India using FastText embeddings and lightweight Transformer models. This would directly apply our Week 1 knowledge to a real societal need—providing health information in regional languages where medical professionals are scarce.</p>
+
+                <div class="category-card"
+                    style="display: flex; flex-direction: column; gap: 0.85rem; padding: 1.75rem; background: white; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <div class="category-icon representation"
+                        style="width: 56px; height: 56px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; background: linear-gradient(135deg, var(--primary), var(--accent));">
+                        <i class="fas fa-vector-square"></i>
+                    </div>
+                    <h3>Workflow Pipelines</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6; flex: 1;">Visual layout
+                        representations highlighting complete preprocessing steps and text representation engineering
+                        pipelines.</p>
+                    <a href="#workflows" target="_self" style="text-decoration: none;" class="category-view-btn"><i
+                            class="fas fa-arrow-right"></i> Open Workflows</a>
+                </div>
+
+                <div class="category-card"
+                    style="display: flex; flex-direction: column; gap: 0.85rem; padding: 1.75rem; background: white; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <div class="category-icon models"
+                        style="width: 56px; height: 56px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; background: linear-gradient(135deg, var(--primary), var(--accent));">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Real-World Applications</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6; flex: 1;">Discover industrial NLP use
+                        cases and integrations: from Search Engines to Machine Translation and Clinical Analytics.</p>
+                    <a href="#applications" target="_self" style="text-decoration: none;" class="category-view-btn"><i
+                            class="fas fa-arrow-right"></i> Open Applications</a>
+                </div>
+
+                <div class="category-card"
+                    style="display: flex; flex-direction: column; gap: 0.85rem; padding: 1.75rem; background: white; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <div class="category-icon search"
+                        style="width: 56px; height: 56px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; background: linear-gradient(135deg, var(--primary), var(--accent));">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Research & Literature</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6; flex: 1;">Summaries of key NLP
+                        papers, framework comparisons, and modern library documentation indexes.</p>
+                    <a href="#research" target="_self" style="text-decoration: none;" class="category-view-btn"><i
+                            class="fas fa-arrow-right"></i> Open Research</a>
+                </div>
+
+                <div class="category-card"
+                    style="display: flex; flex-direction: column; gap: 0.85rem; padding: 1.75rem; background: white; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <div class="category-icon chat"
+                        style="width: 56px; height: 56px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; background: linear-gradient(135deg, var(--primary), var(--accent));">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>Sustainabilty Essay</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6; flex: 1;">An analysis exploring deep
+                        learning carbon offsets and mapping NLP solutions to specific UN Sustainable Development Goals.
+                    </p>
+                    <a href="#sustainability" target="_self" style="text-decoration: none;" class="category-view-btn"><i
+                            class="fas fa-arrow-right"></i> Open Sustainability</a>
+                </div>
+
+                <div class="category-card"
+                    style="display: flex; flex-direction: column; gap: 0.85rem; padding: 1.75rem; background: white; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <div class="category-icon translate"
+                        style="width: 56px; height: 56px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; background: linear-gradient(135deg, var(--primary), var(--accent));">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Contribution Matrix</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6; flex: 1;">The project division matrix
+                        outlining lead roles and percentages for Academic Integrity standards.</p>
+                    <a href="#contributions" target="_self" style="text-decoration: none;" class="category-view-btn"><i
+                            class="fas fa-arrow-right"></i> Open Contributions</a>
+                </div>
+
+                <div class="category-card"
+                    style="display: flex; flex-direction: column; gap: 0.85rem; padding: 1.75rem; background: white; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <div class="category-icon summarize"
+                        style="width: 56px; height: 56px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; background: linear-gradient(135deg, var(--primary), var(--accent));">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h3>Reflection Notes</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6; flex: 1;">Critical discussions about
+                        pipeline configurations, algorithmic trade-offs, and future explorations.</p>
+                    <a href="#reflections" target="_self" style="text-decoration: none;" class="category-view-btn"><i
+                            class="fas fa-arrow-right"></i> Open Reflections</a>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></div>
-        <div class="footer-info">
-            <p>Shah & Anchor Kutchhi Engineering College</p>
-            <p>Autonomous Institute Affiliated to University of Mumbai</p>
-            <p>Bestowed with the University of Mumbai's Best College Honor A.Y. 2024-25</p>
+    <!-- Section A: Concept Cards -->
+    <section id="concepts" class="section">
+        <div class="container section-placeholder" data-src="pages/section_a.html">
+            <p style="text-align: center; opacity: 0.5;"><i class="fas fa-spinner fa-spin"></i> Loading Concepts...</p>
         </div>
-        <div><a href="https://www.sakec.ac.in" target="_blank" class="footer-link"><i class="fas fa-globe"></i> www.sakec.ac.in</a></div>
+    </section>
+
+    <!-- Section B: Comparative Analysis -->
+    <section id="comparisons" class="section section-alt">
+        <div class="container section-placeholder" data-src="pages/section_b.html">
+            <p style="text-align: center; opacity: 0.5;"><i class="fas fa-spinner fa-spin"></i> Loading Comparisons...
+            </p>
+        </div>
+    </section>
+
+    <!-- Section C: Workflow Diagrams -->
+    <section id="workflows" class="section">
+        <div class="container section-placeholder" data-src="pages/section_c.html">
+            <p style="text-align: center; opacity: 0.5;"><i class="fas fa-spinner fa-spin"></i> Loading Workflows...</p>
+        </div>
+    </section>
+
+    <!-- Section D: Real-World Applications -->
+    <section id="applications" class="section section-alt">
+        <div class="container section-placeholder" data-src="pages/section_d.html">
+            <p style="text-align: center; opacity: 0.5;"><i class="fas fa-spinner fa-spin"></i> Loading Applications...
+            </p>
+        </div>
+    </section>
+
+    <!-- Section E: Research & Industry -->
+    <section id="research" class="section">
+        <div class="container section-placeholder" data-src="pages/section_e.html">
+            <p style="text-align: center; opacity: 0.5;"><i class="fas fa-spinner fa-spin"></i> Loading Research...</p>
+        </div>
+    </section>
+
+    <!-- Section F: Sustainability -->
+    <section id="sustainability" class="section section-alt">
+        <div class="container section-placeholder" data-src="pages/section_f.html">
+            <p style="text-align: center; opacity: 0.5;"><i class="fas fa-spinner fa-spin"></i> Loading
+                Sustainability...</p>
+        </div>
+    </section>
+
+    <!-- Section G: Contributions -->
+    <section id="contributions" class="section">
+        <div class="container section-placeholder" data-src="pages/section_g.html">
+            <p style="text-align: center; opacity: 0.5;"><i class="fas fa-spinner fa-spin"></i> Loading Contributions...
+            </p>
+        </div>
+    </section>
+
+    <!-- Section H: Reflections -->
+    <section id="reflections" class="section section-alt">
+        <div class="container section-placeholder" data-src="pages/section_h.html">
+            <p style="text-align: center; opacity: 0.5;"><i class="fas fa-spinner fa-spin"></i> Loading Reflections...
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></div>
+            <div class="footer-info">
+                <p>Shah & Anchor Kutchhi Engineering College</p>
+                <p>Autonomous Institute Affiliated to University of Mumbai</p>
+                <p>Bestowed with the University of Mumbai's Best College Honor A.Y. 2024-25</p>
+            </div>
+            <div><a href="https://www.sakec.ac.in" target="_blank" class="footer-link"><i class="fas fa-globe"></i>
+                    www.sakec.ac.in</a></div>
+        </div>
+        <div class="footer-bottom">
+            <p> CMCOR1PE301.1 | A.Y. 2026-27 | TY B.Tech | Semester V</p>
+            <p class="ai-note"><i class="fas fa-robot"></i> AI-Assisted Content Generation Declared | All External
+                Sources Cited | Academic Integrity Maintained</p>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i
+            class="fas fa-arrow-up"></i></button>
+
+    <!-- Concept Card Full-Details Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box" id="modalBox"></div>
     </div>
-    <div class="footer-bottom">
-        <p> CMCOR1PE301.1 | A.Y. 2026-27 | TY B.Tech | Semester V</p>
-        <p class="ai-note"><i class="fas fa-robot"></i> AI-Assisted Content Generation Declared | All External Sources Cited | Academic Integrity Maintained</p>
-    </div>
-</footer>
 
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
-
-<!-- Concept Card Full-Details Modal -->
-<div class="modal-overlay" id="modalOverlay">
-    <div class="modal-box" id="modalBox"></div>
-</div>
-
-<script>
-    // Mobile Navigation
-    function toggleNav() {
-        document.getElementById('navLinks').classList.toggle('active');
-    }
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active'));
-    });
-
-    // Concept Filtering
-    function filterConcepts(category, btn) {
-        document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        document.querySelectorAll('.concept-card').forEach(card => {
-            card.style.display = (category === 'all' || card.dataset.cat === category) ? 'flex' : 'none';
-        });
-    }
-
-    // Tab Switching
-    function showTab(tabId, btn) {
-        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
-        btn.classList.add('active');
-    }
-
-    // Scroll to Top
-    const scrollTopBtn = document.getElementById('scrollTop');
-    window.addEventListener('scroll', () => {
-        scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
-    });
-
-    // Intersection Observer for animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.concept-card, .app-card, .research-card, .workflow-card').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(el);
-    });
-
-    // ===== Concept Card: "View Full Details" button + modal =====
-    function initConceptCardDetails() {
-        document.querySelectorAll('.concept-card').forEach(card => {
-            const body = card.querySelector('.card-body');
-            if (!body || body.querySelector('.details-btn')) return;
-            const btn = document.createElement('button');
-            btn.type = 'button';
-            btn.className = 'details-btn';
-            btn.innerHTML = '<i class="fas fa-expand"></i> View Full Details';
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                openCardModal(card);
-            });
-            body.appendChild(btn);
-        });
-    }
-
-    function openCardModal(card) {
-        const overlay = document.getElementById('modalOverlay');
-        const modalBox = document.getElementById('modalBox');
-
-        // Clone the full card (header + all fields + pros/cons footer)
-        const clone = card.cloneNode(true);
-        // Make sure the clone is visible regardless of scroll-animation state
-        clone.style.opacity = '1';
-        clone.style.transform = 'none';
-        clone.style.display = 'flex';
-
-        modalBox.innerHTML = '';
-
-        const closeBtn = document.createElement('button');
-        closeBtn.type = 'button';
-        closeBtn.className = 'modal-close-btn';
-        closeBtn.setAttribute('aria-label', 'Close');
-        closeBtn.innerHTML = '<i class="fas fa-times"></i>';
-        closeBtn.addEventListener('click', closeCardModal);
-
-        modalBox.appendChild(closeBtn);
-        modalBox.appendChild(clone);
-
-        overlay.classList.add('active');
-        document.body.classList.add('modal-open');
-    }
-
-    function closeCardModal() {
-        document.getElementById('modalOverlay').classList.remove('active');
-        document.body.classList.remove('modal-open');
-    }
-
-    document.getElementById('modalOverlay').addEventListener('click', (e) => {
-        if (e.target.id === 'modalOverlay') closeCardModal();
-    });
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeCardModal();
-    });
-
-    initConceptCardDetails();
-</script>
+    <script src="script.js" defer></script>
 </body>
+
 </html>

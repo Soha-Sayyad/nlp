@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparative Model Analysis | NLP Repository</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/section_b.css">
+    <base target="_blank">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="../index.html" target="_self" class="nav-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></a>
+                <ul class="nav-links" id="navLinks"> <li><a href="../index.html" target="_self" class="">Home</a></li> <li><a href="../index.html#concepts" target="_self" class="">Concepts</a></li> <li><a href="../index.html#comparisons" target="_self" class="active">Comparisons</a></li> <li><a href="../index.html#workflows" target="_self" class="">Workflows</a></li> <li><a href="../index.html#applications" target="_self" class="">Applications</a></li> <li><a href="../index.html#research" target="_self" class="">Research</a></li> <li><a href="../index.html#sustainability" target="_self" class="">Sustainability</a></li> <li><a href="../index.html#contributions" target="_self" class="">Contributions</a></li> <li><a href="../index.html#reflections" target="_self" class="">Reflections</a></li> </ul>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+    </nav>
+
+<!-- Section B: Comparative Analysis -->
+    <section id="comparisons" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label"><i class="fas fa-scale-balanced"></i> Section B</div>
+                <h2 class="section-title">Comparative Analysis</h2>
+                <p class="section-desc">In-depth comparisons of NLP techniques across working mechanisms, computational
+                    complexity, strengths, weaknesses, and suitable applications.</p>
+            </div>
+
+            <div class="tab-nav">
+                <button class="tab-btn active" onclick="showTab('tab1', this)">Stemming vs Lemmatization</button>
+                <button class="tab-btn" onclick="showTab('tab2', this)">TF vs TF-IDF</button>
+                <button class="tab-btn" onclick="showTab('tab3', this)">Word2Vec vs FastText</button>
+                <button class="tab-btn" onclick="showTab('tab4', this)">Statistical vs Neural LMs</button>
+                <button class="tab-btn" onclick="showTab('tab5', this)">One-Hot vs Embeddings</button>
+            </div>
+
+            <!-- Tab 1: Stemming vs Lemmatization -->
+            <div id="tab1" class="tab-panel active">
+                <h3 style="margin-bottom:1.5rem;font-size:1.3rem;">Stemming vs Lemmatization</h3>
+                <div class="comp-table-wrap">
+                    <table class="comp-table">
+                        <thead>
+                            <tr>
+                                <th>Criteria</th>
+                                <th class="col-left">Stemming</th>
+                                <th class="col-right">Lemmatization</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Definition</strong></td>
+                                <td>Heuristic suffix stripping to root form</td>
+                                <td>Dictionary-based reduction to canonical lemma</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Working Mechanism</strong></td>
+                                <td>Rule-based suffix removal (Porter, Snowball, Lancaster). No understanding of word
+                                    meaning.</td>
+                                <td>Morphological analysis using WordNet + POS tags to find valid dictionary forms.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Output Example</strong></td>
+                                <td class="badge-bad">"university" → "univers" (non-word)<br>"running" → "run"</td>
+                                <td class="badge-good">"university" → "university" (valid)<br>"running" → "run" (verb)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Computational Complexity</strong></td>
+                                <td class="badge-good">O(n) per word — very fast</td>
+                                <td class="badge-info">O(n × log|V|) — slower (dictionary lookup)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Speed</strong></td>
+                                <td class="badge-good">~1M words/sec</td>
+                                <td class="badge-bad">~100K words/sec</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Memory</strong></td>
+                                <td class="badge-good">Low (only rules stored)</td>
+                                <td class="badge-bad">Higher (dictionary + POS tagger)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Strengths</strong></td>
+                                <td>• Extremely fast<br>• No external dependencies<br>• Effective for IR systems</td>
+                                <td>• Linguistically accurate<br>• Preserves semantic meaning<br>• Handles irregular
+                                    forms correctly</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Weaknesses</strong></td>
+                                <td>• Over-stemming causes false matches<br>• Produces non-dictionary words<br>• No
+                                    semantic understanding</td>
+                                <td>• Slower processing<br>• Requires POS tags for accuracy<br>• Dictionary may miss
+                                    domain terms</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Best Applications</strong></td>
+                                <td>Search engines, information retrieval, spam filtering, keyword extraction</td>
+                                <td>Sentiment analysis, chatbots, machine translation, clinical/legal NLP</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="verdict"><i class="fas fa-gavel"></i>
+                    <div><strong>Verdict:</strong> Use <strong>Stemming</strong> for large-scale information retrieval
+                        where speed matters. Use <strong>Lemmatization</strong> for tasks requiring semantic precision
+                        and linguistic accuracy.</div>
+                </div>
+            </div>
+
+            <!-- Tab 2: TF vs TF-IDF -->
+            <div id="tab2" class="tab-panel">
+                <h3 style="margin-bottom:1.5rem;font-size:1.3rem;">TF vs TF-IDF</h3>
+                <div class="comp-table-wrap">
+                    <table class="comp-table">
+                        <thead>
+                            <tr>
+                                <th>Criteria</th>
+                                <th class="col-left">Term Frequency (TF)</th>
+                                <th class="col-right">TF-IDF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Formula</strong></td>
+                                <td>TF(t,d) = count(t,d) / |d|</td>
+                                <td>TF-IDF(t,d,D) = TF(t,d) × log(N/df(t))</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Scope</strong></td>
+                                <td>Document-local only</td>
+                                <td>Document-local + Corpus-global</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Common Words</strong></td>
+                                <td class="badge-bad">Favors "the", "is" (high TF)</td>
+                                <td class="badge-good">Automatically downweights them</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Computational Complexity</strong></td>
+                                <td class="badge-good">O(|d|) per document</td>
+                                <td class="badge-info">O(|d| + |D|) — needs corpus stats</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Strengths</strong></td>
+                                <td>• Simple and intuitive<br>• Fast to compute<br>• Good for within-doc analysis</td>
+                                <td>• Balances local and global importance<br>• Better discrimination between docs<br>•
+                                    Industry standard for IR</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Weaknesses</strong></td>
+                                <td>• Cannot distinguish document types<br>• Biased by document length<br>• No corpus
+                                    context</td>
+                                <td>• Still ignores word order<br>• Assumes term independence<br>• Sensitive to corpus
+                                    composition</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Best Applications</strong></td>
+                                <td>Single document keyword extraction, basic text statistics</td>
+                                <td>Search engine ranking, document clustering, text classification, plagiarism
+                                    detection</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="verdict"><i class="fas fa-gavel"></i>
+                    <div><strong>Verdict:</strong> Use <strong>TF-IDF</strong> for almost all information retrieval and
+                        document classification tasks. TF alone is insufficient for cross-document comparison.</div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Word2Vec vs FastText -->
+            <div id="tab3" class="tab-panel">
+                <h3 style="margin-bottom:1.5rem;font-size:1.3rem;">Word2Vec vs FastText</h3>
+                <div class="comp-table-wrap">
+                    <table class="comp-table">
+                        <thead>
+                            <tr>
+                                <th>Criteria</th>
+                                <th class="col-left">Word2Vec</th>
+                                <th class="col-right">FastText</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Definition</strong></td>
+                                <td>Neural word embedding using CBOW or Skip-gram</td>
+                                <td>Extension using character n-gram representations</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Working Mechanism</strong></td>
+                                <td>Learns word vectors by predicting context/target. Each word has a single vector.
+                                </td>
+                                <td>Represents words as sum of word vector + character n-gram vectors. Shares subword
+                                    info.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>OOV Handling</strong></td>
+                                <td class="badge-bad">Cannot handle OOV (random vector)</td>
+                                <td class="badge-good">Handles OOV via subword composition</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Model Size</strong></td>
+                                <td class="badge-good">Smaller (only word vectors)</td>
+                                <td class="badge-bad">Larger (word + n-gram vectors)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Training Speed</strong></td>
+                                <td>Faster (Python gensim)</td>
+                                <td>Highly optimized C++ implementation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Strengths</strong></td>
+                                <td>• Better semantic relationships<br>• Smaller footprint<br>• Mature ecosystem
+                                    (gensim)</td>
+                                <td>• Handles OOV and rare words<br>• Better for morphologically rich languages<br>•
+                                    Built-in text classifier</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Weaknesses</strong></td>
+                                <td>• Single vector per word (polysemy)<br>• No subword information<br>• Poor for rare
+                                    words</td>
+                                <td>• Slightly worse semantic performance<br>• Subword noise for short words<br>• Still
+                                    context-independent</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Best Applications</strong></td>
+                                <td>General English NLP, semantic similarity, recommendation systems</td>
+                                <td>Multilingual apps, morphologically complex languages, specialized domains</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="verdict"><i class="fas fa-gavel"></i>
+                    <div><strong>Verdict:</strong> Use <strong>Word2Vec</strong> for general-purpose English NLP. Use
+                        <strong>FastText</strong> for multilingual applications, morphologically complex languages, or
+                        domains with many rare/technical terms.</div>
+                </div>
+            </div>
+
+            <!-- Tab 4: Statistical vs Neural -->
+            <div id="tab4" class="tab-panel">
+                <h3 style="margin-bottom:1.5rem;font-size:1.3rem;">Statistical vs Neural Language Models</h3>
+                <div class="comp-table-wrap">
+                    <table class="comp-table">
+                        <thead>
+                            <tr>
+                                <th>Criteria</th>
+                                <th class="col-left">Statistical (N-gram)</th>
+                                <th class="col-right">Neural (RNN/Transformer)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Definition</strong></td>
+                                <td>Probability models based on observed word frequencies</td>
+                                <td>Deep learning models learning distributed representations</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Working Mechanism</strong></td>
+                                <td>Count-based frequency estimation with smoothing</td>
+                                <td>Neural network forward passes with backpropagation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Data Requirements</strong></td>
+                                <td class="badge-good">Works with limited data</td>
+                                <td class="badge-bad">Requires large corpora</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Interpretability</strong></td>
+                                <td class="badge-good">High — easy to debug</td>
+                                <td class="badge-bad">Low — black-box nature</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Long-range Dependencies</strong></td>
+                                <td class="badge-bad">Cannot capture</td>
+                                <td class="badge-good">Captures via attention/LSTM</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Strengths</strong></td>
+                                <td>• Interpretable and debuggable<br>• Fast inference<br>• No GPU required<br>• Easy to
+                                    implement</td>
+                                <td>• Semantic generalization<br>• Transfer learning capability<br>• State-of-the-art
+                                    performance<br>• Handles unseen combinations</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Weaknesses</strong></td>
+                                <td>• Data sparsity (zero probabilities)<br>• No semantic understanding<br>• Exponential
+                                    storage growth<br>• Limited context window</td>
+                                <td>• Computationally expensive<br>• Requires large training data<br>• Environmental
+                                    impact<br>• Hallucination risks</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Best Applications</strong></td>
+                                <td>Spell checkers, keyboard autocomplete, resource-constrained environments</td>
+                                <td>Machine translation, chatbots, text summarization, code generation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="verdict"><i class="fas fa-gavel"></i>
+                    <div><strong>Verdict:</strong> Use <strong>Statistical models</strong> for resource-constrained,
+                        interpretable, or small-data scenarios. Use <strong>Neural models</strong> for tasks requiring
+                        deep semantic understanding.</div>
+                </div>
+            </div>
+
+            <!-- Tab 5: One-Hot vs Embeddings -->
+            <div id="tab5" class="tab-panel">
+                <h3 style="margin-bottom:1.5rem;font-size:1.3rem;">One-Hot Encoding vs Word Embeddings</h3>
+                <div class="comp-table-wrap">
+                    <table class="comp-table">
+                        <thead>
+                            <tr>
+                                <th>Criteria</th>
+                                <th class="col-left">One-Hot Encoding</th>
+                                <th class="col-right">Word Embeddings</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Dimensionality</strong></td>
+                                <td class="badge-bad">|V| (10K–1M+)</td>
+                                <td class="badge-good">Fixed small (50–1024)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sparsity</strong></td>
+                                <td class="badge-bad">Extremely sparse (99.99% zeros)</td>
+                                <td class="badge-good">Dense (all non-zero)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Semantic Info</strong></td>
+                                <td class="badge-bad">None — purely symbolic</td>
+                                <td class="badge-good">Rich — captures meaning, analogy</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Memory Efficiency</strong></td>
+                                <td class="badge-bad">Very poor</td>
+                                <td class="badge-good">Excellent</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Generalization</strong></td>
+                                <td class="badge-bad">None</td>
+                                <td class="badge-good">Strong — similar words cluster</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Training</strong></td>
+                                <td class="badge-good">None required</td>
+                                <td class="badge-bad">Requires large corpus + time</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Strengths</strong></td>
+                                <td>• Simple and unambiguous<br>• No implied ordinal relationship<br>• Works with any
+                                    vocabulary</td>
+                                <td>• Captures semantic relationships<br>• Enables similarity queries<br>• Compact
+                                    representation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Weaknesses</strong></td>
+                                <td>• Curse of dimensionality<br>• No semantic meaning<br>• Cannot handle OOV</td>
+                                <td>• Requires training data<br>• Polysemy issue<br>• Static for non-contextual</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Best Applications</strong></td>
+                                <td>Very small vocabularies, baseline experiments, categorical features</td>
+                                <td>All modern NLP: search, classification, translation, generation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="verdict"><i class="fas fa-gavel"></i>
+                    <div><strong>Verdict:</strong> <strong>One-Hot Encoding</strong> is obsolete for NLP. <strong>Word
+                            Embeddings</strong> are the universal standard for all production NLP systems.</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    
+<!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></div>
+            <div class="footer-info">
+                <p>Shah & Anchor Kutchhi Engineering College</p>
+                <p>Autonomous Institute Affiliated to University of Mumbai</p>
+                <p>Bestowed with the University of Mumbai's Best College Honor A.Y. 2024-25</p>
+            </div>
+            <div><a href="https://www.sakec.ac.in" target="_blank" class="footer-link"><i class="fas fa-globe"></i>
+                    www.sakec.ac.in</a></div>
+        </div>
+        <div class="footer-bottom">
+            <p> CMCOR1PE301.1 | A.Y. 2026-27 | TY B.Tech | Semester V</p>
+            <p class="ai-note"><i class="fas fa-robot"></i> AI-Assisted Content Generation Declared | All External
+                Sources Cited | Academic Integrity Maintained</p>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i
+            class="fas fa-arrow-up"></i></button>
+
+    <!-- Concept Card Full-Details Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box" id="modalBox"></div>
+    </div>
+
+    <script src="../script.js" defer></script>
+</body>
+
+</html>

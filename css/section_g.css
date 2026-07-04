@@ -1,0 +1,48 @@
+/* ===== CONTRIBUTION MATRIX ===== */
+.matrix-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+}
+
+.matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #FFFDFB;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+}
+
+.matrix-table th {
+    background: #F3E6D8;
+    color: var(--dark);
+    padding: 1.25rem;
+    text-align: left;
+    font-weight: 750;
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+.matrix-table td {
+    padding: 1.25rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--dark);
+    opacity: 0.85;
+}
+
+.matrix-table tr:last-child td {
+    border-bottom: none;
+}
+
+.matrix-table tr:nth-child(even) {
+    background: #FAF6F2;
+}
+
+.matrix-table tr:hover {
+    background: #F7EFE9;
+}
+
+.matrix-table td:first-child {
+    font-weight: 700;
+    color: var(--dark);
+}

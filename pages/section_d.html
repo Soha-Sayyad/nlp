@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-World Applications | NLP Repository</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/section_d.css">
+    <base target="_blank">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="../index.html" target="_self" class="nav-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></a>
+                <ul class="nav-links" id="navLinks"> <li><a href="../index.html" target="_self" class="">Home</a></li> <li><a href="../index.html#concepts" target="_self" class="">Concepts</a></li> <li><a href="../index.html#comparisons" target="_self" class="">Comparisons</a></li> <li><a href="../index.html#workflows" target="_self" class="">Workflows</a></li> <li><a href="../index.html#applications" target="_self" class="active">Applications</a></li> <li><a href="../index.html#research" target="_self" class="">Research</a></li> <li><a href="../index.html#sustainability" target="_self" class="">Sustainability</a></li> <li><a href="../index.html#contributions" target="_self" class="">Contributions</a></li> <li><a href="../index.html#reflections" target="_self" class="">Reflections</a></li> </ul>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+    </nav>
+
+<!-- Section D: Real-World Applications -->
+    <section id="applications" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label"><i class="fas fa-rocket"></i> Section D</div>
+                <h2 class="section-title">Real-World Applications</h2>
+                <p class="section-desc">NLP applications where Week 1 concepts are foundational, with explanations of
+                    relevant techniques, necessity, and expected benefits.</p>
+            </div>
+
+            <div class="app-grid">
+                <div class="app-card">
+                    <div class="app-top">
+                        <div class="app-icon-box search"><i class="fas fa-search"></i></div>
+                        <div class="app-title">Search Engines</div>
+                    </div>
+                    <div class="app-body">
+                        <div class="app-field"><strong>Relevant Concepts</strong>
+                            <p>Tokenization, Stop-word Removal, TF-IDF, Word Embeddings, BERT</p>
+                        </div>
+                        <div class="app-field"><strong>Why Needed</strong>
+                            <p>Must understand queries and match to relevant documents. Raw text matching fails due to
+                                synonymy and polysemy.</p>
+                        </div>
+                        <div class="app-field"><strong>Expected Benefits</strong>
+                            <p>TF-IDF ensures distinctive query terms rank higher; embeddings enable semantic search
+                                beyond keywords; BERT understands query context (e.g., "jaguar" as animal vs. car).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card">
+                    <div class="app-top">
+                        <div class="app-icon-box chat"><i class="fas fa-robot"></i></div>
+                        <div class="app-title">Chatbots & Conversational AI</div>
+                    </div>
+                    <div class="app-body">
+                        <div class="app-field"><strong>Relevant Concepts</strong>
+                            <p>Lemmatization, Word Embeddings, Transformers, Contextual Embeddings, Intent
+                                Classification</p>
+                        </div>
+                        <div class="app-field"><strong>Why Needed</strong>
+                            <p>Must parse user intent, maintain conversation context, and generate coherent responses
+                                across multi-turn dialogues.</p>
+                        </div>
+                        <div class="app-field"><strong>Expected Benefits</strong>
+                            <p>Embeddings map similar intents together; Transformers maintain context across turns;
+                                GPT-4 generates human-like responses at scale.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card">
+                    <div class="app-top">
+                        <div class="app-icon-box sentiment"><i class="fas fa-smile"></i></div>
+                        <div class="app-title">Sentiment Analysis</div>
+                    </div>
+                    <div class="app-body">
+                        <div class="app-field"><strong>Relevant Concepts</strong>
+                            <p>Text Cleaning, Lemmatization, Contextual Embeddings, TF-IDF</p>
+                        </div>
+                        <div class="app-field"><strong>Why Needed</strong>
+                            <p>Requires clean text to identify opinion-bearing words. Lemmatization preserves negation.
+                                Contextual embeddings distinguish slang from literal meaning.</p>
+                        </div>
+                        <div class="app-field"><strong>Expected Benefits</strong>
+                            <p>Automated analysis of millions of reviews; real-time brand monitoring; feature-specific
+                                sentiment extraction (e.g., "battery life" → positive).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card">
+                    <div class="app-top">
+                        <div class="app-icon-box translate"><i class="fas fa-language"></i></div>
+                        <div class="app-title">Machine Translation</div>
+                    </div>
+                    <div class="app-body">
+                        <div class="app-field"><strong>Relevant Concepts</strong>
+                            <p>Subword Tokenization (BPE/SentencePiece), Neural LMs, Attention, Contextual Embeddings
+                            </p>
+                        </div>
+                        <div class="app-field"><strong>Why Needed</strong>
+                            <p>Requires understanding source semantics and generating target text. Subword tokenization
+                                handles rare words across languages.</p>
+                        </div>
+                        <div class="app-field"><strong>Expected Benefits</strong>
+                            <p>Near-human quality for many language pairs; real-time translation between 100+ languages;
+                                proper handling of technical terms and names.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card">
+                    <div class="app-top">
+                        <div class="app-icon-box summarize"><i class="fas fa-compress-alt"></i></div>
+                        <div class="app-title">Text Summarization</div>
+                    </div>
+                    <div class="app-body">
+                        <div class="app-field"><strong>Relevant Concepts</strong>
+                            <p>Sentence Segmentation, TF-IDF, Extractive vs. Abstractive, BART/T5/PEGASUS</p>
+                        </div>
+                        <div class="app-field"><strong>Why Needed</strong>
+                            <p>Must identify salient information and condense it. TF-IDF scores sentence importance;
+                                abstractive models generate novel summary sentences.</p>
+                        </div>
+                        <div class="app-field"><strong>Expected Benefits</strong>
+                            <p>Condense 10-page documents to 1-paragraph summaries; process thousands of articles
+                                automatically; generate fluent, connected summaries via T5.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-card">
+                    <div class="app-top">
+                        <div class="app-icon-box clinical"><i class="fas fa-heartbeat"></i></div>
+                        <div class="app-title">Clinical NLP</div>
+                    </div>
+                    <div class="app-body">
+                        <div class="app-field"><strong>Relevant Concepts</strong>
+                            <p>Text Cleaning (medical abbreviations), Lemmatization, NER, BioBERT/ClinicalBERT</p>
+                        </div>
+                        <div class="app-field"><strong>Why Needed</strong>
+                            <p>Medical records contain noisy, abbreviated text with life-critical information. Precision
+                                is paramount.</p>
+                        </div>
+                        <div class="app-field"><strong>Expected Benefits</strong>
+                            <p>Accurate extraction of diagnoses and medications; automated ICD-10 coding; large-scale
+                                EHR analysis for drug discovery; real-time drug interaction alerts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+<!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></div>
+            <div class="footer-info">
+                <p>Shah & Anchor Kutchhi Engineering College</p>
+                <p>Autonomous Institute Affiliated to University of Mumbai</p>
+                <p>Bestowed with the University of Mumbai's Best College Honor A.Y. 2024-25</p>
+            </div>
+            <div><a href="https://www.sakec.ac.in" target="_blank" class="footer-link"><i class="fas fa-globe"></i>
+                    www.sakec.ac.in</a></div>
+        </div>
+        <div class="footer-bottom">
+            <p> CMCOR1PE301.1 | A.Y. 2026-27 | TY B.Tech | Semester V</p>
+            <p class="ai-note"><i class="fas fa-robot"></i> AI-Assisted Content Generation Declared | All External
+                Sources Cited | Academic Integrity Maintained</p>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i
+            class="fas fa-arrow-up"></i></button>
+
+    <!-- Concept Card Full-Details Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box" id="modalBox"></div>
+    </div>
+
+    <script src="../script.js" defer></script>
+</body>
+
+</html>
