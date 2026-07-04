@@ -63,7 +63,21 @@
     position: relative;
     overflow: hidden;
 }
+.card-illustration {
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255,255,255,0.4);
+    border-bottom: 1px solid var(--border);
+}
 
+.card-illustration img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 .card-header::before {
     content: '';
     position: absolute;
