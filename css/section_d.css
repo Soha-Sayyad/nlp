@@ -1,0 +1,103 @@
+/* ===== APPLICATIONS ===== */
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.app-card {
+    background: #FFFDFB;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.app-top {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+    background: #FAF8F5;
+}
+
+.app-icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: white;
+    box-shadow: 0 4px 10px rgba(58, 46, 43, 0.05);
+}
+
+.app-icon-box.search {
+    background: linear-gradient(135deg, #ECA183, #D9735E);
+}
+
+.app-icon-box.chat {
+    background: linear-gradient(135deg, #B85B46, #D9735E);
+}
+
+.app-icon-box.sentiment {
+    background: linear-gradient(135deg, #8E9A70, #738057);
+}
+
+.app-icon-box.translate {
+    background: linear-gradient(135deg, #DCAE79, #C89961);
+}
+
+.app-icon-box.summarize {
+    background: linear-gradient(135deg, #C55E57, #A34842);
+}
+
+.app-icon-box.clinical {
+    background: linear-gradient(135deg, #8F7D93, #6E5D72);
+}
+
+.app-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.155rem;
+    font-weight: 750;
+    color: var(--dark);
+}
+
+.app-body {
+    padding: 1.5rem;
+}
+
+.app-field {
+    margin-bottom: 0.85rem;
+}
+
+.app-field:last-child {
+    margin-bottom: 0;
+}
+
+.app-field strong {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--primary);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.app-field p {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--dark);
+    opacity: 0.85;
+    line-height: 1.6;
+}

@@ -1,0 +1,196 @@
+/* ===== WORKFLOWS ===== */
+.workflow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.workflow-card {
+    background: #FFFDFB;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.workflow-header {
+    padding: 1.25rem 1.5rem;
+    background: #F3E6D8;
+    /* Warm champagne banner */
+    color: var(--dark);
+    border-bottom: 1px solid var(--border);
+}
+
+.workflow-header h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.155rem;
+    font-weight: 750;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--dark);
+}
+
+.workflow-header h3 i {
+    color: var(--accent);
+}
+
+.workflow-body {
+    padding: 1.5rem;
+}
+
+.pipeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.pipe-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.875rem 1rem;
+    background: var(--light);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.pipe-step:hover {
+    border-color: var(--primary);
+    background: rgba(184, 91, 70, 0.04);
+}
+
+.pipe-step.final {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border-color: transparent;
+    font-weight: 600;
+}
+
+.step-num {
+    width: 28px;
+    height: 28px;
+    background: white;
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    box-shadow: var(--shadow);
+}
+
+.pipe-step.final .step-num {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.step-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.step-detail {
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-top: 0.15rem;
+}
+
+.pipe-step.final .step-detail {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.pipe-arrow {
+    text-align: center;
+    color: var(--accent);
+    font-size: 1.2rem;
+    padding: 0.25rem 0;
+}
+
+.evo-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+}
+
+.evo-stage {
+    flex: 1;
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    border: 2px solid var(--border);
+    position: relative;
+    background: #FFFDFB;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.evo-stage:first-child {
+    border-radius: var(--radius) 0 0 var(--radius);
+}
+
+.evo-stage:last-child {
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.evo-stage.active {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(184, 91, 70, 0.12);
+}
+
+.evo-stage:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid var(--border);
+    z-index: 2;
+}
+
+.evo-stage.active:not(:last-child)::after {
+    border-left-color: var(--accent);
+}
+
+.evo-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    opacity: 0.7;
+}
+
+.evo-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+}
+
+.evo-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.evo-item {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.75rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+}
+
+.evo-stage:not(.active) .evo-item {
+    background: #FAF6F2;
+    color: var(--dark);
+    border: 1px solid var(--border);
+}

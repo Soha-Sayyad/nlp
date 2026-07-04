@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Reflection Notes | NLP Repository</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/section_h.css">
+    <base target="_blank">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="../index.html" target="_self" class="nav-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></a>
+                <ul class="nav-links" id="navLinks"> <li><a href="../index.html" target="_self" class="">Home</a></li> <li><a href="../index.html#concepts" target="_self" class="">Concepts</a></li> <li><a href="../index.html#comparisons" target="_self" class="">Comparisons</a></li> <li><a href="../index.html#workflows" target="_self" class="">Workflows</a></li> <li><a href="../index.html#applications" target="_self" class="">Applications</a></li> <li><a href="../index.html#research" target="_self" class="">Research</a></li> <li><a href="../index.html#sustainability" target="_self" class="">Sustainability</a></li> <li><a href="../index.html#contributions" target="_self" class="">Contributions</a></li> <li><a href="../index.html#reflections" target="_self" class="active">Reflections</a></li> </ul>
+        <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+    </nav>
+
+<!-- Section H: Reflections -->
+    <section id="reflections" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label"><i class="fas fa-pen-fancy"></i> Section H</div>
+                <h2 class="section-title">Reflection Notes</h2>
+                <p class="section-desc">Critical reflections on learning outcomes, challenges faced, and future
+                    applications of Week 1 NLP concepts.</p>
+            </div>
+
+            <div class="reflection-grid">
+                <div class="reflection-card">
+                    <div class="reflection-header">
+                        <div class="reflection-avatar">A</div>
+                        <div class="reflection-meta">
+                            <h4>Reflection Note A — Student A</h4>
+                            <span>Roll No. 101 | Concept Cards & Comparisons Lead</span>
+                        </div>
+                    </div>
+                    <div class="reflection-body">
+                        <p>Working on this Knowledge Artifact Repository deepened my understanding of how NLP
+                            preprocessing and representation techniques form an <span
+                                class="highlight-text">interconnected pipeline</span> rather than isolated steps.
+                            Initially, I viewed tokenization and vectorization as mechanical procedures, but researching
+                            their interactions revealed critical dependencies—poor tokenization directly degrades
+                            embedding quality, and preprocessing choices must align with the downstream model
+                            architecture.</p>
+                        <p>Creating the <span class="highlight-text">Word2Vec vs FastText</span> comparison was
+                            particularly illuminating. I discovered that the "better" model depends entirely on the use
+                            case—Word2Vec excels at semantic relationships in English, while FastText's subword handling
+                            makes it indispensable for morphologically rich languages. This nuanced understanding would
+                            not have emerged from textbook reading alone.</p>
+                        <p>The workflow diagrams forced me to think systematically about pipeline design. I realized
+                            that preprocessing is not one-size-fits-all—a sentiment analysis pipeline must preserve
+                            negation words during stop-word removal, while an information retrieval pipeline might
+                            prioritize aggressive stemming for speed.</p>
+                        <p>Looking forward, I plan to explore how these Week 1 foundations enable modern LLMs.
+                            Understanding that BERT's contextual embeddings are built upon the same tokenization and
+                            attention principles we studied makes the field feel accessible rather than magical. I
+                            intend to implement these concepts in a mini-project: building a semantic search engine for
+                            academic papers using TF-IDF and sentence embeddings.</p>
+                    </div>
+                </div>
+
+                <div class="reflection-card">
+                    <div class="reflection-header">
+                        <div class="reflection-avatar">B</div>
+                        <div class="reflection-meta">
+                            <h4>Reflection Note B — Student B</h4>
+                            <span>Roll No. 102 | Preprocessing & Workflows Lead</span>
+                        </div>
+                    </div>
+                    <div class="reflection-body">
+                        <p>This repository project transformed my perspective on NLP from <span
+                                class="highlight-text">"using black-box libraries"</span> to "understanding why each
+                            step matters." The Stemming vs Lemmatization comparison challenged my assumption that "more
+                            accurate is always better"—I now appreciate that stemming's speed advantage makes it the
+                            right choice for search engines processing billions of queries, while lemmatization is
+                            essential for clinical NLP where "univers" vs "university" could change a diagnosis.</p>
+                        <p>Designing the <span class="highlight-text">Complete Preprocessing Pipeline</span> diagram
+                            revealed the critical importance of step ordering. I initially placed stop-word removal
+                            before tokenization, which would have been impossible. This mistake taught me that pipeline
+                            design requires both theoretical knowledge and practical implementation awareness. The order
+                            of operations matters significantly—encoding normalization must precede tokenization, and
+                            lemmatization requires POS tags that can only be generated from properly tokenized input.
+                        </p>
+                        <p>Researching BERT and Transformer architectures for the concept card was the most challenging
+                            yet rewarding part. Understanding how self-attention replaces sequential processing with
+                            parallel computation helped me grasp why modern NLP is so much faster than RNN-based
+                            approaches. The mathematical elegance of the attention
+                            mechanism—softmax(QK<sup>T</sup>/√d<sub>k</sub>)V—belies its profound impact.</p>
+                        <p>I was particularly struck by the <span class="highlight-text">sustainability
+                                implications</span> of our research. Learning that training GPT-3 emitted 552 tons of
+                            CO₂ made me critically evaluate whether every large model is necessary. The emergence of
+                            efficient architectures like Mixture of Experts and model distillation techniques gives me
+                            hope that the field is maturing toward responsible innovation.</p>
+                        <p>For future application, I plan to build a multilingual chatbot for rural healthcare in India
+                            using FastText embeddings and lightweight Transformer models. This would directly apply our
+                            Week 1 knowledge to a real societal need—providing health information in regional languages
+                            where medical professionals are scarce.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+<!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></div>
+            <div class="footer-info">
+                <p>Shah & Anchor Kutchhi Engineering College</p>
+                <p>Autonomous Institute Affiliated to University of Mumbai</p>
+                <p>Bestowed with the University of Mumbai's Best College Honor A.Y. 2024-25</p>
+            </div>
+            <div><a href="https://www.sakec.ac.in" target="_blank" class="footer-link"><i class="fas fa-globe"></i>
+                    www.sakec.ac.in</a></div>
+        </div>
+        <div class="footer-bottom">
+            <p> CMCOR1PE301.1 | A.Y. 2026-27 | TY B.Tech | Semester V</p>
+            <p class="ai-note"><i class="fas fa-robot"></i> AI-Assisted Content Generation Declared | All External
+                Sources Cited | Academic Integrity Maintained</p>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i
+            class="fas fa-arrow-up"></i></button>
+
+    <!-- Concept Card Full-Details Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box" id="modalBox"></div>
+    </div>
+
+    <script src="../script.js" defer></script>
+</body>
+
+</html>
