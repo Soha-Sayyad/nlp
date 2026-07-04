@@ -1,161 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real-World Applications | NLP Repository</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/section_d.css">
     <base target="_blank">
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <a href="../index.html" target="_self" class="nav-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></a>
-                <ul class="nav-links" id="navLinks"> <li><a href="../index.html" target="_self" class="">Home</a></li> <li><a href="../index.html#concepts" target="_self" class="">Concepts</a></li> <li><a href="../index.html#comparisons" target="_self" class="">Comparisons</a></li> <li><a href="../index.html#workflows" target="_self" class="">Workflows</a></li> <li><a href="../index.html#applications" target="_self" class="active">Applications</a></li> <li><a href="../index.html#research" target="_self" class="">Research</a></li> <li><a href="../index.html#sustainability" target="_self" class="">Sustainability</a></li> <li><a href="../index.html#contributions" target="_self" class="">Contributions</a></li> <li><a href="../index.html#reflections" target="_self" class="">Reflections</a></li> </ul>
+        <a href="../index.html" target="_self" class="nav-brand"><i class="fas fa-brain"></i><span>NLP
+                Repository</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../index.html" target="_self" class="">Home</a></li>
+            <li><a href="../index.html#concepts" target="_self" class="">Concepts</a></li>
+            <li><a href="../index.html#comparisons" target="_self" class="">Comparisons</a></li>
+            <li><a href="../index.html#workflows" target="_self" class="">Workflows</a></li>
+            <li><a href="../index.html#applications" target="_self" class="active">Applications</a></li>
+            <li><a href="../index.html#research" target="_self" class="">Research</a></li>
+            <li><a href="../index.html#sustainability" target="_self" class="">Sustainability</a></li>
+            <li><a href="../index.html#contributions" target="_self" class="">Contributions</a></li>
+            <li><a href="../index.html#reflections" target="_self" class="">Reflections</a></li>
+        </ul>
         <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
     </nav>
 
-<!-- Section D: Real-World Applications -->
+    <!-- Section D: Real-World Applications -->
     <section id="applications" class="section section-alt">
         <div class="container">
             <div class="section-header">
                 <div class="section-label"><i class="fas fa-rocket"></i> Section D</div>
                 <h2 class="section-title">Real-World Applications</h2>
-                <p class="section-desc">NLP applications where Week 1 concepts are foundational, with explanations of
-                    relevant techniques, necessity, and expected benefits.</p>
+                <p class="section-desc">Key industrial applications of Natural Language Processing, showcasing active
+                    pipelines and baseline impact metrics.</p>
             </div>
 
             <div class="app-grid">
-                <div class="app-card">
-                    <div class="app-top">
-                        <div class="app-icon-box search"><i class="fas fa-search"></i></div>
-                        <div class="app-title">Search Engines</div>
+                <!-- Card 1: Search Engines -->
+                <div class="app-card search-theme">
+                    <div class="app-header">
+                        <div class="app-icon-bg"><i class="fas fa-search"></i></div>
+                        <div class="app-header-text">
+                            <h3>Search Engines</h3>
+                            <p class="app-subtitle">Finds relevant documents from millions of sources using semantic
+                                search.</p>
+                        </div>
                     </div>
-                    <div class="app-body">
-                        <div class="app-field"><strong>Relevant Concepts</strong>
-                            <p>Tokenization, Stop-word Removal, TF-IDF, Word Embeddings, BERT</p>
+
+                    <div class="app-body-sections">
+                        <!-- Key NLP Concepts Column -->
+                        <div class="app-body-col concepts-col">
+                            <h4>Key NLP Concepts</h4>
+                            <div class="app-tags">
+                                <span class="app-tag">Tokenization</span>
+                                <span class="app-tag">Embeddings</span>
+                                <span class="app-tag">BERT</span>
+                                <span class="app-tag">TF-IDF</span>
+                            </div>
                         </div>
-                        <div class="app-field"><strong>Why Needed</strong>
-                            <p>Must understand queries and match to relevant documents. Raw text matching fails due to
-                                synonymy and polysemy.</p>
+
+                        <!-- NLP Pipeline Column -->
+                        <div class="app-body-col workflow-col">
+                            <h4>NLP Pipeline</h4>
+                            <div class="workflow-steps">
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-user"></i></div>
+                                    <div class="step-label">User Query</div>
+                                </div>
+                                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-cut"></i></div>
+                                    <div class="step-label">Tokenize</div>
+                                </div>
+                                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-brain"></i></div>
+                                    <div class="step-label">Embeddings</div>
+                                </div>
+                                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-search"></i></div>
+                                    <div class="step-label">Search Index</div>
+                                </div>
+                                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-file-alt"></i></div>
+                                    <div class="step-label">Ranked Results</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="app-field"><strong>Expected Benefits</strong>
-                            <p>TF-IDF ensures distinctive query terms rank higher; embeddings enable semantic search
-                                beyond keywords; BERT understands query context (e.g., "jaguar" as animal vs. car).</p>
+
+                        <!-- Impact Column -->
+                        <div class="app-body-col impact-col">
+                            <h4>Impact</h4>
+                            <div class="impact-list">
+                                <div class="impact-item">
+                                    <div class="impact-icon"><i class="fas fa-rocket"></i></div>
+                                    <div class="impact-text">Semantic Search</div>
+                                </div>
+                                <div class="impact-item">
+                                    <div class="impact-icon"><i class="fas fa-bullseye"></i></div>
+                                    <div class="impact-text">Better Accuracy</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="app-card">
-                    <div class="app-top">
-                        <div class="app-icon-box chat"><i class="fas fa-robot"></i></div>
-                        <div class="app-title">Chatbots & Conversational AI</div>
+                <!-- Card 2: Chatbots & Conversational AI -->
+                <div class="app-card chat-theme">
+                    <div class="app-header">
+                        <div class="app-icon-bg"><i class="fas fa-smile"></i></div>
+                        <div class="app-header-text">
+                            <h3>Chatbots & Conversational AI</h3>
+                            <p class="app-subtitle">Understands intent to generate human-like contextual responses in
+                                real time.</p>
+                        </div>
                     </div>
-                    <div class="app-body">
-                        <div class="app-field"><strong>Relevant Concepts</strong>
-                            <p>Lemmatization, Word Embeddings, Transformers, Contextual Embeddings, Intent
-                                Classification</p>
+
+                    <div class="app-body-sections">
+                        <!-- Key Concepts -->
+                        <div class="app-body-col concepts-col">
+                            <h4>Key NLP Concepts</h4>
+                            <div class="app-tags">
+                                <span class="app-tag">Intent Detection</span>
+                                <span class="app-tag">Context Embeddings</span>
+                                <span class="app-tag">Transformers</span>
+                                <span class="app-tag">Entity Recognition</span>
+                            </div>
                         </div>
-                        <div class="app-field"><strong>Why Needed</strong>
-                            <p>Must parse user intent, maintain conversation context, and generate coherent responses
-                                across multi-turn dialogues.</p>
+
+                        <!-- NLP Pipeline -->
+                        <div class="app-body-col workflow-col">
+                            <h4>NLP Pipeline</h4>
+                            <div class="workflow-steps">
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-comment-dots"></i></div>
+                                    <div class="step-label">User Message</div>
+                                </div>
+                                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-robot"></i></div>
+                                    <div class="step-label">Understand Intent</div>
+                                </div>
+                                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-brain"></i></div>
+                                    <div class="step-label">Generate Response</div>
+                                </div>
+                                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-paper-plane"></i></div>
+                                    <div class="step-label">Reply Sent</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="app-field"><strong>Expected Benefits</strong>
-                            <p>Embeddings map similar intents together; Transformers maintain context across turns;
-                                GPT-4 generates human-like responses at scale.</p>
+
+                        <!-- Impact -->
+                        <div class="app-body-col impact-col">
+                            <h4>Impact</h4>
+                            <div class="impact-list">
+                                <div class="impact-item">
+                                    <div class="impact-icon"><i class="far fa-smile-beam"></i></div>
+                                    <div class="impact-text">Better Engagement</div>
+                                </div>
+                                <div class="impact-item">
+                                    <div class="impact-icon"><i class="far fa-clock"></i></div>
+                                    <div class="impact-text">24/7 Support</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="app-card">
-                    <div class="app-top">
-                        <div class="app-icon-box sentiment"><i class="fas fa-smile"></i></div>
-                        <div class="app-title">Sentiment Analysis</div>
+                <!-- Card 3: Machine Translation -->
+                <div class="app-card translate-theme">
+                    <div class="app-header">
+                        <div class="app-icon-bg"><i class="fas fa-language"></i></div>
+                        <div class="app-header-text">
+                            <h3>Machine Translation</h3>
+                            <p class="app-subtitle">Translates text between different languages maintaining context and
+                                grammar.</p>
+                        </div>
                     </div>
-                    <div class="app-body">
-                        <div class="app-field"><strong>Relevant Concepts</strong>
-                            <p>Text Cleaning, Lemmatization, Contextual Embeddings, TF-IDF</p>
+
+                    <div class="app-body-sections">
+                        <!-- Key Concepts -->
+                        <div class="app-body-col concepts-col">
+                            <h4>Key NLP Concepts</h4>
+                            <div class="app-tags">
+                                <span class="app-tag">Subword Tokenization</span>
+                                <span class="app-tag">Transformers</span>
+                                <span class="app-tag">Attention</span>
+                                <span class="app-tag">Embeddings</span>
+                            </div>
                         </div>
-                        <div class="app-field"><strong>Why Needed</strong>
-                            <p>Requires clean text to identify opinion-bearing words. Lemmatization preserves negation.
-                                Contextual embeddings distinguish slang from literal meaning.</p>
+
+                        <!-- NLP Pipeline -->
+                        <div class="app-body-col workflow-col">
+                            <h4>NLP Pipeline</h4>
+                            <div class="workflow-steps">
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-file-alt"></i></div>
+                                    <div class="step-label">Source Text</div>
+                                </div>
+                                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-sign-in-alt"></i></div>
+                                    <div class="step-label">Encode Text</div>
+                                </div>
+                                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-sign-out-alt"></i></div>
+                                    <div class="step-label">Decode Text</div>
+                                </div>
+                                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-globe"></i></div>
+                                    <div class="step-label">Translated Output</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="app-field"><strong>Expected Benefits</strong>
-                            <p>Automated analysis of millions of reviews; real-time brand monitoring; feature-specific
-                                sentiment extraction (e.g., "battery life" → positive).</p>
+
+                        <!-- Impact -->
+                        <div class="app-body-col impact-col">
+                            <h4>Impact</h4>
+                            <div class="impact-list">
+                                <div class="impact-item">
+                                    <div class="impact-icon"><i class="fas fa-globe-americas"></i></div>
+                                    <div class="impact-text">Universal Reach</div>
+                                </div>
+                                <div class="impact-item">
+                                    <div class="impact-icon"><i class="fas fa-bolt"></i></div>
+                                    <div class="impact-text">Instant Translation</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="app-card">
-                    <div class="app-top">
-                        <div class="app-icon-box translate"><i class="fas fa-language"></i></div>
-                        <div class="app-title">Machine Translation</div>
-                    </div>
-                    <div class="app-body">
-                        <div class="app-field"><strong>Relevant Concepts</strong>
-                            <p>Subword Tokenization (BPE/SentencePiece), Neural LMs, Attention, Contextual Embeddings
-                            </p>
-                        </div>
-                        <div class="app-field"><strong>Why Needed</strong>
-                            <p>Requires understanding source semantics and generating target text. Subword tokenization
-                                handles rare words across languages.</p>
-                        </div>
-                        <div class="app-field"><strong>Expected Benefits</strong>
-                            <p>Near-human quality for many language pairs; real-time translation between 100+ languages;
-                                proper handling of technical terms and names.</p>
+                <!-- Card 4: Clinical NLP -->
+                <div class="app-card clinical-theme">
+                    <div class="app-header">
+                        <div class="app-icon-bg"><i class="fas fa-heartbeat"></i></div>
+                        <div class="app-header-text">
+                            <h3>Clinical NLP</h3>
+                            <p class="app-subtitle">Extracts unstructured medical insights to improve clinical patient
+                                data quality.</p>
                         </div>
                     </div>
-                </div>
 
-                <div class="app-card">
-                    <div class="app-top">
-                        <div class="app-icon-box summarize"><i class="fas fa-compress-alt"></i></div>
-                        <div class="app-title">Text Summarization</div>
-                    </div>
-                    <div class="app-body">
-                        <div class="app-field"><strong>Relevant Concepts</strong>
-                            <p>Sentence Segmentation, TF-IDF, Extractive vs. Abstractive, BART/T5/PEGASUS</p>
+                    <div class="app-body-sections">
+                        <!-- Key Concepts -->
+                        <div class="app-body-col concepts-col">
+                            <h4>Key NLP Concepts</h4>
+                            <div class="app-tags">
+                                <span class="app-tag">Entity Recognition</span>
+                                <span class="app-tag">Text Classification</span>
+                                <span class="app-tag">Negation Detection</span>
+                                <span class="app-tag">Clinical Embeddings</span>
+                            </div>
                         </div>
-                        <div class="app-field"><strong>Why Needed</strong>
-                            <p>Must identify salient information and condense it. TF-IDF scores sentence importance;
-                                abstractive models generate novel summary sentences.</p>
-                        </div>
-                        <div class="app-field"><strong>Expected Benefits</strong>
-                            <p>Condense 10-page documents to 1-paragraph summaries; process thousands of articles
-                                automatically; generate fluent, connected summaries via T5.</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="app-card">
-                    <div class="app-top">
-                        <div class="app-icon-box clinical"><i class="fas fa-heartbeat"></i></div>
-                        <div class="app-title">Clinical NLP</div>
-                    </div>
-                    <div class="app-body">
-                        <div class="app-field"><strong>Relevant Concepts</strong>
-                            <p>Text Cleaning (medical abbreviations), Lemmatization, NER, BioBERT/ClinicalBERT</p>
+                        <!-- NLP Pipeline -->
+                        <div class="app-body-col workflow-col">
+                            <h4>NLP Pipeline</h4>
+                            <div class="workflow-steps">
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-file-medical"></i></div>
+                                    <div class="step-label">Medical Notes</div>
+                                </div>
+                                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-search-plus"></i></div>
+                                    <div class="step-label">Extract Entities</div>
+                                </div>
+                                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-shield-alt"></i></div>
+                                    <div class="step-label">Classify Data</div>
+                                </div>
+                                <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+                                <div class="step">
+                                    <div class="step-icon"><i class="fas fa-clipboard-list"></i></div>
+                                    <div class="step-label">Actionable Insight</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="app-field"><strong>Why Needed</strong>
-                            <p>Medical records contain noisy, abbreviated text with life-critical information. Precision
-                                is paramount.</p>
-                        </div>
-                        <div class="app-field"><strong>Expected Benefits</strong>
-                            <p>Accurate extraction of diagnoses and medications; automated ICD-10 coding; large-scale
-                                EHR analysis for drug discovery; real-time drug interaction alerts.</p>
+
+                        <!-- Impact -->
+                        <div class="app-body-col impact-col">
+                            <h4>Impact</h4>
+                            <div class="impact-list">
+                                <div class="impact-item">
+                                    <div class="impact-icon"><i class="fas fa-stethoscope"></i></div>
+                                    <div class="impact-text">Faster Diagnosis</div>
+                                </div>
+                                <div class="impact-item">
+                                    <div class="impact-icon"><i class="fas fa-chart-line"></i></div>
+                                    <div class="impact-text">Care Efficiency</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Bottom Highlights Banner -->
+            <div class="app-footer-banner">
+                <div class="banner-left"><i class="fas fa-lightbulb"></i></div>
+                <div class="banner-text">NLP transforms unstructured text into meaningful insights, powering smarter
+                    systems and better decisions across industries.</div>
+                <div class="banner-right"><i class="fas fa-magic"></i></div>
             </div>
         </div>
     </section>
 
-    
-<!-- Footer -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></div>
