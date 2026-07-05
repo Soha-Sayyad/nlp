@@ -1,14 +1,12 @@
 /* ===== SUSTAINABILITY & SDG DESIGN ===== */
 .sustainability-content{
-    max-width:900px;
-    margin:0 auto;
+    max-width: none;
+    margin: 0;
 }
 
 .sustainability-content h3{
-    margin-top:40px;
-    margin-bottom:12px;
-    font-size:1.6rem;
-    font-weight:700;
+    border-left:4px solid var(--primary);
+    padding-left:16px;
 }
 
 .sustainability-content p{
