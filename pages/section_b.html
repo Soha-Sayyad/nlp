@@ -63,48 +63,72 @@
                                 <th class="col-right">Lemmatization</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                                <td><strong>Definition</strong></td>
-                                <td><strong>Chops off suffixes</strong> using simple rules to find the root.</td>
-                                <td><strong>Looks up words in a dictionary</strong> to find their actual base form.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Working Mechanism</strong></td>
-                                <td>• Uses basic <strong>chopping rules</strong>.<br>• Doesn’t care about word grammar
-                                    or meaning.</td>
-                                <td>• Does <strong>morphological analysis</strong>.<br>• Checks POS tags and WordNet
-                                    context.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Output Example</strong></td>
-                                <td class="badge-bad">running → <strong>run</strong><br>university →
-                                    <strong>univers</strong> (broken word)
-                                </td>
-                                <td class="badge-good">running → <strong>run</strong> (verb tag)<br>university →
-                                    <strong>university</strong> (valid word)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Computational Complexity</strong></td>
-                                <td class="badge-good"><strong>O(n)</strong> — super fast rule checks</td>
-                                <td class="badge-info"><strong>O(n log |V|)</strong> — slower dictionary searches</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Strengths</strong></td>
-                                <td>• Blazing <strong>fast execution</strong>.<br>• Zero external database
-                                    dependency.<br>• Simple, quick search index builder.</td>
-                                <td>• <strong>100% grammatically correct</strong>.<br>• Keeps semantic meaning
-                                    safe.<br>• Correctly maps irregular verbs.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Weaknesses</strong></td>
-                                <td>• <strong>Over-chopping</strong> merges unrelated words.<br>• Creates weird
-                                    non-words.<br>• Blind to context.</td>
-                                <td>• <strong>Noticeably slower</strong>.<br>• Needs POS tagging to work well.<br>•
-                                    Misses slang or new domain terms.</td>
-                            </tr>
-                        </tbody>
+    <tr>
+        <td><strong>Working Mechanism</strong></td>
+        <td>
+            • Removes prefixes and suffixes using predefined rules.<br>
+            • Produces the root form without considering grammar or context.
+        </td>
+        <td>
+            • Uses morphological analysis and vocabulary lookup.<br>
+            • Considers grammar and context to produce valid dictionary words.
+        </td>
+    </tr>
+
+    <tr>
+        <td><strong>Computational Complexity</strong></td>
+        <td>
+            <strong>O(n)</strong><br>
+            Simple rule-based processing with minimal computation.
+        </td>
+        <td>
+            <strong>O(n log |V|)</strong><br>
+            Requires dictionary searches and linguistic analysis.
+        </td>
+    </tr>
+
+    <tr>
+        <td><strong>Strengths</strong></td>
+        <td>
+            • Fast execution.<br>
+            • Low memory requirements.<br>
+            • Suitable for large-scale text processing.
+        </td>
+        <td>
+            • Produces grammatically correct words.<br>
+            • Preserves semantic meaning.<br>
+            • Handles irregular word forms accurately.
+        </td>
+    </tr>
+
+    <tr>
+        <td><strong>Weaknesses</strong></td>
+        <td>
+            • May generate invalid words.<br>
+            • Ignores context and grammar.<br>
+            • Can over-stem related terms.
+        </td>
+        <td>
+            • Slower than stemming.<br>
+            • Requires linguistic resources.<br>
+            • More computationally expensive.
+        </td>
+    </tr>
+
+    <tr>
+        <td><strong>Suitable Applications</strong></td>
+        <td>
+            Search engines, document indexing, information retrieval systems.
+        </td>
+        <td>
+            Chatbots, sentiment analysis, machine translation, text generation.
+        </td>
+    </tr>
+</tbody>
+
+
                     </table>
                 </div>
                 <div class="verdict"><i class="fas fa-gavel"></i>
@@ -125,47 +149,71 @@
                                 <th class="col-right">TF-IDF</th>
                             </tr>
                         </thead>
-                        <tbody>
 
-                            <tr>
-                                <td><strong>Scope</strong></td>
-                                <td><strong>Single document</strong> (local counts)</td>
-                                <td>Across the <strong>entire corpus</strong> (local vs global ratio)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Common Words</strong></td>
-                                <td class="badge-bad">Favors useless <strong>fillers</strong> (like "the", "and")</td>
-                                <td class="badge-good"><strong>Safely ignores</strong> common filler words</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Computational Complexity</strong></td>
-                                <td class="badge-good"><strong>O(|d|)</strong> — local scan per doc</td>
-                                <td class="badge-info"><strong>O(|d| + |D|)</strong> — needs extra corpus-wide stats
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Strengths</strong></td>
-                                <td>• <strong>Super simple</strong> to write and run.<br>• Quick within-doc
-                                    analysis.<br>• Length-scaled counts.</td>
-                                <td>• Filters out <strong>global noise</strong> words.<br>• Highlights top diagnostic
-                                    words.<br>•
-                                    Gold standard document classifier vector.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Weaknesses</strong></td>
-                                <td>• Fails to identify <strong>word importance</strong>.<br>• Skewed by long
-                                    articles.<br>• Ignores
-                                    global corpus context.</td>
-                                <td>• Blind to <strong>word arrangements</strong>.<br>• Assumes words are
-                                    independent.<br>• Sensitive
-                                    to corpus shifts.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Best Applications</strong></td>
-                                <td>Basic term counters, <strong>single text logs</strong></td>
-                                <td>Web search engines, <strong>document classifier baselines</strong></td>
-                            </tr>
-                        </tbody>
+
+                        <tbody>
+    <tr>
+        <td><strong>Working Mechanism</strong></td>
+        <td>
+            • Counts the frequency of a term within a document.<br>
+            • Higher occurrence results in a higher score.
+        </td>
+        <td>
+            • Combines Term Frequency and Inverse Document Frequency.<br>
+            • Reduces the influence of common words across documents.
+        </td>
+    </tr>
+
+    <tr>
+        <td><strong>Computational Complexity</strong></td>
+        <td>
+            <strong>O(|d|)</strong><br>
+            Requires scanning only the current document.
+        </td>
+        <td>
+            <strong>O(|d| + |D|)</strong><br>
+            Requires document scanning and corpus statistics.
+        </td>
+    </tr>
+
+    <tr>
+        <td><strong>Strengths</strong></td>
+        <td>
+            • Easy to implement.<br>
+            • Fast computation.<br>
+            • Effective for simple frequency analysis.
+        </td>
+        <td>
+            • Highlights important words.<br>
+            • Reduces the effect of common terms.<br>
+            • Widely used in information retrieval.
+        </td>
+    </tr>
+
+    <tr>
+        <td><strong>Weaknesses</strong></td>
+        <td>
+            • Cannot measure word importance.<br>
+            • Gives high scores to common words.<br>
+            • Ignores corpus-level information.
+        </td>
+        <td>
+            • Ignores word order and context.<br>
+            • Requires corpus statistics.<br>
+            • Less effective for semantic understanding.
+        </td>
+    </tr>
+
+    <tr>
+        <td><strong>Suitable Applications</strong></td>
+        <td>
+            Keyword counting, log analysis, basic document statistics.
+        </td>
+        <td>
+            Search engines, document classification, information retrieval.
+        </td>
+    </tr>
+</tbody>
                     </table>
                 </div>
                 <div class="verdict"><i class="fas fa-gavel"></i>
@@ -186,47 +234,73 @@
                                 <th class="col-right">FastText</th>
                             </tr>
                         </thead>
+
+
                         <tbody>
-                            <tr>
-                                <td><strong>Definition</strong></td>
-                                <td>Predicts embeddings using a <strong>window context</strong> (CBOW/Skip-gram).</td>
-                                <td>Extends Word2Vec by learning embeddings for <strong>subword character
-                                        strings</strong>.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Working Mechanism</strong></td>
-                                <td>• Adjusts weights based on adjacent words.<br>• Gives <strong>exactly one vector per
-                                        word</strong>.</td>
-                                <td>• Sums word and character <strong>n-gram vectors</strong>.<br>• Captures subword
-                                    shapes.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>OOV Handling</strong></td>
-                                <td class="badge-bad"><strong>Fails completely</strong> (assigns random vector)</td>
-                                <td class="badge-good"><strong>Guarantees results</strong> by building unseen words from
-                                    subparts</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Model Size</strong></td>
-                                <td class="badge-good"><strong>Very light</strong> (only full words stored)</td>
-                                <td class="badge-bad"><strong>Huge footprint</strong> (stores word + n-gram fragments)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Strengths</strong></td>
-                                <td>• Learns clean <strong>semantic relations</strong>.<br>• Super lightweight
-                                    files.<br>• Mature library libraries.</td>
-                                <td>• Handles <strong>misspellings</strong> and unseen words.<br>• Excels on
-                                    code/medical terms.<br>• Fast built-in classifiers.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Weaknesses</strong></td>
-                                <td>• <strong>Unseen words</strong> crash accuracy.<br>• Blind to word suffixes.<br>•
-                                    Fails on polysemy.</td>
-                                <td>• <strong>Heavy memory requirements</strong>.<br>• Adds subword noise on small
-                                    words.<br>• No contextual meanings.</td>
-                            </tr>
-                        </tbody>
+    <tr>
+        <td><strong>Working Mechanism</strong></td>
+        <td>
+            • Learns word representations from surrounding context words.<br>
+            • Generates a single vector for each word.
+        </td>
+        <td>
+            • Extends Word2Vec using character-level n-grams.<br>
+            • Generates vectors using both words and subword information.
+        </td>
+    </tr>
+
+    <tr>
+        <td><strong>Computational Complexity</strong></td>
+        <td>
+            <strong>O(V × D)</strong><br>
+            Depends on vocabulary size and embedding dimensions.
+        </td>
+        <td>
+            <strong>O((V + N-grams) × D)</strong><br>
+            Additional computation due to character n-grams.
+        </td>
+    </tr>
+
+    <tr>
+        <td><strong>Strengths</strong></td>
+        <td>
+            • Captures semantic relationships effectively.<br>
+            • Lightweight model size.<br>
+            • Fast training and inference.
+        </td>
+        <td>
+            • Handles unseen and rare words.<br>
+            • Works well with spelling variations.<br>
+            • Effective for morphologically rich languages.
+        </td>
+    </tr>
+
+    <tr>
+        <td><strong>Weaknesses</strong></td>
+        <td>
+            • Cannot handle out-of-vocabulary words well.<br>
+            • Ignores subword information.<br>
+            • One vector per word regardless of variations.
+        </td>
+        <td>
+            • Larger memory requirements.<br>
+            • Longer training time.<br>
+            • More complex model structure.
+        </td>
+    </tr>
+
+    <tr>
+        <td><strong>Suitable Applications</strong></td>
+        <td>
+            Recommendation systems, semantic similarity, news classification.
+        </td>
+        <td>
+            Spell correction, multilingual NLP, medical and technical text processing.
+        </td>
+    </tr>
+</tbody>
+
+
                     </table>
                 </div>
                 <div class="verdict"><i class="fas fa-gavel"></i>
@@ -236,128 +310,9 @@
                 </div>
             </div>
 
-            <!-- Tab 4: Statistical vs Neural LMs -->
-            <div id="tab4" class="tab-panel">
-                <h3 style="margin-bottom:1.5rem;font-size:1.3rem;">Statistical vs Neural Language Models</h3>
-                <div class="comp-table-wrap">
-                    <table class="comp-table">
-                        <thead>
-                            <tr>
-                                <th>Criteria</th>
-                                <th class="col-left">Statistical (N-gram)</th>
-                                <th class="col-right">Neural (RNN/Transformer)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Definition</strong></td>
-                                <td>Rely on <strong>frequency counts</strong> of word sequences (n-grams).</td>
-                                <td>Learn deep representing parameters using <strong>neural network weights</strong>.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Working Mechanism</strong></td>
-                                <td>• Counts sequences in text.<br>• Adjusts scores with <strong>smoothing
-                                        tricks</strong>.</td>
-                                <td>• Learns pattern weights via <strong>backpropagation</strong>.<br>• Uses dense
-                                    embedding vectors.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Long-range Dependencies</strong></td>
-                                <td class="badge-bad"><strong>Zero memory</strong> (looks back N-1 words only)</td>
-                                <td class="badge-good"><strong>Succeeds</strong> (attention mechanism remembers distant
-                                    thoughts)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Interpretability</strong></td>
-                                <td class="badge-good"><strong>Highly transparent</strong> (check probability ratios)
-                                </td>
-                                <td class="badge-bad"><strong>Total black box</strong> (millions of hidden weights)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Strengths</strong></td>
-                                <td>• <strong>Instant training</strong>.<br>• Tiny memory load (no GPU).<br>• Fully
-                                    debuggable predictions.</td>
-                                <td>• Amazing <strong>semantic extrapolation</strong>.<br>• Transfer learning
-                                    capabilities.<br>• SOTA
-                                    output quality.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Weaknesses</strong></td>
-                                <td>• <strong>Zero probability</strong> for unseen text.<br>• Context size is
-                                    limited.<br>• Size bloats exponentially.</td>
-                                <td>• <strong>Huge GPU costs</strong>.<br>• Needs vast training steps.<br>•
-                                    Hallucinations risk.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="verdict"><i class="fas fa-gavel"></i>
-                    <div><strong>Verdict:</strong> Stick to <strong>Statistical LMs</strong> for ultra-light keyboard
-                        search suggest bots; use <strong>Neural LMs</strong> for complex text generators and chatbots.
-                    </div>
-                </div>
-            </div>
+            
 
-            <!-- Tab 5: One-Hot vs Embeddings -->
-            <div id="tab5" class="tab-panel">
-                <h3 style="margin-bottom:1.5rem;font-size:1.3rem;">One-Hot Encoding vs Word Embeddings</h3>
-                <div class="comp-table-wrap">
-                    <table class="comp-table">
-                        <thead>
-                            <tr>
-                                <th>Criteria</th>
-                                <th class="col-left">One-Hot Encoding</th>
-                                <th class="col-right">Word Embeddings</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <tr>
-                                <td><strong>Sparsity</strong></td>
-                                <td class="badge-bad"><strong>Extremely sparse</strong> (mostly zeros)</td>
-                                <td class="badge-good"><strong>100% dense</strong> floating points</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Semantic Info</strong></td>
-                                <td class="badge-bad"><strong>Zero</strong> (all words are perpendicular vectors)</td>
-                                <td class="badge-good"><strong>High</strong> (closeness maps matching meaning)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Memory Efficiency</strong></td>
-                                <td class="badge-bad"><strong>Terrible</strong> (wastes massive arrays)</td>
-                                <td class="badge-good"><strong>Highly efficient</strong> dense matrix grids</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Generalization</strong></td>
-                                <td class="badge-bad"><strong>Fails</strong> (no concept of word closeness)</td>
-                                <td class="badge-good"><strong>Excellent</strong> (unseen words group logically)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Strengths</strong></td>
-                                <td>• Simple dictionary lookup keys.<br>• Zero prep or training needed.<br>• Extremely
-                                    deterministic.</td>
-                                <td>• Captures <strong>synonyms</strong> easily.<br>• Shrinks vector arrays.<br>• Learns
-                                    analogy puzzles.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Weaknesses</strong></td>
-                                <td>• <strong>Array size blows up</strong> for broad vocabularies.<br>• Blind to
-                                    relation
-                                    meanings.<br>• Crashes on new words.</td>
-                                <td>• <strong>Pricey training cycles</strong>.<br>• Fails on context shifts.<br>•
-                                    Black-box vector weights.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="verdict"><i class="fas fa-gavel"></i>
-                    <div><strong>Verdict:</strong> Avoid using <strong>One-Hot Encoding</strong> for sequence models;
-                        <strong>Word Embeddings</strong> are the industry standard for NLP inputs.
-                    </div>
-                </div>
-            </div>
+            
 
         </div>
     </section>
