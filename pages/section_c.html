@@ -28,196 +28,188 @@
                     text-to-vector transformation processes.</p>
             </div>
 
-            <div class="workflow-grid">
-                <!-- Workflow 1: Preprocessing -->
-                <div class="workflow-card">
-                    <div class="workflow-header">
-                        <h3><i class="fas fa-filter"></i> Complete Text Preprocessing Pipeline</h3>
-                    </div>
-                    <div class="workflow-body">
-                        <div class="pipeline">
-                            <div class="pipe-step">
-                                <div class="step-num">1</div>
-                                <div>
-                                    <div class="step-text">Raw Text Input</div>
-                                    <div class="step-detail">"I can't wait 4 the new iPhone!!! 😍 https://apple.com"
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                            <div class="pipe-step">
-                                <div class="step-num">2</div>
-                                <div>
-                                    <div class="step-text">Noise Removal</div>
-                                    <div class="step-detail">Remove URLs, HTML tags, emojis, special characters</div>
-                                </div>
-                            </div>
-                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                            <div class="pipe-step">
-                                <div class="step-num">3</div>
-                                <div>
-                                    <div class="step-text">Text Cleaning</div>
-                                    <div class="step-detail">Fix encoding, expand contractions, handle numbers</div>
-                                </div>
-                            </div>
-                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                            <div class="pipe-step">
-                                <div class="step-num">4</div>
-                                <div>
-                                    <div class="step-text">Case Normalization</div>
-                                    <div class="step-detail">Convert to lowercase (or Truecasing for NER)</div>
-                                </div>
-                            </div>
-                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                            <div class="pipe-step">
-                                <div class="step-num">5</div>
-                                <div>
-                                    <div class="step-text">Sentence Segmentation</div>
-                                    <div class="step-detail">Split on boundaries, handle abbreviations</div>
-                                </div>
-                            </div>
-                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                            <div class="pipe-step">
-                                <div class="step-num">6</div>
-                                <div>
-                                    <div class="step-text">Tokenization</div>
-                                    <div class="step-detail">Word-level or subword (BPE/WordPiece)</div>
-                                </div>
-                            </div>
-                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                            <div class="pipe-step">
-                                <div class="step-num">7</div>
-                                <div>
-                                    <div class="step-text">Stop-word Removal</div>
-                                    <div class="step-detail">Filter common words, preserve negation if needed</div>
-                                </div>
-                            </div>
-                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                            <div class="pipe-step">
-                                <div class="step-num">8</div>
-                                <div>
-                                    <div class="step-text">Stemming / Lemmatization</div>
-                                    <div class="step-detail">Reduce to root form (fast heuristic or accurate dictionary)
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                            <div class="pipe-step final">
-                                <div class="step-num"><i class="fas fa-check"></i></div>
-                                <div>
-                                    <div class="step-text">Clean Tokens Ready for Model</div>
-                                    <div class="step-detail">["can", "not", "wait", "new", "iphone"]</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="workflow-infographic">
 
-                <!-- Workflow 2: Feature Engineering -->
-                <div class="workflow-card">
-                    <div class="workflow-header">
-                        <h3><i class="fas fa-cogs"></i> Feature Engineering Pipeline</h3>
-                    </div>
-                    <div class="workflow-body">
-                        <div class="pipeline">
-                            <div class="pipe-step">
-                                <div class="step-num">1</div>
-                                <div>
-                                    <div class="step-text">Clean Tokens from Preprocessing</div>
-                                    <div class="step-detail">["machine", "learning", "is", "transforming", "healthcare"]
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                            <div class="pipe-step">
-                                <div class="step-num">2</div>
-                                <div>
-                                    <div class="step-text">Frequency-Based Features</div>
-                                    <div class="step-detail">Bag of Words — Count matrix of word occurrences</div>
-                                </div>
-                            </div>
-                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                            <div class="pipe-step">
-                                <div class="step-num">3</div>
-                                <div>
-                                    <div class="step-text">N-Gram Features</div>
-                                    <div class="step-detail">Bigrams, Trigrams — Capture local word order and phrases
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                            <div class="pipe-step">
-                                <div class="step-num">4</div>
-                                <div>
-                                    <div class="step-text">Statistical Weighted Features</div>
-                                    <div class="step-detail">TF-IDF — Balance local and global importance</div>
-                                </div>
-                            </div>
-                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                            <div class="pipe-step">
-                                <div class="step-num">5</div>
-                                <div>
-                                    <div class="step-text">Feature Selection (Optional)</div>
-                                    <div class="step-detail">Chi-square, Mutual Information, L1 Regularization</div>
-                                </div>
-                            </div>
-                            <div class="pipe-arrow"><i class="fas fa-chevron-down"></i></div>
-                            <div class="pipe-step final">
-                                <div class="step-num"><i class="fas fa-check"></i></div>
-                                <div>
-                                    <div class="step-text">Features Ready for ML Model</div>
-                                    <div class="step-detail">Shape: (n_documents, n_features)</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="workflow-column preprocessing">
+        <!-- Preprocessing Pipeline -->
+         <div class="workflow-column preprocessing">
+    <div class="workflow-title">
+        Complete Text Preprocessing Pipeline
+    </div>
 
-                <!-- Workflow 3: Text-to-Vector -->
-                <div class="workflow-card" style="grid-column: 1 / -1;">
-                    <div class="workflow-header">
-                        <h3><i class="fas fa-vector-square"></i> Text-to-Vector Transformation Process</h3>
-                    </div>
-                    <div class="workflow-body">
-                        <div class="evo-flow">
-                            <div class="evo-stage">
-                                <div class="evo-label">Symbolic</div>
-                                <div class="evo-title">One-Hot / BoW</div>
-                                <div class="evo-items">
-                                    <span class="evo-item">Sparse Binary Vectors</span>
-                                    <span class="evo-item">|V| = 50,000 dims</span>
-                                    <span class="evo-item">No Semantics</span>
-                                    <span class="evo-item">No Context</span>
-                                </div>
-                            </div>
-                            <div class="evo-stage">
-                                <div class="evo-label">Distributed</div>
-                                <div class="evo-title">Word2Vec / FastText</div>
-                                <div class="evo-items">
-                                    <span class="evo-item">Dense 300-dim Vectors</span>
-                                    <span class="evo-item">Semantic Similarity</span>
-                                    <span class="evo-item">Vector Arithmetic</span>
-                                    <span class="evo-item">Static Context</span>
-                                </div>
-                            </div>
-                            <div class="evo-stage active">
-                                <div class="evo-label">Contextual</div>
-                                <div class="evo-title">BERT / GPT</div>
-                                <div class="evo-items">
-                                    <span class="evo-item">Dense 768-dim Vectors</span>
-                                    <span class="evo-item">Context-Dependent</span>
-                                    <span class="evo-item">Polysemy Solved</span>
-                                    <span class="evo-item">Transfer Learning</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="margin-top:1.5rem;text-align:center;color:var(--gray);font-size:0.9rem;">
-                            <i class="fas fa-arrow-right" style="margin:0 0.5rem;"></i> Evolution: Symbolic (2010) →
-                            Distributed (2013) → Contextual (2018+)
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="workflow-subtitle">
+        Application Example: E-Commerce Review Analysis
+    </div>
+
+    <div class="workflow-box">
+        <strong>INPUT: Customer Review</strong>
+        <p>
+            I absolutely LOVED this phone!!!
+            Battery life is amazing...
+            Best purchase!!!
+        </p>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="workflow-box">
+        <strong>Remove Noise</strong>
+        <p>URLs, emojis, special characters removed</p>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="workflow-box">
+        <strong>Tokenization</strong>
+        <p>
+            absolutely | loved | phone | battery | amazing
+        </p>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="workflow-box">
+        <strong>Stop-word Removal</strong>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="workflow-box">
+        <strong>Lemmatization</strong>
+        <p>
+            love | phone | battery | amaze
+        </p>
+    </div>
+
+    <div class="output-box">
+        OUTPUT: Clean Text Ready For Analysis
+    </div>
+</div>
+    </div>
+
+    <div class="workflow-column feature">
+        <!-- Feature Engineering Pipeline -->
+         <div class="workflow-column feature">
+
+    <div class="workflow-title">
+        Feature Engineering Pipeline
+    </div>
+
+    <div class="workflow-subtitle">
+        Application Example: Search Engine
+    </div>
+
+    <div class="workflow-box">
+        <strong>INPUT: Search Query</strong>
+        <p>best laptop for engineering students</p>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="workflow-box">
+        <strong>Tokenization</strong>
+        <p>
+            best | laptop | engineering | students
+        </p>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="workflow-box">
+        <strong>Bag of Words</strong>
+        <p>Word frequency representation</p>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="workflow-box">
+        <strong>N-Grams</strong>
+        <p>best laptop | engineering students</p>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="workflow-box">
+        <strong>TF-IDF</strong>
+        <p>
+            [0.48, 0.63, 0.91, 0.76]
+        </p>
+    </div>
+
+    <div class="output-box green">
+        Query Indexed & Ready For Retrieval
+    </div>
+
+</div>
+    </div>
+
+    <div class="workflow-column vector">
+        <!-- Text-to-Vector Pipeline -->
+         <div class="workflow-column vector">
+
+    <div class="workflow-title">
+        Text-to-Vector Transformation Process
+    </div>
+
+    <div class="workflow-subtitle">
+        Application Example: Semantic Search
+    </div>
+
+    <div class="workflow-box">
+        <strong>INPUT: Search Query</strong>
+        <p>
+            artificial intelligence in healthcare
+        </p>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="workflow-box">
+        <strong>Convert To Tokens</strong>
+        <p>
+            artificial | intelligence | healthcare
+        </p>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="workflow-box">
+        <strong>Generate Embedding</strong>
+        <p>
+            [0.21, -0.35, 0.67, ...]
+        </p>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="workflow-box">
+        <strong>Semantic Search</strong>
+        <p>
+            Vector similarity matching
+        </p>
+    </div>
+
+    <div class="flow-arrow">↓</div>
+
+    <div class="workflow-box">
+        <strong>Top Relevant Results</strong>
+        <ol>
+            <li>AI in healthcare outcomes</li>
+            <li>Medical ML applications</li>
+            <li>Disease prediction techniques</li>
+        </ol>
+    </div>
+
+    <div class="output-box blue">
+        Ranked Relevant Documents
+    </div>
+
+</div>
+    </div>
+
+</div>
+
+
         </div>
     </section>
 
