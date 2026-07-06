@@ -98,8 +98,8 @@
 .output-box.green{
     background:linear-gradient(
         135deg,
-        #1f9d6c,
-        #36b37e
+        #04f599,
+        #04ef8d
     );
 }
 
@@ -142,7 +142,7 @@
     }
 }
 .workflow-box{
-    background:red !important;
+    background:rgb(236, 115, 115) !important;
 }
 
 .workflow-title{
