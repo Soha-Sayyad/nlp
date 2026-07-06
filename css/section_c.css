@@ -141,3 +141,14 @@
         padding:0.85rem;
     }
 }
+.workflow-box{
+    background:red !important;
+}
+
+.workflow-title{
+    color:blue !important;
+}
+
+.workflow-infographic{
+    border:10px solid green !important;
+}
