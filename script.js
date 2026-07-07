@@ -41,7 +41,6 @@ function renderCategoryGrid() {
         const meta = categoryMeta[cat];
         return `
         <div class="category-card">
-            <div class="category-icon ${cat}"><i class="fas ${meta.icon}"></i></div>
             <div class="category-count">${count} Concept${count !== 1 ? 's' : ''}</div>
             <h3>${meta.title}</h3>
             <p>${meta.desc}</p>

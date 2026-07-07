@@ -16,6 +16,13 @@
     .app-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .app-card.summary-theme {
+        grid-column: span 2;
+        justify-self: center;
+        width: calc(50% - 1rem);
+        /* Keep same size as 1 card in a 2-col row with 2rem gap */
+    }
 }
 
 .app-card {
@@ -88,50 +95,64 @@
     background: radial-gradient(circle, var(--border) 0%, rgba(239, 223, 213, 0) 80%);
 }
 
-/* 3-Column Interior Layout on Widescreen & Dividers */
+/* Card interior layout - stack subsections vertically so they have full width */
 .app-body-sections {
-    padding: 1.5rem 1.5rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
     background: #FFFDFB;
     flex-grow: 1;
-}
-
-/* Split into 3 columns only when screens are wide enough (>= 1100px) */
-@media (min-width: 1100px) {
-    .app-body-sections {
-        grid-template-columns: 130px 1fr 165px;
-        gap: 1.25rem;
-    }
 }
 
 .app-body-col {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
-@media (min-width: 1100px) {
-    .app-body-col {
-        border-right: 1px solid var(--border);
-        padding-right: 1.25rem;
-    }
-
-    .app-body-col:last-child {
-        border-right: none;
-        padding-right: 0;
-    }
+/* Horizontal separators between card body subsections */
+.app-body-sections>.app-body-col {
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 1.5rem;
 }
 
-@media (max-width: 1099px) {
-    .app-body-col {
-        border-bottom: 1px dashed var(--border);
-        padding-bottom: 1.25rem;
-    }
+.app-body-sections>.app-body-col:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
 
-    .app-body-col:last-child {
-        border-bottom: none;
-        padding-bottom: 0;
+/* Make lists (Concepts & Benefits) display as horizontal grids instead of plain vertical stacks */
+.app-explanation {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.app-explanation li {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.55;
+    position: relative;
+    padding-left: 1.25rem;
+}
+
+.app-explanation li::before {
+    content: "•";
+    color: var(--primary);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1.25rem;
+    position: absolute;
+}
+
+@media (max-width: 600px) {
+    .app-explanation {
+        grid-template-columns: 1fr;
     }
 }
 
