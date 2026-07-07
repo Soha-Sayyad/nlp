@@ -1,0 +1,1692 @@
+﻿diff --git a/pages/section_a.html b/pages/section_a.html
+index e907c37..d09a88c 100644
+--- a/pages/section_a.html
++++ b/pages/section_a.html
+@@ -1,24 +1,40 @@
+ <!DOCTYPE html>
+ <html lang="en">
++
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Text Preprocessing & Feature Cards | NLP Repository</title>
+-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
++    <link
++        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
++        rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+     <link rel="stylesheet" href="../css/common.css">
+     <link rel="stylesheet" href="../css/section_a.css">
+     <base target="_blank">
+ </head>
++
+ <body>
+     <!-- Navigation -->
+     <nav class="navbar">
+-        <a href="../index.html" target="_self" class="nav-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></a>
+-                <ul class="nav-links" id="navLinks"> <li><a href="../index.html" target="_self" class="">Home</a></li> <li><a href="../index.html#concepts" target="_self" class="active">Concepts</a></li> <li><a href="../index.html#comparisons" target="_self" class="">Comparisons</a></li> <li><a href="../index.html#workflows" target="_self" class="">Workflows</a></li> <li><a href="../index.html#applications" target="_self" class="">Applications</a></li> <li><a href="../index.html#research" target="_self" class="">Research</a></li> <li><a href="../index.html#sustainability" target="_self" class="">Sustainability</a></li> <li><a href="../index.html#contributions" target="_self" class="">Contributions</a></li> <li><a href="../index.html#reflections" target="_self" class="">Reflections</a></li> </ul>
++        <a href="../index.html" target="_self" class="nav-brand"><i class="fas fa-brain"></i><span>NLP
++                Repository</span></a>
++        <ul class="nav-links" id="navLinks">
++            <li><a href="../index.html" target="_self" class="">Home</a></li>
++            <li><a href="../index.html#concepts" target="_self" class="active">Concepts</a></li>
++            <li><a href="../index.html#comparisons" target="_self" class="">Comparisons</a></li>
++            <li><a href="../index.html#workflows" target="_self" class="">Workflows</a></li>
++            <li><a href="../index.html#applications" target="_self" class="">Applications</a></li>
++            <li><a href="../index.html#research" target="_self" class="">Research</a></li>
++            <li><a href="../index.html#sustainability" target="_self" class="">Sustainability</a></li>
++            <li><a href="../index.html#contributions" target="_self" class="">Contributions</a></li>
++            <li><a href="../index.html#reflections" target="_self" class="">Reflections</a></li>
++            <li><a href="../index.html#sources" target="_self" class="">Sources</a></li>
++        </ul>
+         <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+     </nav>
+ 
+-<!-- Section A: Concept Cards -->
++    <!-- Section A: Concept Cards -->
+     <section id="concepts" class="section">
+         <div class="container">
+             <div class="section-header">
+@@ -45,52 +61,60 @@
+                         <span class="card-tag preprocessing">Preprocessing</span>
+                     </div>
+                     <div class="card-illustration">
+-   <img src="images/sentence_segmentation.png" alt="Sentence Segmentation">
++                        <img src="images/sentence_segmentation.png" alt="Sentence Segmentation">
+                     </div>
+                     <div class="card-body">
+                         <h3>Sentence Segmentation</h3>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>The process of splitting a large body of text into individual sentences based on boundary
+-                                detection using punctuation marks and contextual cues.</p>
++                            <p>This process entails the separation of a paragraph or a document into sentences by
++                                detecting where sentences begin and end.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To break down unstructured text into manageable, semantically complete units that can be
+-                                processed independently by downstream NLP tasks.</p>
++                            <p>The purpose of this NLP task is to enhance machine comprehension of the text before any
++                                other NLP processes are done.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p>Uses rule-based heuristics (punctuation + capital letters), regex patterns, or ML models
+-                                (CRF, BiLSTM) to identify boundaries. Handles abbreviations like "Dr.", "U.S.A." via
+-                                exception lists.</p>
++                            <p>Sentences are separated by determining sentence starting and ending points using
++                                punctuation symbols such as ., ? and !. Sentence boundary detection uses rules-based
++                                approaches, regular expression and machine learning approaches such as CRF and BiLSTM.
++                                Abbreviations such as Dr., U.S.A. and e.g. are also considered to avoid wrong sentence
++                                split.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
+                             <div class="code-block">
+-                                <span class="comment"># Input</span>
+-                                "Dr. Smith visited the U.S.A. yesterday. He loved it!"
+-                                <span class="comment"># Output</span>
++                                <span class="comment"># Input: "Dr. Smith visited the U.S.A. yesterday. He loved
++                                    it!"</span>
++                                <br>
++                                <span class="comment"># Output:</span>
+                                 [<span class="string">"Dr. Smith visited the U.S.A. yesterday."</span>, <span
+                                     class="string">"He loved it!"</span>]
+                             </div>
+                         </div>
++                        <div class="field">
++                            <div class="field-label"><i class="fas fa-briefcase"></i> Applications</div>
++                            <p>Document Summarization, Machine Translation, Sentiment Analysis, Legal Documents
++                                Analysis, Chatbot Dialogue Management</p>
++                        </div>
+                     </div>
+                     <div class="card-footer">
+                         <div class="footer-col pros">
+                             <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+                             <ul>
+-                                <li>Foundation for all downstream NLP</li>
+-                                <li>Enables parallel processing</li>
+-                                <li>Isolates semantic units</li>
++                                <li>It is the basis of many NLP tasks</li>
++                                <li>It improves processing of text by splitting sentences</li>
++                                <li>It enables the processing of multiple sentences independently</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col cons">
+                             <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+                             <ul>
+-                                <li>Ambiguity with abbreviations</li>
+-                                <li>Fails on informal text</li>
+-                                <li>Multi-language challenges</li>
++                                <li>Mistakenly detects abbreviations as sentence endings</li>
++                                <li>Less accuracy for informal text without punctuation</li>
++                                <li>Different sentence ending rules in different languages</li>
+                             </ul>
+                         </div>
+                     </div>
+@@ -103,53 +127,65 @@
+                         <span class="card-tag preprocessing">Preprocessing</span>
+                     </div>
+                     <div class="card-illustration">
+-   <img src="images/tokenization.png" alt="Tokenization">
++                        <img src="images/tokenization.png" alt="Tokenization">
+                     </div>
+                     <div class="card-body">
+                         <h3>Tokenization</h3>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>Breaking text into smaller units (tokens): words, subwords, or characters that serve as
+-                                basic input for NLP models.</p>
++                            <p>Tokenization involves splitting text into tokens which are words, subwords or characters
++                                to be inputted in NLP models.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To convert continuous text into discrete, structured elements that algorithms can
+-                                process, count, and analyze mathematically.</p>
++                            <p>The purpose of tokenization is to convert continuous text into small units of data that
++                                can be processed by computers.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p><strong>Word:</strong> Splits on whitespace/punctuation. <strong>Subword
+-                                    (BPE/WordPiece):</strong> Handles OOV by breaking into frequent units.
+-                                <strong>Character:</strong> Each char is a token.</p>
++                            <p>In word tokenization, splitting is done with the help of space and punctuation marks (for
++                                example, NLTK, spaCy). Subword tokenization (BPE, WordPiece) splits uncommon or
++                                out-of-vocabulary words into subtokens. In character tokenization, each character
++                                becomes a token.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
+                             <div class="code-block">
+-                                <span class="comment"># Word-level</span>
++                                <span class="comment"># Input: ΓÇ£Tokenization is fundamental!ΓÇ¥</span>
++                                <br>
++                                <span class="comment"># Word-level:</span>
+                                 [<span class="string">"Tokenization"</span>, <span class="string">"is"</span>, <span
+                                     class="string">"fundamental"</span>, <span class="string">"!"</span>]
+-                                <span class="comment"># BPE subword</span>
++                                <br>
++                                <span class="comment"># BPE-level:</span>
+                                 [<span class="string">"Token"</span>, <span class="string">"ization"</span>, <span
+-                                    class="string">"is"</span>, <span class="string">"fundamental"</span>]
++                                    class="string">"is"</span>, <span class="string">"fundamental"</span>, <span
++                                    class="string">"!"</span>]
+                             </div>
+                         </div>
++                        <div class="field">
++                            <div class="field-label"><i class="fas fa-briefcase"></i> Applications</div>
++                            <p>Search engines, Text classification, Named entity recognition, Speech to text, LLM
++                                preprocessing</p>
++                        </div>
+                     </div>
+                     <div class="card-footer">
+                         <div class="footer-col pros">
+                             <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+                             <ul>
+-                                <li>Standardizes model input</li>
+-                                <li>Subword handles OOV words</li>
+-                                <li>Enables vocabulary creation</li>
++                                <li>The conversion of the text to a form that can be interpreted by the NLP algorithms
++                                </li>
++                                <li>It helps create the vocabulary of tokens</li>
++                                <li>Sub-word tokenization is effective for rare tokens</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col cons">
+                             <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+                             <ul>
+-                                <li>Word-level: large vocabulary</li>
+-                                <li>Character-level loses meaning</li>
+-                                <li>Language-dependent</li>
++                                <li>The abundance of tokens and out-of-vocabulary in word-level tokenization</li>
++                                <li>The length of sequences and loss of the meaning of the word in character-level
++                                    tokenization</li>
++                                <li>Languages have different tokenizations</li>
+                             </ul>
+                         </div>
+                     </div>
+@@ -161,53 +197,60 @@
+                         <span class="card-id">A.3</span>
+                         <span class="card-tag preprocessing">Preprocessing</span>
+                     </div>
+-                     <div class="card-illustration">
+-   <img src="images/case_normalization.png" alt="Case Normalization">
++                    <div class="card-illustration">
++                        <img src="images/case_normalization.png" alt="Case Normalization">
+                     </div>
+                     <div class="card-body">
+                         <h3>Case Normalization</h3>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>Converting all text to a uniform case (typically lowercase) so the same word in different
+-                                cases is treated identically.</p>
++                            <p>The process of transforming all the characters of text into lowercase or uppercase
++                                letters.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To reduce vocabulary size and prevent the model from treating "Apple", "apple", and
+-                                "APPLE" as three different words.</p>
++                            <p>The aim of such process is to reduce vocabulary and make "Apple", "apple", and "APPLE"
++                                one word rather than three separate words.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p>Simple string transformation: <code>text.lower()</code>. Advanced: Truecasing preserves
+-                                proper nouns; case can be a feature for POS tagging.</p>
++                            <p>Such task can be performed through text manipulation operations such as text.lower() or
++                                text.upper(). In some cases of NLP techniques, there occur cases where truecasing
++                                technique is applied and thus certain words retain their initial casing.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
+                             <div class="code-block">
+-                                <span class="comment"># Input</span>
+-                                "The Apple CEO announced new Apple products."
+-                                <span class="comment"># Lowercase</span>
+-                                "the apple ceo announced new apple products"
+-                                <span class="comment"># Truecasing (preserves proper nouns)</span>
+-                                "The Apple CEO announced new Apple products"
++                                <span class="comment"># Input: "The Apple CEO announced new Apple products."</span>
++                                <br>
++                                <span class="comment"># Lowercase:</span>
++                                <span class="string">"the apple ceo announced new apple products."</span>
++                                <br>
++                                <span class="comment"># Truecasing:</span>
++                                <span class="string">"The Apple CEO announced new Apple products."</span>
+                             </div>
+                         </div>
++                        <div class="field">
++                            <div class="field-label"><i class="fas fa-briefcase"></i> Applications</div>
++                            <p>Text Classification, Sentiment Analysis, Spam Detection, Topic Modeling, Information
++                                Retrieval</p>
++                        </div>
+                     </div>
+                     <div class="card-footer">
+                         <div class="footer-col pros">
+                             <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+                             <ul>
+-                                <li>Reduces vocabulary size</li>
+-                                <li>Improves generalization</li>
+-                                <li>Computationally trivial O(n)</li>
++                                <li>Vocabulary reduction</li>
++                                <li>Performance efficiency</li>
++                                <li>Computability</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col cons">
+                             <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+                             <ul>
+-                                <li>Loses semantic info (US vs us)</li>
+-                                <li>NER may suffer</li>
+-                                <li>Sentiment intensity lost</li>
++                                <li>Information loss</li>
++                                <li>Difficult named entity recognition</li>
++                                <li>Loss of emotions or nuance</li>
+                             </ul>
+                         </div>
+                     </div>
+@@ -219,53 +262,55 @@
+                         <span class="card-id">A.4</span>
+                         <span class="card-tag preprocessing">Preprocessing</span>
+                     </div>
+-                        <div class="card-illustration">
+-                    <img src="images/stopword_removal.png" alt="Stop-word Removal">
++                    <div class="card-illustration">
++                        <img src="images/stopword_removal.png" alt="Stop-word Removal">
+                     </div>
+                     <div class="card-body">
+                         <h3>Stop-word Removal</h3>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>Filtering out high-frequency, low-information words (articles, prepositions,
+-                                conjunctions) that do not contribute significantly to semantic meaning.</p>
++                            <p>Stopwords removal is a technique to filter out useless words that does not add any
++                                meaning to the sentences.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To reduce noise, decrease dimensionality, and help models focus on content-bearing words
+-                                that carry actual meaning.</p>
++                            <p>To reduce sentence length and ensure only meaningful words are computed.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p>Uses predefined language-specific lists (NLTK: 179 English stopwords) or corpus-derived
+-                                frequency thresholds. Domain-specific stopwords can be added.</p>
++                            <p>We can filter out the words that appear in the list of pre-defined stopwords like "the",
++                                "is", "at", "which" and so forth.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
+                             <div class="code-block">
+-                                <span class="comment"># Input</span>
+-                                "The quick brown fox jumps over the lazy dog"
+-                                <span class="comment"># After removal</span>
+-                                [<span class="string">"quick"</span>, <span class="string">"brown"</span>, <span
++                                <span class="comment"># Input: "The quick orange fox jumps over the lazy cat."</span>
++                                <br>
++                                <span class="comment"># Output after stopwords removal:</span>
++                                [<span class="string">"quick"</span>, <span class="string">"orange"</span>, <span
+                                     class="string">"fox"</span>, <span class="string">"jumps"</span>, <span
+-                                    class="string">"lazy"</span>, <span class="string">"dog"</span>]
++                                    class="string">"lazy"</span>, <span class="string">"cat"</span>]
+                             </div>
+                         </div>
++                        <div class="field">
++                            <div class="field-label"><i class="fas fa-briefcase"></i> Applications</div>
++                            <p>Document Clustering, Keyword Extraction, Text Summarization, etc.</p>
++                        </div>
+                     </div>
+                     <div class="card-footer">
+                         <div class="footer-col pros">
+                             <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+                             <ul>
+-                                <li>Reduces feature space 20-40%</li>
+-                                <li>Improves processing speed</li>
+-                                <li>Enhances signal-to-noise</li>
++                                <li>Less number of words</li>
++                                <li>Fast text processing</li>
++                                <li>Significant words only are taken into account</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col cons">
+                             <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+                             <ul>
+-                                <li>Removes negation ("not")</li>
+-                                <li>Phrase meaning lost</li>
+-                                <li>Domain-dependent</li>
++                                <li>Important words like "not" can get filtered out altering the meaning of the
++                                    sentences</li>
+                             </ul>
+                         </div>
+                     </div>
+@@ -277,57 +322,63 @@
+                         <span class="card-id">A.5</span>
+                         <span class="card-tag preprocessing">Preprocessing</span>
+                     </div>
+-                     <div class="card-illustration">
+-                    <img src="images/stemming.png" alt="Stemming">
++                    <div class="card-illustration">
++                        <img src="images/stemming.png" alt="Stemming">
+                     </div>
+                     <div class="card-body">
+                         <h3>Stemming</h3>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>A heuristic process that chops off the ends of words to reduce them to their root form
+-                                (stem), often resulting in non-dictionary words.</p>
++                            <p>This is the procedure whereby words are devoid of prefixes and suffixes to arrive at the
++                                base form of the word; it is through this procedure that words are created that cannot
++                                even be found in dictionaries.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To normalize different grammatical forms of a word to a common base, reducing vocabulary
+-                                size and treating morphological variants as the same term.</p>
++                            <p>The purpose/objective of stemming is to make words fall under one category such that the
++                                number of vocabulary words is reduced.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p><strong>Porter Stemmer:</strong> 5 phases of rule-based suffix stripping.
+-                                <strong>Snowball:</strong> Improved Porter. <strong>Lancaster:</strong> More aggressive,
+-                                faster.</p>
++                            <p>This is the rule based approach and contains Porter Stemming, Snowball Stemming and
++                                Lancaster Stemming. All these approaches remove the common prefixes/suffixes.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
+                             <div class="code-block">
+-                                <span class="comment"># Input</span>
+-                                [<span class="string">"running"</span>, <span class="string">"runs"</span>, <span
+-                                    class="string">"runner"</span>]
+-                                <span class="comment"># Porter</span>
++                                <span class="comment"># Input: ["running", "runs", "runner", "ran"]</span>
++                                <br>
++                                <span class="comment"># Porter Output:</span>
+                                 [<span class="string">"run"</span>, <span class="string">"run"</span>, <span
+-                                    class="string">"runner"</span>]
+-                                <span class="comment"># Lancaster (aggressive)</span>
++                                    class="string">"runner"</span>, <span class="string">"ran"</span>]
++                                <br>
++                                <span class="comment"># Lancaster Output:</span>
+                                 [<span class="string">"run"</span>, <span class="string">"run"</span>, <span
+-                                    class="string">"run"</span>]
++                                    class="string">"run"</span>, <span class="string">"ran"</span>]
+                             </div>
+                         </div>
++                        <div class="field">
++                            <div class="field-label"><i class="fas fa-briefcase"></i> Applications</div>
++                            <p>Information Retrieval, Search Engines, Text Mining, Spam Filtering, Keyword Extraction
++                            </p>
++                        </div>
+                     </div>
+                     <div class="card-footer">
+                         <div class="footer-col pros">
+                             <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+                             <ul>
+-                                <li>Very fast O(n) per word</li>
+-                                <li>No dictionary required</li>
+-                                <li>Effective for IR systems</li>
++                                <li>Quick and easy</li>
++                                <li>Reduces the vocabulary</li>
++                                <li>DoesnΓÇÖt require any dictionary</li>
++                                <li>Useful in information retrieval</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col cons">
+                             <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+                             <ul>
+-                                <li>Over-stemming: false matches</li>
+-                                <li>Under-stemming: misses forms</li>
+-                                <li>Produces non-words</li>
++                                <li>Creates new words which are not present in the dictionary</li>
++                                <li>Over stems or under stems words</li>
++                                <li>Does not understand the meanings of words</li>
+                             </ul>
+                         </div>
+                     </div>
+@@ -340,52 +391,56 @@
+                         <span class="card-tag preprocessing">Preprocessing</span>
+                     </div>
+                     <div class="card-illustration">
+-                    <img src="images/lemmatization.png" alt="Lemmatization">
++                        <img src="images/lemmatization.png" alt="Lemmatization">
+                     </div>
+                     <div class="card-body">
+                         <h3>Lemmatization</h3>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>A morphological analysis process that reduces words to their canonical dictionary form
+-                                (lemma) using vocabulary and morphological analysis.</p>
++                            <p>Converting words into their dictionary word forms.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To normalize words while preserving their valid linguistic form and part-of-speech,
+-                                ensuring semantic accuracy in downstream tasks.</p>
++                            <p>Lemmatization is used for getting dictionary words so as to not lose meaning.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p>Uses lexical databases (WordNet) and POS tagging. "better" ΓåÆ "good" (JJR), "running" ΓåÆ
+-                                "run" (verb) or "running" (noun). Requires POS tags for accuracy.</p>
++                            <p>Lemmatization works on the basis of information from lexicons such as WordNet with POS
++                                tagging.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
+                             <div class="code-block">
+-                                <span class="comment"># Input</span>
+-                                [<span class="string">"running"</span>, <span class="string">"better"</span>, <span
+-                                    class="string">"geese"</span>, <span class="string">"was"</span>]
+-                                <span class="comment"># Output</span>
++                                <span class="comment"># Input: ["running", "better", "geese", "was"]</span>
++                                <br>
++                                <span class="comment"># Output:</span>
+                                 [<span class="string">"run"</span>, <span class="string">"good"</span>, <span
+                                     class="string">"goose"</span>, <span class="string">"be"</span>]
+                             </div>
+                         </div>
++                        <div class="field">
++                            <div class="field-label"><i class="fas fa-briefcase"></i> Applications</div>
++                            <p>Sentiment analysis, chatbots, question answering, machine translation, clinical NLP,
++                                legal documents</p>
++                        </div>
+                     </div>
+                     <div class="card-footer">
+                         <div class="footer-col pros">
+                             <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+                             <ul>
+-                                <li>Valid dictionary words</li>
+-                                <li>Handles irregular forms</li>
+-                                <li>Preserves semantic meaning</li>
++                                <li>Gives accurate dictionary words</li>
++                                <li>Helps for irregular words</li>
++                                <li>Maintains meaning of the word</li>
++                                <li>Better than stemming</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col cons">
+                             <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+                             <ul>
+-                                <li>Slower than stemming</li>
+-                                <li>Requires POS tags</li>
+-                                <li>Dictionary coverage gaps</li>
++                                <li>It takes more time than stemming</li>
++                                <li>Needs POS tagging</li>
++                                <li>Computationally intensive</li>
++                                <li>Does not work well for domain specific words</li>
+                             </ul>
+                         </div>
+                     </div>
+@@ -398,50 +453,57 @@
+                         <span class="card-tag preprocessing">Preprocessing</span>
+                     </div>
+                     <div class="card-illustration">
+-                    <img src="images/noise_removal.png" alt="noise removal">
++                        <img src="images/noise_removal.png" alt="noise removal">
+                     </div>
+                     <div class="card-body">
+                         <h3>Noise Removal</h3>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>The process of eliminating irrelevant, distracting, or malformed elements from text data
+-                                that do not contribute to the intended NLP task.</p>
++                            <p>The definition of this operation refers to the process where unnecessary components of
++                                texts like HTML tags, URLs, special characters, emojis, and whitespaces are eliminated
++                                prior to NLP modeling.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To clean raw text from artifacts like HTML tags, URLs, special characters, emojis, and
+-                                encoding errors that can confuse models.</p>
++                            <p>Here, the objective is to improve the quality of the text by eliminating any unnecessary
++                                components affecting NLP modeling.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p>Regex-based: Remove URLs, HTML tags, special chars. Library-based: BeautifulSoup for
+-                                HTML, emoji library for emoji conversion. Heuristic: Fix encoding.</p>
++                            <p>There are several techniques through which unnecessary components of the text can be
++                                eliminated without removing any necessary components of the text.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
+                             <div class="code-block">
+-                                <span class="comment"># Input</span>
+-                                "Check out https://example.com! <b>Great</b> deal!!!"
+-                                <span class="comment"># After noise removal</span>
+-                                "Check out Great deal"
++                                <span class="comment"># Input: "Check out https://example.com! ≡ƒÄë Great deal!!!"</span>
++                                <br>
++                                <span class="comment"># Output:</span>
++                                <span class="string">"Check out Great deal"</span>
+                             </div>
+                         </div>
++                        <div class="field">
++                            <div class="field-label"><i class="fas fa-briefcase"></i> Applications</div>
++                            <p>Social media analysis, web scraping, OCR post-processing, log analysis, preprocessing
++                                pipelines</p>
++                        </div>
+                     </div>
+                     <div class="card-footer">
+                         <div class="footer-col pros">
+                             <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+                             <ul>
+-                                <li>Improves data quality</li>
+-                                <li>Reduces model confusion</li>
+-                                <li>Standardizes input format</li>
++                                <li>Improves the quality of the input text</li>
++                                <li>Eliminates all superfluous elements/noise</li>
++                                <li>Provides consistency of the text for further processing</li>
++                                <li>Can improve the performance of the models</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col cons">
+                             <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+                             <ul>
+-                                <li>May remove useful info (emojis)</li>
+-                                <li>Over-cleaning strips patterns</li>
+-                                <li>Domain-specific rules needed</li>
++                                <li>May remove some necessary parts, like emojis</li>
++                                <li>Removal of unnecessary parts may result in removing necessary patterns</li>
++                                <li>Certain rules are needed for each case</li>
+                             </ul>
+                         </div>
+                     </div>
+@@ -454,50 +516,59 @@
+                         <span class="card-tag preprocessing">Preprocessing</span>
+                     </div>
+                     <div class="card-illustration">
+-                    <img src="images/text_cleaning.png" alt="Text Cleaning">
++                        <img src="images/text_cleaning.png" alt="Text Cleaning">
+                     </div>
+                     <div class="card-body">
+                         <h3>Text Cleaning</h3>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>A comprehensive process encompassing multiple preprocessing steps to transform raw,
+-                                unstructured text into clean, structured data ready for analysis.</p>
++                            <p>This relates to the manner through which various forms of text preprocessing techniques
++                                are used in transforming the unstructured text to a structured one to facilitate the use
++                                of NLP algorithms.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To ensure data quality, consistency, and compatibility with NLP algorithms by addressing
+-                                all forms of textual irregularities systematically.</p>
++                            <p>The purpose of using text preprocessing techniques is to ensure that there is improvement
++                                in quality of the text in terms of its consistency.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p>Pipeline: (1) Handle encoding ΓåÆ (2) Remove HTML ΓåÆ (3) Expand contractions ΓåÆ (4) Normalize
+-                                case ΓåÆ (5) Remove noise ΓåÆ (6) Fix spelling ΓåÆ (7) Standardize whitespace.</p>
++                            <p>The principle of this technique involves various text preprocessing techniques such as
++                                encoding conversion, removal of HTML, expansion of contractions, case normalization,
++                                noise removal, spelling correction and whitespace normalization.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
+                             <div class="code-block">
+-                                <span class="comment"># Raw</span>
+-                                "I can't wait 4 the new iPhone!!! Visit: apple.com"
+-                                <span class="comment"># Cleaned</span>
+-                                "i cannot wait for the new iphone visit apple com"
++                                <span class="comment"># Raw: "I can't wait 4 the new iPhone!!! ≡ƒÿì Visit:
++                                    apple.com"</span>
++                                <br>
++                                <span class="comment"># Cleaned:</span>
++                                <span class="string">"i cannot wait for the new iphone visit apple com"</span>
+                             </div>
+                         </div>
++                        <div class="field">
++                            <div class="field-label"><i class="fas fa-briefcase"></i> Applications</div>
++                            <p>Sentiment analysis, chatbots, document classification etc.</p>
++                        </div>
+                     </div>
+                     <div class="card-footer">
+                         <div class="footer-col pros">
+                             <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+                             <ul>
+-                                <li>Systematic quality assurance</li>
+-                                <li>Reproducible across datasets</li>
+-                                <li>Customizable per domain</li>
++                                <li>Enhances the consistency and quality of the text</li>
++                                <li>Ensures the formation of a structured pipeline of the pre-processing technique</li>
++                                <li>Customizable according to industry needs</li>
++                                <li>Basis of NLP processes</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col cons">
+                             <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+                             <ul>
+-                                <li>Lossy process</li>
+-                                <li>Requires domain expertise</li>
+-                                <li>Order of operations matters</li>
++                                <li>Loss of valuable information during cleansing process</li>
++                                <li>Selection of the right text preprocessing techniques</li>
++                                <li>Order of text preprocessing is critical</li>
++                                <li>Time consuming if applied to large amounts of text</li>
+                             </ul>
+                         </div>
+                     </div>
+@@ -509,769 +580,522 @@
+                         <span class="card-id">A.9</span>
+                         <span class="card-tag feature">Feature Engineering</span>
+                     </div>
+-                        <div class="card-illustration">
+-                    <img src="images/bag_of_words.png" alt="Bag of Words">
++                    <div class="card-illustration">
++                        <img src="images/bag_of_words.png" alt="Bag of Words">
+                     </div>
+                     <div class="card-body">
+                         <h3>Bag of Words (BoW)</h3>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>A text representation model describing the occurrence of words within a document,
+-                                disregarding grammar and word order but keeping multiplicity.</p>
++                            <p>A feature extraction technique used in NLP that represents text by counting the frequency
++                                of words in a document while ignoring their order or grammatical structure.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To convert text into a fixed-length numerical vector that ML algorithms can process,
+-                                capturing word frequency as a feature.</p>
++                            <p>The purpose is to convert unstructured text into a numerical format suitable for machine
++                                learning algorithms.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p>Build vocabulary from all unique words. For each document, create a vector of size |V|
+-                                where each position represents word count/frequency.</p>
++                            <p>A vocabulary of all unique words across a text corpus is constructed. Each document is
++                                then represented as a vector where the length is the vocabulary size, and each entry is
++                                the count of how many times a word appears in that document.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
+                             <div class="code-block">
+-                                <span class="comment"># Corpus</span>
+-                                [<span class="string">"I love NLP"</span>, <span class="string">"NLP is great"</span>]
+-                                <span class="comment"># Vocabulary: {I:0, love:1, NLP:2, is:3, great:4}</span>
+-                                <span class="comment"># Doc1 vector</span>
+-                                [<span class="number">1</span>, <span class="number">1</span>, <span
+-                                    class="number">1</span>, <span class="number">0</span>, <span
+-                                    class="number">0</span>]
+-                                <span class="comment"># Doc2 vector</span>
+-                                [<span class="number">0</span>, <span class="number">0</span>, <span
++                                <span class="comment"># Input: "I love NLP" and "NLP is great"</span>
++                                <br>
++                                <span class="comment"># Vocabulary: {"I": 0, "love": 1, "NLP": 2, "is": 3, "great":
++                                    4}</span>
++                                <br>
++                                <span class="comment"># Output Vectors:</span>
++                                <br>
++                                <span class="comment"># "I love NLP" -></span> [<span class="number">1</span>, <span
+                                     class="number">1</span>, <span class="number">1</span>, <span
+-                                    class="number">1</span>]
++                                    class="number">0</span>, <span class="number">0</span>]
++                                <br>
++                                <span class="comment"># "NLP is great" -></span> [<span class="number">0</span>, <span
++                                    class="number">0</span>, <span class="number">1</span>, <span
++                                    class="number">1</span>, <span class="number">1</span>]
+                             </div>
+                         </div>
++                        <div class="field">
++                            <div class="field-label"><i class="fas fa-briefcase"></i> Applications</div>
++                            <p>Text classification, Spam detection, Information retrieval</p>
++                        </div>
+                     </div>
+                     <div class="card-footer">
+                         <div class="footer-col pros">
+                             <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+                             <ul>
+-                                <li>Simple to implement</li>
+-                                <li>Effective for classification</li>
+-                                <li>Works with small datasets</li>
++                                <li>Very simple and intuitive to implement</li>
++                                <li>Effective for text classification on small datasets</li>
++                                <li>Keeps word count details</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col cons">
+                             <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+                             <ul>
+-                                <li>Ignores word order</li>
+-                                <li>High dimensionality</li>
+-                                <li>Sparse vectors</li>
++                                <li>Disregards word order and context</li>
++                                <li>Suffers from the curse of dimensionality</li>
++                                <li>Results in highly sparse vectors</li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+ 
+-                <!-- A.10 N-Grams -->
++                <!-- A.10 TF-IDF -->
+                 <div class="concept-card" data-cat="feature">
+                     <div class="card-header feature">
+                         <span class="card-id">A.10</span>
+                         <span class="card-tag feature">Feature Engineering</span>
+                     </div>
+-                        <div class="card-illustration">
+-                    <img src="images/ngrams.png" alt="n-Grams">
++                    <div class="card-illustration">
++                        <img src="images/term_idf.png" alt="TF-IDF">
+                     </div>
+                     <div class="card-body">
+-                        <h3>N-Grams</h3>
++                        <h3>TF-IDF</h3>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>A contiguous sequence of n items (words or characters) from a given text sample, used to
+-                                capture local word order and contextual information.</p>
++                            <p>A statistical metric that scales word frequencies to reflect how important a word is to a
++                                document relative to a collection of documents (corpus).</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To preserve some sequential information and local context that unigram models lose,
+-                                improving representation quality.</p>
++                            <p>The purpose of TF-IDF is to extract features that give more weight to rare, informative
++                                words, preventing very frequent words from dominating the models.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p>Extract all n-length sliding windows from tokenized text. Unigram (n=1), Bigram (n=2),
+-                                Trigram (n=3).</p>
++                            <p>It is the product of TF and IDF. Term Frequency (TF) calculates how frequently a term
++                                occurs in a document. Inverse Document Frequency (IDF) measures how rare a word is
++                                across the entire corpus.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
+                             <div class="code-block">
+-                                <span class="comment"># Text: "The quick brown fox"</span>
+-                                <span class="comment"># Bigrams</span>
+-                                [<span class="string">"The quick"</span>, <span class="string">"quick brown"</span>,
+-                                <span class="string">"brown fox"</span>]
+-                                <span class="comment"># Trigrams</span>
+-                                [<span class="string">"The quick brown"</span>, <span class="string">"quick brown
+-                                    fox"</span>]
++                                <span class="comment"># Document: "NLP is great. NLP is the future."</span>
++                                <br>
++                                <span class="comment"># TF of "NLP" = 2 / 10 = 0.2</span>
++                                <br>
++                                <span class="comment"># If "NLP" appears in 100/1000 documents, IDF("NLP") =
++                                    log(1000/100) = 1.0</span>
++                                <br>
++                                <span class="comment"># TF-IDF("NLP") = 0.2 * 1.0 = 0.2</span>
+                             </div>
+                         </div>
+-                    </div>
+-                    <div class="card-footer">
+-                        <div class="footer-col pros">
+-                            <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+-                            <ul>
+-                                <li>Captures local word order</li>
+-                                <li>Improves over BoW</li>
+-                                <li>Simple to implement</li>
+-                            </ul>
+-                        </div>
+-                        <div class="footer-col cons">
+-                            <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+-                            <ul>
+-                                <li>Exponential feature growth</li>
+-                                <li>Data sparsity for high n</li>
+-                                <li>Misses long-range deps</li>
+-                            </ul>
+-                        </div>
+-                    </div>
+-                </div>
+-
+-                <!-- A.11 TF -->
+-                <div class="concept-card" data-cat="feature">
+-                    <div class="card-header feature">
+-                        <span class="card-id">A.11</span>
+-                        <span class="card-tag feature">Feature Engineering</span>
+-                    </div>
+-                        <div class="card-illustration">
+-                    <img src="images/term_frequency.png" alt="Term Frequency">
+-                    </div>
+-                    <div class="card-body">
+-                        <h3>Term Frequency (TF)</h3>
+                         <div class="field">
+-                            <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>A statistical measure indicating how frequently a term occurs in a document, normalized
+-                                by document length.</p>
+-                        </div>
+-                        <div class="field">
+-                            <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To quantify the importance of a word within a specific document, assuming frequent words
+-                                are more relevant to the topic.</p>
+-                        </div>
+-                        <div class="field">
+-                            <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p><strong>Normalized TF:</strong> count(t,d) / total words in d. <strong>Log
+-                                    normalization:</strong> log(1 + count(t,d)) to dampen high frequencies.</p>
+-                        </div>
+-                        <div class="field">
+-                            <div class="field-label"><i class="fas fa-code"></i> Example</div>
+-                            <div class="code-block">
+-                                <span class="comment"># Doc: "NLP is great. NLP is the future." (10 words)</span>
+-                                TF(<span class="string">"NLP"</span>) = <span class="number">2</span>/<span
+-                                    class="number">10</span> = <span class="number">0.2</span>
+-                                TF(<span class="string">"is"</span>) = <span class="number">2</span>/<span
+-                                    class="number">10</span> = <span class="number">0.2</span>
+-                                TF(<span class="string">"future"</span>) = <span class="number">1</span>/<span
+-                                    class="number">10</span> = <span class="number">0.1</span>
+-                            </div>
++                            <div class="field-label"><i class="fas fa-briefcase"></i> Applications</div>
++                            <p>Search engine retrieval, Topic modeling, Document similarity</p>
+                         </div>
+                     </div>
+                     <div class="card-footer">
+                         <div class="footer-col pros">
+                             <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+                             <ul>
+-                                <li>Simple and intuitive</li>
+-                                <li>Computationally efficient</li>
+-                                <li>Foundation for TF-IDF</li>
++                                <li>Simple, fast, and highly interpretable</li>
++                                <li>Effectively downweights common words/stopwords</li>
++                                <li>Good baseline for information retrieval and similarity</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col cons">
+                             <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+                             <ul>
+-                                <li>Favors common words</li>
+-                                <li>No corpus-level info</li>
+-                                <li>Sensitive to doc length</li>
++                                <li>Disregards word order and context</li>
++                                <li>Fails to capture synonymy or semantic meaning</li>
++                                <li>Computationally constrained by corpus size</li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+ 
+-                <!-- A.12 IDF -->
++                <!-- A.11 N-Grams -->
+                 <div class="concept-card" data-cat="feature">
+                     <div class="card-header feature">
+-                        <span class="card-id">A.12</span>
++                        <span class="card-id">A.11</span>
+                         <span class="card-tag feature">Feature Engineering</span>
+                     </div>
+-                                        <div class="card-illustration">
+-                    <img src="images/idf.png" alt="Inverse Document Frequency">
++                    <div class="card-illustration">
++                        <img src="images/ngrams.png" alt="n-Grams">
+                     </div>
+                     <div class="card-body">
+-                        <h3>Inverse Document Frequency (IDF)</h3>
++                        <h3>N-Grams</h3>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>A measure of how rare or common a word is across an entire corpus, used to downweight
+-                                frequent words and upweight rare, discriminative terms.</p>
++                            <p>A feature extraction technique that captures contiguous sequences of n items (words or
++                                characters) from a given text.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To identify words that are distinctive to specific documents, helping distinguish between
+-                                documents by penalizing corpus-common words.</p>
++                            <p>The purpose of N-Grams is to preserve local word order and context, helping models
++                                capture phrases and negative modifiers that single words miss.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p>IDF(t,D) = log(N / df(t)) where N = total documents, df(t) = documents containing term t.
+-                                Higher IDF = more distinctive.</p>
++                            <p>It uses a sliding window of size n to extract contiguous sequences. Single item
++                                extraction is a unigram, pairs are bigrams, and three items are trigrams.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
+                             <div class="code-block">
+-                                <span class="comment"># Corpus: 1000 documents</span>
+-                                <span class="string">"the"</span> in <span class="number">990</span> docs ΓåÆ IDF =
+-                                log(<span class="number">1000</span>/<span class="number">990</span>) Γëê <span
+-                                    class="number">0.01</span>
+-                                <span class="string">"quantum"</span> in <span class="number">5</span> docs ΓåÆ IDF =
+-                                log(<span class="number">1000</span>/<span class="number">5</span>) Γëê <span
+-                                    class="number">5.3</span>
++                                <span class="comment"># Text: "The quick orange fox"</span>
++                                <br>
++                                <span class="comment"># Bigrams (n=2):</span>
++                                [<span class="string">"The quick"</span>, <span class="string">"quick orange"</span>,
++                                <span class="string">"orange fox"</span>]
++                                <br>
++                                <span class="comment"># Trigrams (n=3):</span>
++                                [<span class="string">"The quick orange"</span>, <span class="string">"quick orange
++                                    fox"</span>]
+                             </div>
+                         </div>
+-                    </div>
+-                    <div class="card-footer">
+-                        <div class="footer-col pros">
+-                            <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+-                            <ul>
+-                                <li>Identifies discriminative words</li>
+-                                <li>Reduces common word impact</li>
+-                                <li>Grounded in information theory</li>
+-                            </ul>
+-                        </div>
+-                        <div class="footer-col cons">
+-                            <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+-                            <ul>
+-                                <li>Assumes term independence</li>
+-                                <li>Sensitive to corpus size</li>
+-                                <li>Cannot handle new docs</li>
+-                            </ul>
+-                        </div>
+-                    </div>
+-                </div>
+-
+-                <!-- A.13 TF-IDF -->
+-                <div class="concept-card" data-cat="feature">
+-                    <div class="card-header feature">
+-                        <span class="card-id">A.13</span>
+-                        <span class="card-tag feature">Feature Engineering</span>
+-                    </div>
+-                                        <div class="card-illustration">
+-                    <img src="images/term_idf.png" alt="TF-IDF">
+-                    </div>
+-                    <div class="card-body">
+-                        <h3>TF-IDF</h3>
+-                        <div class="field">
+-                            <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>A numerical statistic reflecting how important a word is to a document in a corpus,
+-                                combining local importance (TF) with global rarity (IDF).</p>
+-                        </div>
+                         <div class="field">
+-                            <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To create a weighted representation highlighting words that are frequent in a specific
+-                                document but rare across the corpus.</p>
+-                        </div>
+-                        <div class="field">
+-                            <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p>TF-IDF(t,d,D) = TF(t,d) ├ù IDF(t,D). High TF-IDF = important and distinctive word for that
+-                                document.</p>
+-                        </div>
+-                        <div class="field">
+-                            <div class="field-label"><i class="fas fa-code"></i> Example</div>
+-                            <div class="code-block">
+-                                <span class="comment"># Document about "Machine Learning"</span>
+-                                <span class="string">"learning"</span>: TF=<span class="number">0.1</span>, IDF=<span
+-                                    class="number">2.5</span> ΓåÆ TF-IDF = <span class="number">0.25</span>
+-                                <span class="string">"the"</span>: TF=<span class="number">0.15</span>, IDF=<span
+-                                    class="number">0.01</span> ΓåÆ TF-IDF = <span class="number">0.0015</span>
+-                                <span class="string">"neural"</span>: TF=<span class="number">0.05</span>, IDF=<span
+-                                    class="number">4.0</span> ΓåÆ TF-IDF = <span class="number">0.20</span>
+-                            </div>
++                            <div class="field-label"><i class="fas fa-briefcase"></i> Applications</div>
++                            <p>Language models, Sentence completion, Spell checkers</p>
+                         </div>
+                     </div>
+                     <div class="card-footer">
+                         <div class="footer-col pros">
+                             <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+                             <ul>
+-                                <li>Balances local & global</li>
+-                                <li>Downweights common words</li>
+-                                <li>Intuitive and interpretable</li>
++                                <li>Captures local word order/phrases</li>
++                                <li>Simple concept and implementation</li>
++                                <li>Improves classification accuracy over simple bag-of-words</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col cons">
+                             <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+                             <ul>
+-                                <li>Ignores word order</li>
+-                                <li>Cannot capture synonymy</li>
+-                                <li>Static weights</li>
++                                <li>Exponential growth of features with higher n</li>
++                                <li>Data sparsity increases significantly</li>
++                                <li>Misses long-range dependencies in sentences</li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+ 
+-                <!-- A.14 One-Hot Encoding -->
++                <!-- A.12 One-Hot Encoding -->
+                 <div class="concept-card" data-cat="representation">
+                     <div class="card-header representation">
+-                        <span class="card-id">A.14</span>
++                        <span class="card-id">A.12</span>
+                         <span class="card-tag representation">Representation</span>
+                     </div>
+-                                        <div class="card-illustration">
+-                    <img src="images/one_hot_encoding.png" alt="One-Hot Encoding">
++                    <div class="card-illustration">
++                        <img src="images/one_hot_encoding.png" alt="One-Hot Encoding">
+                     </div>
+                     <div class="card-body">
+                         <h3>One-Hot Encoding</h3>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>A representation where each word is a binary vector with a single "1" at its index and
+-                                "0" everywhere else.</p>
++                            <p>A basic word representation technique where each word in the vocabulary is mapped to a
++                                sparse binary vector of size V (vocabulary size).</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To convert categorical text data into a numerical format that ML models can process,
+-                                treating each word as an independent category.</p>
++                            <p>The purpose is to convert words into numerical representations that ML algorithms can
++                                read, treating each word as an independent, unrelated category.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p>Vocabulary size = V. Each word is a V-dimensional vector. "apple" at index 5 ΓåÆ
+-                                [0,0,0,0,0,1,0,0,...,0]. No semantic relationship.</p>
++                            <p>Each unique word is assigned a specific index. The word's vector has a 1 at its assigned
++                                index and 0 everywhere else.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
+                             <div class="code-block">
+                                 <span class="comment"># Vocabulary: ["cat", "dog", "bird"]</span>
+-                                <span class="string">"cat"</span> ΓåÆ [<span class="number">1</span>, <span
++                                <br>
++                                <span class="comment"># "cat" -></span> [<span class="number">1</span>, <span
+                                     class="number">0</span>, <span class="number">0</span>]
+-                                <span class="string">"dog"</span> ΓåÆ [<span class="number">0</span>, <span
++                                <br>
++                                <span class="comment"># "dog" -></span> [<span class="number">0</span>, <span
+                                     class="number">1</span>, <span class="number">0</span>]
+-                                <span class="string">"bird"</span> ΓåÆ [<span class="number">0</span>, <span
++                                <br>
++                                <span class="comment"># "bird" -></span> [<span class="number">0</span>, <span
+                                     class="number">0</span>, <span class="number">1</span>]
+-                                <span class="comment"># |V| = 50,000 dims each!</span>
+                             </div>
+                         </div>
++                        <div class="field">
++                            <div class="field-label"><i class="fas fa-briefcase"></i> Applications</div>
++                            <p>Input layering in simple models, categorical labeling</p>
++                        </div>
+                     </div>
+                     <div class="card-footer">
+                         <div class="footer-col pros">
+                             <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+                             <ul>
+-                                <li>Simple and unambiguous</li>
+-                                <li>No ordinal relationship</li>
+-                                <li>Easy to implement</li>
++                                <li>Extremely simple and easy to understand</li>
++                                <li>Does not assume any misleading order relationships</li>
++                                <li>Efficient for very small vocabularies</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col cons">
+                             <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+                             <ul>
+-                                <li>Curse of dimensionality</li>
+-                                <li>No semantic meaning</li>
+-                                <li>Extremely sparse</li>
++                                <li>Serious curse of dimensionality for large vocabularies</li>
++                                <li>No semantic relationship or similarity captured between words</li>
++                                <li>High sparsity leads to memory inefficiency</li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+ 
+-                <!-- A.15 Word Embeddings -->
++                <!-- A.13 Word2Vec -->
+                 <div class="concept-card" data-cat="representation">
+                     <div class="card-header representation">
+-                        <span class="card-id">A.15</span>
++                        <span class="card-id">A.13</span>
+                         <span class="card-tag representation">Representation</span>
+                     </div>
+-                                        <div class="card-illustration">
+-                    <img src="images/word_embeddings.png" alt="Word Embeddings">
++                    <div class="card-illustration">
++                        <img src="images/word2vec.png" alt="Word2Vec">
+                     </div>
+                     <div class="card-body">
+-                        <h3>Word Embeddings</h3>
++                        <h3>Word2Vec</h3>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>Dense, low-dimensional vector representations of words where semantically similar words
+-                                are mapped to nearby points in vector space.</p>
++                            <p>A neural-network-based representation technique (introduced by Google in 2013) that
++                                learns dense, low-dimensional vector representations of words.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To capture semantic and syntactic relationships between words, enabling models to
+-                                generalize based on meaning rather than just co-occurrence.</p>
++                            <p>The purpose of Word2Vec is to represent words in a continuous vector space where words
++                                with similar meaning and context are grouped close together.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p>Neural networks learn to predict words from context. Similar words have similar vector
+-                                directions. Analogies via vector arithmetic: king - man + woman Γëê queen.</p>
++                            <p>It is a shallow, two-layer neural network architecture trained on text corpora to predict
++                                words from context (CBOW) or context from target words (Skip-gram).</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
+                             <div class="code-block">
+-                                <span class="comment"># "king" ΓåÆ [0.2, -0.5, 0.8, ..., 0.1] (300-dim)</span>
+-                                <span class="comment"># Cosine similarities</span>
++                                <span class="comment"># Text: "The cat sat on the mat"</span>
++                                <br>
++                                <span class="comment"># Skip-gram: word "sat" predicts ["cat", "on"]</span>
++                                <br>
++                                <span class="comment"># Semantic similarity results:</span>
++                                <br>
+                                 sim(<span class="string">"king"</span>, <span class="string">"queen"</span>) Γëê <span
+                                     class="number">0.75</span>
++                                <br>
+                                 sim(<span class="string">"king"</span>, <span class="string">"apple"</span>) Γëê <span
+                                     class="number">0.05</span>
+-                                <span class="comment"># Vector arithmetic</span>
+-                                <span class="string">"king"</span> - <span class="string">"man"</span> + <span
+-                                    class="string">"woman"</span> Γëê <span class="string">"queen"</span>
+                             </div>
+                         </div>
+-                    </div>
+-                    <div class="card-footer">
+-                        <div class="footer-col pros">
+-                            <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+-                            <ul>
+-                                <li>Captures semantic relationships</li>
+-                                <li>Dense vectors (low dim)</li>
+-                                <li>Enables analogies</li>
+-                            </ul>
+-                        </div>
+-                        <div class="footer-col cons">
+-                            <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+-                            <ul>
+-                                <li>Polysemy problem</li>
+-                                <li>Static representations</li>
+-                                <li>Requires large corpora</li>
+-                            </ul>
+-                        </div>
+-                    </div>
+-                </div>
+-
+-                <!-- A.16 Word2Vec -->
+-                <div class="concept-card" data-cat="representation">
+-                    <div class="card-header representation">
+-                        <span class="card-id">A.16</span>
+-                        <span class="card-tag representation">Representation</span>
+-                    </div>
+-                                        <div class="card-illustration">
+-                    <img src="images/word2vec.png" alt="Word2Vec">
+-                    </div>
+-                    <div class="card-body">
+-                        <h3>Word2Vec</h3>
+-                        <div class="field">
+-                            <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>A shallow neural network model (Google, 2013) that learns word embeddings by predicting
+-                                words from their context (CBOW) or context from words (Skip-gram).</p>
+-                        </div>
+                         <div class="field">
+-                            <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To produce high-quality, dense word representations that capture semantic and syntactic
+-                                relationships efficiently.</p>
+-                        </div>
+-                        <div class="field">
+-                            <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p><strong>CBOW:</strong> Predicts target from context (faster, frequent words).
+-                                <strong>Skip-gram:</strong> Predicts context from target (rare words). Uses negative
+-                                sampling.</p>
+-                        </div>
+-                        <div class="field">
+-                            <div class="field-label"><i class="fas fa-code"></i> Example</div>
+-                            <div class="code-block">
+-                                <span class="comment"># Training: "The cat sat on the mat"</span>
+-                                <span class="comment"># Skip-gram (window=2)</span>
+-                                Input: <span class="string">"sat"</span> ΓåÆ Predict: [<span class="string">"The"</span>,
+-                                <span class="string">"cat"</span>, <span class="string">"on"</span>, <span
+-                                    class="string">"the"</span>]
+-                                <span class="comment"># Result</span>
+-                                <span class="string">"cat"</span> and <span class="string">"dog"</span> have high cosine
+-                                similarity
+-                            </div>
++                            <div class="field-label"><i class="fas fa-briefcase"></i> Applications</div>
++                            <p>Search query expansions, Recommendation systems, Transfer learning</p>
+                         </div>
+                     </div>
+                     <div class="card-footer">
+                         <div class="footer-col pros">
+                             <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+                             <ul>
+-                                <li>Efficient on large corpora</li>
+-                                <li>Captures semantic + syntactic</li>
+-                                <li>Vector arithmetic analogies</li>
++                                <li>Captures complex semantic and syntactic relationships</li>
++                                <li>Low-dimensional, dense vectors (reduces memory usage)</li>
++                                <li>Enables vector arithmetic analogies (king - man + woman = queen)</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col cons">
+                             <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+                             <ul>
+-                                <li>Single vector per word</li>
+-                                <li>No subword info</li>
+-                                <li>Context-independent</li>
++                                <li>A single static vector for a word (fails to handle polysemy/multiple meanings)</li>
++                                <li>Does not use subword information</li>
++                                <li>Training requires large amounts of text data</li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+ 
+-                <!-- A.17 FastText -->
+-                <div class="concept-card" data-cat="representation">
+-                    <div class="card-header representation">
+-                        <span class="card-id">A.17</span>
+-                        <span class="card-tag representation">Representation</span>
++                <!-- A.14 Recurrent Neural Network (RNN) -->
++                <div class="concept-card" data-cat="models">
++                    <div class="card-header models">
++                        <span class="card-id">A.14</span>
++                        <span class="card-tag models">Language Models</span>
+                     </div>
+-                                        <div class="card-illustration">
+-                    <img src="images/fasttext.png" alt="FastText">
++                    <div class="card-illustration">
++                        <img src="images/neural_language_models.png" alt="Recurrent Neural Network">
+                     </div>
+                     <div class="card-body">
+-                        <h3>FastText</h3>
++                        <h3>Recurrent Neural Network (RNN)</h3>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>An extension of Word2Vec (Facebook AI, 2016) representing words as bags of character
+-                                n-grams, enabling embeddings for rare and OOV words.</p>
++                            <p>A neural network architecture designed for processing sequential data by passing hidden
++                                state information across time steps.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To overcome Word2Vec's OOV limitation by incorporating subword information, effective for
+-                                morphologically rich languages.</p>
++                            <p>The purpose of using RNNs is to capture temporal dependencies and context in text
++                                processing.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p>Each word = itself + character n-grams. "apple" ΓåÆ &lt;ap, app, ppl, ple, le&gt; +
+-                                "apple". Vector = sum of all n-gram vectors.</p>
++                            <p>It processes tokens sequentially, updating a hidden state vector at each step that acts
++                                as memory of preceding tokens.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
+                             <div class="code-block">
+-                                <span class="comment"># Word: "university"</span>
+-                                Subwords (n=<span class="number">3</span>): &lt;un, uni, niv, ive, ver, ers, rsi, sit,
+-                                ity, ty&gt;
+-                                Vector = sum(subword vectors)
+-                                <span class="comment"># OOV: "universities"</span>
+-                                Shares n-grams with <span class="string">"university"</span> ΓåÆ can be represented!
++                                <span class="comment"># Input: "The movie was good"</span>
++                                <br>
++                                <span class="comment"># Hidden State Updates:</span>
++                                <br>
++                                h0 = f(W * "The")
++                                <br>
++                                h1 = f(W * "movie" + U * h0)
++                                <br>
++                                h2 = f(W * "was" + U * h1)
++                                <br>
++                                h3 = f(W * "good" + U * h2) -> predicts positive sentiment
+                             </div>
+                         </div>
+-                    </div>
+-                    <div class="card-footer">
+-                        <div class="footer-col pros">
+-                            <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+-                            <ul>
+-                                <li>Handles OOV words</li>
+-                                <li>Good for rich morphology</li>
+-                                <li>Fast C++ implementation</li>
+-                            </ul>
+-                        </div>
+-                        <div class="footer-col cons">
+-                            <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+-                            <ul>
+-                                <li>Worse on semantic tasks</li>
+-                                <li>Larger model size</li>
+-                                <li>Subword noise for short words</li>
+-                            </ul>
+-                        </div>
+-                    </div>
+-                </div>
+-
+-                <!-- A.18 Contextual Embeddings -->
+-                <div class="concept-card" data-cat="representation">
+-                    <div class="card-header representation">
+-                        <span class="card-id">A.18</span>
+-                        <span class="card-tag representation">Representation</span>
+-                    </div>
+-                                        <div class="card-illustration">
+-                    <img src="images/contextual_embeddings.png" alt="Contextual Embeddings">
+-                    </div>
+-                    <div class="card-body">
+-                        <h3>Contextual Embeddings</h3>
+-                        <div class="field">
+-                            <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>Dynamic word representations where the vector for a word changes based on its surrounding
+-                                context, addressing the polysemy problem.</p>
+-                        </div>
+                         <div class="field">
+-                            <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To generate context-dependent representations capturing different meanings of the same
+-                                word in different sentences.</p>
+-                        </div>
+-                        <div class="field">
+-                            <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p><strong>ELMo:</strong> BiLSTM-based. <strong>BERT:</strong> Masked LM + next sentence
+-                                prediction. <strong>GPT:</strong> Autoregressive Transformer. Context via
+-                                self-attention.</p>
+-                        </div>
+-                        <div class="field">
+-                            <div class="field-label"><i class="fas fa-code"></i> Example</div>
+-                            <div class="code-block">
+-                                <span class="comment"># Sentence 1</span>
+-                                "I sat by the river <span class="keyword">bank</span>."
+-                                <span class="comment"># Sentence 2</span>
+-                                "I deposited money at the <span class="keyword">bank</span>."
+-                                <span class="comment"># "bank" has DIFFERENT vectors!</span>
+-                                Cosine similarity between the two Γëê <span class="number">0.3</span> (low)
+-                            </div>
++                            <div class="field-label"><i class="fas fa-briefcase"></i> Applications</div>
++                            <p>Language modeling, Text generation, Machine translation</p>
+                         </div>
+                     </div>
+                     <div class="card-footer">
+                         <div class="footer-col pros">
+                             <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+                             <ul>
+-                                <li>Solves polysemy</li>
+-                                <li>State-of-the-art performance</li>
+-                                <li>Transfer learning paradigm</li>
++                                <li>Processes input sequences of variable lengths</li>
++                                <li>Models temporal dependencies between words</li>
++                                <li>Shares parameters across time steps</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col cons">
+                             <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+                             <ul>
+-                                <li>Computationally expensive</li>
+-                                <li>Large model sizes</li>
+-                                <li>Black-box nature</li>
++                                <li>Suffers from vanishing and exploding gradients</li>
++                                <li>Fails to capture long-range dependencies</li>
++                                <li>Sequential processing prevents parallel training on GPUs</li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+ 
+-                <!-- A.19 Statistical Language Models -->
++                <!-- A.15 Long Short-Term Memory (LSTM) -->
+                 <div class="concept-card" data-cat="models">
+                     <div class="card-header models">
+-                        <span class="card-id">A.19</span>
++                        <span class="card-id">A.15</span>
+                         <span class="card-tag models">Language Models</span>
+                     </div>
+-                                        <div class="card-illustration">
+-                    <img src="images/statistical_language_model.png" alt="Statistical Language Models">
++                    <div class="card-illustration">
++                        <img src="images/neural_language_models.png" alt="Long Short-Term Memory">
+                     </div>
+                     <div class="card-body">
+-                        <h3>Statistical Language Models</h3>
++                        <h3>Long Short-Term Memory (LSTM)</h3>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>Language models that estimate the probability of word sequences using statistical methods
+-                                based on observed frequencies in training corpora.</p>
++                            <p>A specialized RNN architecture containing gate mechanisms to regulate information flow.
++                            </p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To predict the next word in a sequence or evaluate the likelihood of given text, forming
+-                                the foundation for speech recognition and MT.</p>
++                            <p>The purpose is to overcome the vanishing gradient problem of simple RNNs and capture
++                                long-term dependencies.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p>N-gram models: P(w_n | w_1...w_{n-1}) Γëê count(w_1...w_n) / count(w_1...w_{n-1}).
+-                                Smoothing: Laplace, Kneser-Ney for unseen n-grams.</p>
++                            <p>It uses cell states and three gates: a forget gate (deletes useless info), an input gate
++                                (adds new info), and an output gate (determines hidden state).</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
+                             <div class="code-block">
+-                                <span class="comment"># Bigram model</span>
+-                                P(<span class="string">"learning"</span> | <span class="string">"machine"</span>) =
+-                                count(<span class="string">"machine learning"</span>) / count(<span
+-                                    class="string">"machine"</span>)
+-                                <span class="comment"># If "machine learning" = 50, "machine" = 200</span>
+-                                P = <span class="number">50</span>/<span class="number">200</span> = <span
+-                                    class="number">0.25</span>
++                                <span class="comment"># Sentence: "The books that I bought yesterday at the store
++                                    are..."</span>
++                                <br>
++                                <span class="comment"># Cell State preserves the plural subject "books" over long range
++                                    to predict the verb "are"</span>
+                             </div>
+                         </div>
+-                    </div>
+-                    <div class="card-footer">
+-                        <div class="footer-col pros">
+-                            <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+-                            <ul>
+-                                <li>Simple and interpretable</li>
+-                                <li>Fast inference</li>
+-                                <li>Works with small data</li>
+-                            </ul>
+-                        </div>
+-                        <div class="footer-col cons">
+-                            <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+-                            <ul>
+-                                <li>Data sparsity</li>
+-                                <li>No semantic understanding</li>
+-                                <li>Exponential storage growth</li>
+-                            </ul>
+-                        </div>
+-                    </div>
+-                </div>
+-
+-                <!-- A.20 Neural Language Models -->
+-                <div class="concept-card" data-cat="models">
+-                    <div class="card-header models">
+-                        <span class="card-id">A.20</span>
+-                        <span class="card-tag models">Language Models</span>
+-                    </div>
+-                                        <div class="card-illustration">
+-                    <img src="images/neural_language_models.png" alt="Neural Language Models">
+-                    </div>
+-                    <div class="card-body">
+-                        <h3>Neural Language Models</h3>
+-                        <div class="field">
+-                            <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>Language models using neural networks (RNNs, LSTMs, GRUs) to learn distributed
+-                                representations and predict word probabilities.</p>
+-                        </div>
+-                        <div class="field">
+-                            <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To overcome data sparsity and generalization limitations of statistical n-gram models by
+-                                learning continuous representations.</p>
+-                        </div>
+                         <div class="field">
+-                            <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p>RNN/LSTM processes text sequentially, maintaining hidden state. Embedding layer converts
+-                                words to dense vectors. Output: softmax over vocabulary.</p>
+-                        </div>
+-                        <div class="field">
+-                            <div class="field-label"><i class="fas fa-code"></i> Example</div>
+-                            <div class="code-block">
+-                                <span class="comment"># Input: "The cat sat on the..."</span>
+-                                Embedding: <span class="string">"The"</span> ΓåÆ [<span class="number">0.1</span>, <span
+-                                    class="number">-0.3</span>, ...]
+-                                LSTM processes sequence, hidden state captures context
+-                                Output: P(<span class="string">"mat"</span>)=<span class="number">0.4</span>, P(<span
+-                                    class="string">"chair"</span>)=<span class="number">0.2</span>, ...
+-                            </div>
++                            <div class="field-label"><i class="fas fa-briefcase"></i> Applications</div>
++                            <p>Sentiment analysis, Named entity recognition, Named entity translation</p>
+                         </div>
+                     </div>
+                     <div class="card-footer">
+                         <div class="footer-col pros">
+                             <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+                             <ul>
+-                                <li>Long-range dependencies</li>
+-                                <li>Generalizes to unseen combos</li>
+-                                <li>Dense representations</li>
++                                <li>Captures very long-term context dependencies</li>
++                                <li>Avoids vanishing gradients during training</li>
++                                <li>High performance on sequential tasks</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col cons">
+                             <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+                             <ul>
+-                                <li>Sequential = slow training</li>
+-                                <li>Vanishing gradients</li>
+-                                <li>Limited context window</li>
++                                <li>More complex architecture with more parameters</li>
++                                <li>Slow sequence processing (cannot be parallelized)</li>
++                                <li>High memory footprint during training</li>
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+ 
+-                <!-- A.21 Transformer-Based Representations -->
++                <!-- A.16 BERT -->
+                 <div class="concept-card" data-cat="models">
+                     <div class="card-header models">
+-                        <span class="card-id">A.21</span>
++                        <span class="card-id">A.16</span>
+                         <span class="card-tag models">Language Models</span>
+                     </div>
+-                                        <div class="card-illustration">
+-                    <img src="images/transformer_based_models.png" alt="Transformer Architecture">
++                    <div class="card-illustration">
++                        <img src="images/transformer_based_models.png" alt="BERT">
+                     </div>
+                     <div class="card-body">
+-                        <h3>Transformer-Based Representations</h3>
++                        <h3>BERT</h3>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-book"></i> Definition</div>
+-                            <p>Deep learning architectures based on the Transformer mechanism (self-attention) that
+-                                process entire sequences in parallel.</p>
++                            <p>A transformer-based model (Bidirectional Encoder Representations from Transformers,
++                                Google 2018) designed to pre-train bidirectional representations of text.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-bullseye"></i> Purpose</div>
+-                            <p>To achieve state-of-the-art performance across NLP tasks by capturing global dependencies
+-                                and enabling transfer learning.</p>
++                            <p>The purpose is to generate contextualized word embeddings of sentences by looking at
++                                preceding and succeeding tokens concurrently.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
+-                            <p>Self-Attention: Attention(Q,K,V) = softmax(QK^T/ΓêÜd_k)V. Multi-Head Attention captures
+-                                different relationship types. Positional Encoding injects order.</p>
++                            <p>It uses the Encoder part of the Transformer architecture. It runs Masked Language
++                                Modeling (MLM, predicting random masked tokens) and Next Sentence Prediction (NSP) on a
++                                massive text corpus.</p>
+                         </div>
+                         <div class="field">
+                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
+                             <div class="code-block">
+-                                <span class="comment"># "The animal didn't cross the street because it was too
+-                                    tired."</span>
+-                                Self-attention allows <span class="string">"it"</span> to attend strongly to <span
+-                                    class="string">"animal"</span>
+-                                (not <span class="string">"street"</span>)
+-                                BERT encodes this relationship in the contextualized embedding
++                                <span class="comment"># Input 1: "I deposited money at the bank."</span>
++                                <br>
++                                <span class="comment"># Input 2: "I sat by the river bank."</span>
++                                <br>
++                                <span class="comment"># Output:</span>
++                                <br>
++                                Vectors for <span class="keyword">"bank"</span> are different (contextualized
++                                dynamically)
+                             </div>
+                         </div>
++                        <div class="field">
++                            <div class="field-label"><i class="fas fa-briefcase"></i> Applications</div>
++                            <p>Question answering, Search refinement (Google), Named Entity Recognition</p>
++                        </div>
+                     </div>
+                     <div class="card-footer">
+                         <div class="footer-col pros">
+                             <h4><i class="fas fa-plus-circle"></i> Advantages</h4>
+                             <ul>
+-                                <li>Parallel processing</li>
+-                                <li>Global dependencies</li>
+-                                <li>Transfer learning</li>
+-                                <li>Scalable to billions</li>
++                                <li>Captures bidirectional context concurrently</li>
++                                <li>Handles polysemy (different word meanings) perfectly</li>
++                                <li>Fine-tunes easily for many downstream NLP tasks</li>
+                             </ul>
+                         </div>
+                         <div class="footer-col cons">
+                             <h4><i class="fas fa-minus-circle"></i> Limitations</h4>
+                             <ul>
+-                                <li>Quadratic O(n┬▓) complexity</li>
+-                                <li>Massive compute needs</li>
+-                                <li>Environmental concerns</li>
++                                <li>Highly compute-intensive and requires high GPU resource</li>
++                                <li>Slow inference due to model size</li>
++                                <li>Quadratic complexity O(n^2) with sequence length</li>
+                             </ul>
+                         </div>
+                     </div>
+@@ -1281,14 +1105,14 @@
+         </div>
+     </section>
+ 
+-    
++
+ 
+     <!-- Concept Card Full-Details Modal -->
+     <div class="modal-overlay" id="modalOverlay">
+         <div class="modal-box" id="modalBox"></div>
+     </div>
+-    
+-<!-- Footer -->
++
++    <!-- Footer -->
+     <footer class="footer">
+         <div class="footer-inner">
+             <div class="footer-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></div>
