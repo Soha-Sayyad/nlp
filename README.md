@@ -46,7 +46,7 @@ The repository is designed as a reusable learning resource that helps beginners 
 Category|	Soha Sayyad|	Parv Shah|
 Roll No.|	61|	65|
 Concept Cards|	Tokenization, Bag of Words, TF-IDF, N-Grams, One-Hot Encoding, Word2Vec, Recurrent Neural Network (RNN), BERT|	Sentence Segmentation, Case Normalization, Stop-word Removal, Stemming, Lemmatization, Noise Removal, Text Cleaning, Long Short-Term Memory (LSTM)
-Comparative Analysis|	Word2Vec vs FastText, TF vs TF-IDF, One-Hot Encoding vs Word Embeddings	Stemming vs Lemmatization|
+Comparative Analysis|	Word2Vec vs FastText, TF vs TF-IDF|	Stemming vs Lemmatization|
 Workflow Diagram|	Text Preprocessing Pipeline, Text-to-Vector Transformation Process|	Feature Engineering Pipeline, Language Model Architecture Pipeline
 Research & Industry Insights|	Hugging Face Transformers, LangChain, Retrieval-Augmented Generation (RAG)|	Agentic AI, AI Contract & Compliance, AI Clinical Documentation
 Sustainability & Societal Impact|	SDG 4 – Quality Education, SDG 10 – Reduced Inequalities|	SDG 3 – Good Health & Well-being, SDG 16 – Peace, Justice & Strong Institutions
