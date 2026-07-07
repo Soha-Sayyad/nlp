@@ -1,4 +1,4 @@
-# 🧠 NLP Knowledge Artifact Repository
+#  NLP Knowledge Artifact Repository
 
 **Course:** CMCOR1PE301.1 — Natural Language Processing  
 **Institution:** Shah & Anchor Kutchhi Engineering College, University of Mumbai  
@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 About This Repository
+##  About This Repository
 
 This repository contains a comprehensive **Knowledge Artifact Repository** developed as part of the Continuous Comprehensive Evaluation (CCE) for the Natural Language Processing course. It systematically captures, organizes, compares, and explains key NLP concepts covered in **Week 1**.
 
@@ -20,7 +20,7 @@ The repository is designed as a reusable learning resource that helps beginners 
 
 ---
 
-## 🗂️ Repository Structure
+##  Repository Structure
 
 | Section | Content | Topics |
 |:---|:---|:---|
@@ -35,24 +35,29 @@ The repository is designed as a reusable learning resource that helps beginners 
 
 ---
 
-## 🚀 Live Demo
+##  Live Demo
 
 🔗 **[View Live Site](https://soha-sayyad.github.io/nlp/)**
 
 ---
 
-## 👥 Team Members
+##  Team Members
 
-| Name | Roll No. | Contribution |
-|:---|:---:|:---|
-| **Soha Sayyad** | 61 | Concept Cards (Tokenization, TF-IDF, Word2Vec, Contextual Embeddings, BERT, One-Hot, BoW, N-Grams), Comparisons (Word2Vec vs FastText, TF vs TF-IDF, One-Hot vs Embeddings), Text-to-Vector Workflow, Reflection A |
-| **Parv Shah** | 65 | Concept Cards (Sentence Segmentation, Case Normalization, Stop-word Removal, Stemming, Lemmatization, Noise Removal, Text Cleaning, TF, IDF, Statistical LMs, Neural LMs), Comparisons (Stemming vs Lemmatization, Statistical vs Neural LMs), Preprocessing & Feature Engineering Workflows, Reflection B |
+Category|	Soha Sayyad|	Parv Shah|
+Roll No.|	61|	65|
+Concept Cards|	Tokenization, Bag of Words, TF-IDF, N-Grams, One-Hot Encoding, Word2Vec, Recurrent Neural Network (RNN), BERT|	Sentence Segmentation, Case Normalization, Stop-word Removal, Stemming, Lemmatization, Noise Removal, Text Cleaning, Long Short-Term Memory (LSTM)
+Comparative Analysis|	Word2Vec vs FastText, TF vs TF-IDF, One-Hot Encoding vs Word Embeddings	Stemming vs Lemmatization|
+Workflow Diagram|	Text Preprocessing Pipeline, Text-to-Vector Transformation Process|	Feature Engineering Pipeline, Language Model Architecture Pipeline
+Research & Industry Insights|	Hugging Face Transformers, LangChain, Retrieval-Augmented Generation (RAG)|	Agentic AI, AI Contract & Compliance, AI Clinical Documentation
+Sustainability & Societal Impact|	SDG 4 – Quality Education, SDG 10 – Reduced Inequalities|	SDG 3 – Good Health & Well-being, SDG 16 – Peace, Justice & Strong Institutions
+Reflection Note|	Individual Reflection – Soha Sayyad|	Individual Reflection – Parv Shah|
+Contribution Share|	50%|	50%|
 
 **Collaborative Work:** Both students contributed equally to repository organization, literature review, sustainability section, and final compilation.
 
 ---
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - **HTML5** — Semantic structure
 - **CSS3** — Custom styling with CSS variables, gradients, animations
@@ -63,7 +68,7 @@ The repository is designed as a reusable learning resource that helps beginners 
 
 ---
 
-## 📦 Topics Covered
+##  Topics Covered
 
 ### 1. Text Preprocessing
 - Sentence Segmentation
@@ -96,38 +101,37 @@ The repository is designed as a reusable learning resource that helps beginners 
 
 ---
 
-## 📊 Comparisons Included
+##  Comparisons Included
 
 1. **Stemming vs Lemmatization** — Speed vs. accuracy trade-off
 2. **TF vs TF-IDF** — Local vs. global importance weighting
 3. **Word2Vec vs FastText** — Semantic vs. subword handling
-4. **Statistical vs Neural Language Models** — Interpretability vs. performance
-5. **One-Hot Encoding vs Word Embeddings** — Sparse symbolic vs. dense semantic
+
 
 ---
 
-## 🌍 Sustainability & Societal Impact
+##  Sustainability & Societal Impact
 
 The repository includes a 450-word analysis of how NLP contributes to:
 - **SDG 4** — Quality Education (intelligent tutoring, accessibility)
 - **SDG 10** — Reduced Inequalities (low-resource language support)
 - **SDG 3** — Good Health & Well-being (clinical NLP, public health surveillance)
+- **SDG 16** — PEace, justice and strong institutions (chatbots)
 
 Also covers environmental considerations of large model training and emerging efficient architectures (MoE, distillation).
 
 ---
 
-## 📜 Academic Integrity
+##  Academic Integrity
 
-- ✅ All external sources cited
-- ✅ AI-assisted content generation declared
-- ✅ Original artifacts created by team members
-- ✅ No plagiarism — all content verified for originality
-- ✅ Authentic references used throughout
+- All external sources cited
+- Original artifacts created by team members
+- No plagiarism — all content verified for originality
+- Authentic references used throughout
 
 ---
 
-## 📄 License
+##  License
 
 **Academic Use Only** — Shah & Anchor Kutchhi Engineering College  
 Course: CMCOR1PE301.1 | Academic Year: 2026-27
