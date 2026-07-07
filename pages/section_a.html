@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Preprocessing & Feature Cards | NLP Repository</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/section_a.css">
     <base target="_blank">
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <a href="../index.html" target="_self" class="nav-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></a>
-                <ul class="nav-links" id="navLinks"> <li><a href="../index.html" target="_self" class="">Home</a></li> <li><a href="../index.html#concepts" target="_self" class="active">Concepts</a></li> <li><a href="../index.html#comparisons" target="_self" class="">Comparisons</a></li> <li><a href="../index.html#workflows" target="_self" class="">Workflows</a></li> <li><a href="../index.html#applications" target="_self" class="">Applications</a></li> <li><a href="../index.html#research" target="_self" class="">Research</a></li> <li><a href="../index.html#sustainability" target="_self" class="">Sustainability</a></li> <li><a href="../index.html#contributions" target="_self" class="">Contributions</a></li> <li><a href="../index.html#reflections" target="_self" class="">Reflections</a></li> </ul>
+        <a href="../index.html" target="_self" class="nav-brand"><i class="fas fa-brain"></i><span>NLP
+                Repository</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../index.html" target="_self" class="">Home</a></li>
+            <li><a href="../index.html#concepts" target="_self" class="active">Concepts</a></li>
+            <li><a href="../index.html#comparisons" target="_self" class="">Comparisons</a></li>
+            <li><a href="../index.html#workflows" target="_self" class="">Workflows</a></li>
+            <li><a href="../index.html#applications" target="_self" class="">Applications</a></li>
+            <li><a href="../index.html#research" target="_self" class="">Research</a></li>
+            <li><a href="../index.html#sustainability" target="_self" class="">Sustainability</a></li>
+            <li><a href="../index.html#contributions" target="_self" class="">Contributions</a></li>
+            <li><a href="../index.html#reflections" target="_self" class="">Reflections</a></li>
+        </ul>
         <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
     </nav>
 
-<!-- Section A: Concept Cards -->
+    <!-- Section A: Concept Cards -->
     <section id="concepts" class="section">
         <div class="container">
             <div class="section-header">
@@ -45,7 +60,7 @@
                         <span class="card-tag preprocessing">Preprocessing</span>
                     </div>
                     <div class="card-illustration">
-   <img src="images/sentence_segmentation.png" alt="Sentence Segmentation">
+                        <img src="images/sentence_segmentation.png" alt="Sentence Segmentation">
                     </div>
                     <div class="card-body">
                         <h3>Sentence Segmentation</h3>
@@ -103,7 +118,7 @@
                         <span class="card-tag preprocessing">Preprocessing</span>
                     </div>
                     <div class="card-illustration">
-   <img src="images/tokenization.png" alt="Tokenization">
+                        <img src="images/tokenization.png" alt="Tokenization">
                     </div>
                     <div class="card-body">
                         <h3>Tokenization</h3>
@@ -121,7 +136,8 @@
                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
                             <p><strong>Word:</strong> Splits on whitespace/punctuation. <strong>Subword
                                     (BPE/WordPiece):</strong> Handles OOV by breaking into frequent units.
-                                <strong>Character:</strong> Each char is a token.</p>
+                                <strong>Character:</strong> Each char is a token.
+                            </p>
                         </div>
                         <div class="field">
                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
@@ -161,8 +177,8 @@
                         <span class="card-id">A.3</span>
                         <span class="card-tag preprocessing">Preprocessing</span>
                     </div>
-                     <div class="card-illustration">
-   <img src="images/case_normalization.png" alt="Case Normalization">
+                    <div class="card-illustration">
+                        <img src="images/case_normalization.png" alt="Case Normalization">
                     </div>
                     <div class="card-body">
                         <h3>Case Normalization</h3>
@@ -219,8 +235,8 @@
                         <span class="card-id">A.4</span>
                         <span class="card-tag preprocessing">Preprocessing</span>
                     </div>
-                        <div class="card-illustration">
-                    <img src="images/stopword_removal.png" alt="Stop-word Removal">
+                    <div class="card-illustration">
+                        <img src="images/stopword_removal.png" alt="Stop-word Removal">
                     </div>
                     <div class="card-body">
                         <h3>Stop-word Removal</h3>
@@ -277,8 +293,8 @@
                         <span class="card-id">A.5</span>
                         <span class="card-tag preprocessing">Preprocessing</span>
                     </div>
-                     <div class="card-illustration">
-                    <img src="images/stemming.png" alt="Stemming">
+                    <div class="card-illustration">
+                        <img src="images/stemming.png" alt="Stemming">
                     </div>
                     <div class="card-body">
                         <h3>Stemming</h3>
@@ -296,7 +312,8 @@
                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
                             <p><strong>Porter Stemmer:</strong> 5 phases of rule-based suffix stripping.
                                 <strong>Snowball:</strong> Improved Porter. <strong>Lancaster:</strong> More aggressive,
-                                faster.</p>
+                                faster.
+                            </p>
                         </div>
                         <div class="field">
                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
@@ -340,7 +357,7 @@
                         <span class="card-tag preprocessing">Preprocessing</span>
                     </div>
                     <div class="card-illustration">
-                    <img src="images/lemmatization.png" alt="Lemmatization">
+                        <img src="images/lemmatization.png" alt="Lemmatization">
                     </div>
                     <div class="card-body">
                         <h3>Lemmatization</h3>
@@ -398,7 +415,7 @@
                         <span class="card-tag preprocessing">Preprocessing</span>
                     </div>
                     <div class="card-illustration">
-                    <img src="images/noise_removal.png" alt="noise removal">
+                        <img src="images/noise_removal.png" alt="noise removal">
                     </div>
                     <div class="card-body">
                         <h3>Noise Removal</h3>
@@ -454,7 +471,7 @@
                         <span class="card-tag preprocessing">Preprocessing</span>
                     </div>
                     <div class="card-illustration">
-                    <img src="images/text_cleaning.png" alt="Text Cleaning">
+                        <img src="images/text_cleaning.png" alt="Text Cleaning">
                     </div>
                     <div class="card-body">
                         <h3>Text Cleaning</h3>
@@ -509,8 +526,8 @@
                         <span class="card-id">A.9</span>
                         <span class="card-tag feature">Feature Engineering</span>
                     </div>
-                        <div class="card-illustration">
-                    <img src="images/bag_of_words.png" alt="Bag of Words">
+                    <div class="card-illustration">
+                        <img src="images/bag_of_words.png" alt="Bag of Words">
                     </div>
                     <div class="card-body">
                         <h3>Bag of Words (BoW)</h3>
@@ -572,8 +589,8 @@
                         <span class="card-id">A.10</span>
                         <span class="card-tag feature">Feature Engineering</span>
                     </div>
-                        <div class="card-illustration">
-                    <img src="images/ngrams.png" alt="n-Grams">
+                    <div class="card-illustration">
+                        <img src="images/ngrams.png" alt="n-Grams">
                     </div>
                     <div class="card-body">
                         <h3>N-Grams</h3>
@@ -631,8 +648,8 @@
                         <span class="card-id">A.11</span>
                         <span class="card-tag feature">Feature Engineering</span>
                     </div>
-                        <div class="card-illustration">
-                    <img src="images/term_frequency.png" alt="Term Frequency">
+                    <div class="card-illustration">
+                        <img src="images/term_frequency.png" alt="Term Frequency">
                     </div>
                     <div class="card-body">
                         <h3>Term Frequency (TF)</h3>
@@ -690,8 +707,8 @@
                         <span class="card-id">A.12</span>
                         <span class="card-tag feature">Feature Engineering</span>
                     </div>
-                                        <div class="card-illustration">
-                    <img src="images/idf.png" alt="Inverse Document Frequency">
+                    <div class="card-illustration">
+                        <img src="images/idf.png" alt="Inverse Document Frequency">
                     </div>
                     <div class="card-body">
                         <h3>Inverse Document Frequency (IDF)</h3>
@@ -749,8 +766,8 @@
                         <span class="card-id">A.13</span>
                         <span class="card-tag feature">Feature Engineering</span>
                     </div>
-                                        <div class="card-illustration">
-                    <img src="images/term_idf.png" alt="TF-IDF">
+                    <div class="card-illustration">
+                        <img src="images/term_idf.png" alt="TF-IDF">
                     </div>
                     <div class="card-body">
                         <h3>TF-IDF</h3>
@@ -808,8 +825,8 @@
                         <span class="card-id">A.14</span>
                         <span class="card-tag representation">Representation</span>
                     </div>
-                                        <div class="card-illustration">
-                    <img src="images/one_hot_encoding.png" alt="One-Hot Encoding">
+                    <div class="card-illustration">
+                        <img src="images/one_hot_encoding.png" alt="One-Hot Encoding">
                     </div>
                     <div class="card-body">
                         <h3>One-Hot Encoding</h3>
@@ -868,8 +885,8 @@
                         <span class="card-id">A.15</span>
                         <span class="card-tag representation">Representation</span>
                     </div>
-                                        <div class="card-illustration">
-                    <img src="images/word_embeddings.png" alt="Word Embeddings">
+                    <div class="card-illustration">
+                        <img src="images/word_embeddings.png" alt="Word Embeddings">
                     </div>
                     <div class="card-body">
                         <h3>Word Embeddings</h3>
@@ -929,8 +946,8 @@
                         <span class="card-id">A.16</span>
                         <span class="card-tag representation">Representation</span>
                     </div>
-                                        <div class="card-illustration">
-                    <img src="images/word2vec.png" alt="Word2Vec">
+                    <div class="card-illustration">
+                        <img src="images/word2vec.png" alt="Word2Vec">
                     </div>
                     <div class="card-body">
                         <h3>Word2Vec</h3>
@@ -948,7 +965,8 @@
                             <div class="field-label"><i class="fas fa-cogs"></i> Working Principle</div>
                             <p><strong>CBOW:</strong> Predicts target from context (faster, frequent words).
                                 <strong>Skip-gram:</strong> Predicts context from target (rare words). Uses negative
-                                sampling.</p>
+                                sampling.
+                            </p>
                         </div>
                         <div class="field">
                             <div class="field-label"><i class="fas fa-code"></i> Example</div>
@@ -990,8 +1008,8 @@
                         <span class="card-id">A.17</span>
                         <span class="card-tag representation">Representation</span>
                     </div>
-                                        <div class="card-illustration">
-                    <img src="images/fasttext.png" alt="FastText">
+                    <div class="card-illustration">
+                        <img src="images/fasttext.png" alt="FastText">
                     </div>
                     <div class="card-body">
                         <h3>FastText</h3>
@@ -1048,8 +1066,8 @@
                         <span class="card-id">A.18</span>
                         <span class="card-tag representation">Representation</span>
                     </div>
-                                        <div class="card-illustration">
-                    <img src="images/contextual_embeddings.png" alt="Contextual Embeddings">
+                    <div class="card-illustration">
+                        <img src="images/contextual_embeddings.png" alt="Contextual Embeddings">
                     </div>
                     <div class="card-body">
                         <h3>Contextual Embeddings</h3>
@@ -1107,8 +1125,8 @@
                         <span class="card-id">A.19</span>
                         <span class="card-tag models">Language Models</span>
                     </div>
-                                        <div class="card-illustration">
-                    <img src="images/statistical_language_model.png" alt="Statistical Language Models">
+                    <div class="card-illustration">
+                        <img src="images/statistical_language_model.png" alt="Statistical Language Models">
                     </div>
                     <div class="card-body">
                         <h3>Statistical Language Models</h3>
@@ -1166,8 +1184,8 @@
                         <span class="card-id">A.20</span>
                         <span class="card-tag models">Language Models</span>
                     </div>
-                                        <div class="card-illustration">
-                    <img src="images/neural_language_models.png" alt="Neural Language Models">
+                    <div class="card-illustration">
+                        <img src="images/neural_language_models.png" alt="Neural Language Models">
                     </div>
                     <div class="card-body">
                         <h3>Neural Language Models</h3>
@@ -1224,8 +1242,8 @@
                         <span class="card-id">A.21</span>
                         <span class="card-tag models">Language Models</span>
                     </div>
-                                        <div class="card-illustration">
-                    <img src="images/transformer_based_models.png" alt="Transformer Architecture">
+                    <div class="card-illustration">
+                        <img src="images/transformer_based_models.png" alt="Transformer Architecture">
                     </div>
                     <div class="card-body">
                         <h3>Transformer-Based Representations</h3>
@@ -1281,14 +1299,14 @@
         </div>
     </section>
 
-    
+
 
     <!-- Concept Card Full-Details Modal -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-box" id="modalBox"></div>
     </div>
-    
-<!-- Footer -->
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></div>

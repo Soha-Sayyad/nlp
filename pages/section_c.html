@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NLP Workflow Pipelines | NLP Repository</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/section_c.css">
     <base target="_blank">
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <a href="../index.html" target="_self" class="nav-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></a>
-                <ul class="nav-links" id="navLinks"> <li><a href="../index.html" target="_self" class="">Home</a></li> <li><a href="../index.html#concepts" target="_self" class="">Concepts</a></li> <li><a href="../index.html#comparisons" target="_self" class="">Comparisons</a></li> <li><a href="../index.html#workflows" target="_self" class="active">Workflows</a></li> <li><a href="../index.html#applications" target="_self" class="">Applications</a></li> <li><a href="../index.html#research" target="_self" class="">Research</a></li> <li><a href="../index.html#sustainability" target="_self" class="">Sustainability</a></li> <li><a href="../index.html#contributions" target="_self" class="">Contributions</a></li> <li><a href="../index.html#reflections" target="_self" class="">Reflections</a></li> </ul>
+        <a href="../index.html" target="_self" class="nav-brand"><i class="fas fa-brain"></i><span>NLP
+                Repository</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../index.html" target="_self" class="">Home</a></li>
+            <li><a href="../index.html#concepts" target="_self" class="">Concepts</a></li>
+            <li><a href="../index.html#comparisons" target="_self" class="">Comparisons</a></li>
+            <li><a href="../index.html#workflows" target="_self" class="active">Workflows</a></li>
+            <li><a href="../index.html#applications" target="_self" class="">Applications</a></li>
+            <li><a href="../index.html#research" target="_self" class="">Research</a></li>
+            <li><a href="../index.html#sustainability" target="_self" class="">Sustainability</a></li>
+            <li><a href="../index.html#contributions" target="_self" class="">Contributions</a></li>
+            <li><a href="../index.html#reflections" target="_self" class="">Reflections</a></li>
+        </ul>
         <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
     </nav>
 
-<!-- Section C: Workflow Diagrams -->
+    <!-- Section C: Workflow Diagrams -->
     <section id="workflows" class="section">
         <div class="container">
             <div class="section-header">
@@ -30,182 +45,182 @@
 
             <div class="workflow-infographic">
 
-    <div class="workflow-column preprocessing">
-        <!-- Preprocessing Pipeline -->
-         
-        <div class="workflow-title">
-        Complete Text Preprocessing Pipeline
-        </div>
+                <div class="workflow-column preprocessing">
+                    <!-- Preprocessing Pipeline -->
 
-        <div class="workflow-subtitle">
-        Application Example: E-Commerce Review Analysis
-        </div>
+                    <div class="workflow-title">
+                        Complete Text Preprocessing Pipeline
+                    </div>
 
-        <div class="workflow-box">
-        <strong>INPUT: Customer Review</strong>
-        <p>
-            I absolutely LOVED this phone!!!
-            Battery life is amazing...
-            Best purchase!!!
-        </p>
-      </div>
+                    <div class="workflow-subtitle">
+                        Application Example: E-Commerce Review Analysis
+                    </div>
 
-    <div class="flow-arrow">↓</div>
+                    <div class="workflow-box">
+                        <strong>INPUT: Customer Review</strong>
+                        <p>
+                            I absolutely LOVED this phone!!!
+                            Battery life is amazing...
+                            Best purchase!!!
+                        </p>
+                    </div>
 
-    <div class="workflow-box">
-        <strong>Remove Noise</strong>
-        <p>URLs, emojis, special characters removed</p>
-    </div>
+                    <div class="flow-arrow">↓</div>
 
-    <div class="flow-arrow">↓</div>
+                    <div class="workflow-box">
+                        <strong>Remove Noise</strong>
+                        <p>URLs, emojis, special characters removed</p>
+                    </div>
 
-    <div class="workflow-box">
-        <strong>Tokenization</strong>
-        <p>
-            absolutely | loved | phone | battery | amazing
-        </p>
-    </div>
+                    <div class="flow-arrow">↓</div>
 
-    <div class="flow-arrow">↓</div>
+                    <div class="workflow-box">
+                        <strong>Tokenization</strong>
+                        <p>
+                            absolutely | loved | phone | battery | amazing
+                        </p>
+                    </div>
 
-    <div class="workflow-box">
-        <strong>Stop-word Removal</strong>
-    </div>
+                    <div class="flow-arrow">↓</div>
 
-    <div class="flow-arrow">↓</div>
+                    <div class="workflow-box">
+                        <strong>Stop-word Removal</strong>
+                    </div>
 
-    <div class="workflow-box">
-        <strong>Lemmatization</strong>
-        <p>
-            love | phone | battery | amaze
-        </p>
-    </div>
+                    <div class="flow-arrow">↓</div>
 
-    <div class="output-box">
-        OUTPUT: Clean Text Ready For Analysis
-    </div>
-</div>
-    
+                    <div class="workflow-box">
+                        <strong>Lemmatization</strong>
+                        <p>
+                            love | phone | battery | amaze
+                        </p>
+                    </div>
 
-    <div class="workflow-column feature">
-        <!-- Feature Engineering Pipeline -->
+                    <div class="output-box">
+                        OUTPUT: Clean Text Ready For Analysis
+                    </div>
+                </div>
 
 
-    <div class="workflow-title">
-        Feature Engineering Pipeline
-    </div>
+                <div class="workflow-column feature">
+                    <!-- Feature Engineering Pipeline -->
 
-    <div class="workflow-subtitle">
-        Application Example: Search Engine
-    </div>
 
-    <div class="workflow-box">
-        <strong>INPUT: Search Query</strong>
-        <p>best laptop for engineering students</p>
-    </div>
+                    <div class="workflow-title">
+                        Feature Engineering Pipeline
+                    </div>
 
-    <div class="flow-arrow">↓</div>
+                    <div class="workflow-subtitle">
+                        Application Example: Search Engine
+                    </div>
 
-    <div class="workflow-box">
-        <strong>Tokenization</strong>
-        <p>
-            best | laptop | engineering | students
-        </p>
-    </div>
+                    <div class="workflow-box">
+                        <strong>INPUT: Search Query</strong>
+                        <p>best laptop for engineering students</p>
+                    </div>
 
-    <div class="flow-arrow">↓</div>
+                    <div class="flow-arrow">↓</div>
 
-    <div class="workflow-box">
-        <strong>Bag of Words</strong>
-        <p>Word frequency representation</p>
-    </div>
+                    <div class="workflow-box">
+                        <strong>Tokenization</strong>
+                        <p>
+                            best | laptop | engineering | students
+                        </p>
+                    </div>
 
-    <div class="flow-arrow">↓</div>
+                    <div class="flow-arrow">↓</div>
 
-    <div class="workflow-box">
-        <strong>N-Grams</strong>
-        <p>best laptop | engineering students</p>
-    </div>
+                    <div class="workflow-box">
+                        <strong>Bag of Words</strong>
+                        <p>Word frequency representation</p>
+                    </div>
 
-    <div class="flow-arrow">↓</div>
+                    <div class="flow-arrow">↓</div>
 
-    <div class="workflow-box">
-        <strong>TF-IDF</strong>
-        <p>
-            [0.48, 0.63, 0.91, 0.76]
-        </p>
-    </div>
+                    <div class="workflow-box">
+                        <strong>N-Grams</strong>
+                        <p>best laptop | engineering students</p>
+                    </div>
 
-    <div class="output-box green">
-        Query Indexed & Ready For Retrieval
-    </div>
+                    <div class="flow-arrow">↓</div>
 
-</div>
-    
+                    <div class="workflow-box">
+                        <strong>TF-IDF</strong>
+                        <p>
+                            [0.48, 0.63, 0.91, 0.76]
+                        </p>
+                    </div>
 
-    <div class="workflow-column vector">
-        <!-- Text-to-Vector Pipeline -->
-        
+                    <div class="output-box green">
+                        Query Indexed & Ready For Retrieval
+                    </div>
 
-    <div class="workflow-title">
-        Text-to-Vector Transformation Process
-    </div>
+                </div>
 
-    <div class="workflow-subtitle">
-        Application Example: Semantic Search
-    </div>
 
-    <div class="workflow-box">
-        <strong>INPUT: Search Query</strong>
-        <p>
-            artificial intelligence in healthcare
-        </p>
-    </div>
+                <div class="workflow-column vector">
+                    <!-- Text-to-Vector Pipeline -->
 
-    <div class="flow-arrow">↓</div>
 
-    <div class="workflow-box">
-        <strong>Convert To Tokens</strong>
-        <p>
-            artificial | intelligence | healthcare
-        </p>
-    </div>
+                    <div class="workflow-title">
+                        Text-to-Vector Transformation Process
+                    </div>
 
-    <div class="flow-arrow">↓</div>
+                    <div class="workflow-subtitle">
+                        Application Example: Semantic Search
+                    </div>
 
-    <div class="workflow-box">
-        <strong>Generate Embedding</strong>
-        <p>
-            [0.21, -0.35, 0.67, ...]
-        </p>
-    </div>
+                    <div class="workflow-box">
+                        <strong>INPUT: Search Query</strong>
+                        <p>
+                            artificial intelligence in healthcare
+                        </p>
+                    </div>
 
-    <div class="flow-arrow">↓</div>
+                    <div class="flow-arrow">↓</div>
 
-    <div class="workflow-box">
-        <strong>Semantic Search</strong>
-        <p>
-            Vector similarity matching
-        </p>
-    </div>
+                    <div class="workflow-box">
+                        <strong>Convert To Tokens</strong>
+                        <p>
+                            artificial | intelligence | healthcare
+                        </p>
+                    </div>
 
-    <div class="flow-arrow">↓</div>
+                    <div class="flow-arrow">↓</div>
 
-    <div class="workflow-box">
-        <strong>Top Relevant Results</strong>
-        <ol>
-            <li>AI in healthcare outcomes</li>
-            <li>Medical ML applications</li>
-            <li>Disease prediction techniques</li>
-        </ol>
-    </div>
+                    <div class="workflow-box">
+                        <strong>Generate Embedding</strong>
+                        <p>
+                            [0.21, -0.35, 0.67, ...]
+                        </p>
+                    </div>
 
-    <div class="output-box blue">
-        Ranked Relevant Documents
-    </div>
+                    <div class="flow-arrow">↓</div>
 
-</div>
-    </div>
+                    <div class="workflow-box">
+                        <strong>Semantic Search</strong>
+                        <p>
+                            Vector similarity matching
+                        </p>
+                    </div>
+
+                    <div class="flow-arrow">↓</div>
+
+                    <div class="workflow-box">
+                        <strong>Top Relevant Results</strong>
+                        <ol>
+                            <li>AI in healthcare outcomes</li>
+                            <li>Medical ML applications</li>
+                            <li>Disease prediction techniques</li>
+                        </ol>
+                    </div>
+
+                    <div class="output-box blue">
+                        Ranked Relevant Documents
+                    </div>
+
+                </div>
+            </div>
 
 
 
@@ -213,8 +228,8 @@
         </div>
     </section>
 
-    
-<!-- Footer -->
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-brand"><i class="fas fa-brain"></i><span>NLP Repository</span></div>
