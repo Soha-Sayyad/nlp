@@ -63,76 +63,73 @@
                         </thead>
 
                         <tbody>
-    <tr>
-        <td><strong>Working Mechanism</strong></td>
-        <td>
-            • Removes prefixes and suffixes using predefined rules.<br>
-            • Produces the root form without considering grammar or context.
-        </td>
-        <td>
-            • Uses morphological analysis and vocabulary lookup.<br>
-            • Considers grammar and context to produce valid dictionary words.
-        </td>
-    </tr>
+                            <tr>
+                                <td><strong>Working Mechanism</strong></td>
+                                <td>
+                                    • Removes prefixes and suffixes using predefined rules.<br>
+                                    • Produces the root form without considering grammar or context.
+                                </td>
+                                <td>
+                                    • Uses morphological analysis and vocabulary lookup.<br>
+                                    • Considers grammar and context to produce valid dictionary words.
+                                </td>
+                            </tr>
 
-    <tr>
-        <td><strong>Computational Complexity</strong></td>
-        <td>
-            <strong>O(n)</strong><br>
-            Simple rule-based processing with minimal computation.
-        </td>
-        <td>
-            <strong>O(n log |V|)</strong><br>
-            Requires dictionary searches and linguistic analysis.
-        </td>
-    </tr>
+                            <tr>
+                                <td><strong>Computational Complexity</strong></td>
+                                <td>
+                                    <strong>O(n)</strong><br>
+                                    Simple rule-based processing with minimal computation.
+                                </td>
+                                <td>
+                                    <strong>O(n log |V|)</strong><br>
+                                    Requires dictionary searches and linguistic analysis.
+                                </td>
+                            </tr>
 
-    <tr>
-        <td><strong>Strengths</strong></td>
-        <td>
-            • Fast execution.<br>
-            • Low memory requirements.<br>
-            • Suitable for large-scale text processing.
-        </td>
-        <td>
-            • Produces grammatically correct words.<br>
-            • Preserves semantic meaning.<br>
-            • Handles irregular word forms accurately.
-        </td>
-    </tr>
+                            <tr>
+                                <td><strong>Strengths</strong></td>
+                                <td>
+                                    • Fast execution.<br>
+                                    • Low memory requirements.<br>
+                                    • Suitable for large-scale text processing.
+                                </td>
+                                <td>
+                                    • Produces grammatically correct words.<br>
+                                    • Preserves semantic meaning.<br>
+                                    • Handles irregular word forms accurately.
+                                </td>
+                            </tr>
 
-    <tr>
-        <td><strong>Weaknesses</strong></td>
-        <td>
-            • May generate invalid words.<br>
-            • Ignores context and grammar.<br>
-            • Can over-stem related terms.
-        </td>
-        <td>
-            • Slower than stemming.<br>
-            • Requires linguistic resources.<br>
-            • More computationally expensive.
-        </td>
-    </tr>
+                            <tr>
+                                <td><strong>Weaknesses</strong></td>
+                                <td>
+                                    • May generate invalid words.<br>
+                                    • Ignores context and grammar.<br>
+                                    • Can over-stem related terms.
+                                </td>
+                                <td>
+                                    • Slower than stemming.<br>
+                                    • Requires linguistic resources.<br>
+                                    • More computationally expensive.
+                                </td>
+                            </tr>
 
-    <tr>
-        <td><strong>Suitable Applications</strong></td>
-        <td>
-            Search engines, document indexing, information retrieval systems.
-        </td>
-        <td>
-            Chatbots, sentiment analysis, machine translation, text generation.
-        </td>
-    </tr>
-</tbody>
+                            <tr>
+                                <td><strong>Suitable Applications</strong></td>
+                                <td>
+                                    Search engines, document indexing, information retrieval systems.
+                                </td>
+                                <td>
+                                    Chatbots, sentiment analysis, machine translation, text generation.
+                                </td>
+                            </tr>
+                        </tbody>
 
 
                     </table>
                 </div>
-                <div class="verdict"><i class="fas fa-gavel"></i>
-                    <div><strong>Verdict:</strong> Choose <strong>Stemming</strong> to speed up huge search indices;
-                        choose <strong>Lemmatization</strong> when you need grammatically correct base words.</div>
-                </div>
+
             </div>
 
             <!-- Tab 2: TF vs TF-IDF -->
@@ -150,74 +147,71 @@
 
 
                         <tbody>
-    <tr>
-        <td><strong>Working Mechanism</strong></td>
-        <td>
-            • Counts the frequency of a term within a document.<br>
-            • Higher occurrence results in a higher score.
-        </td>
-        <td>
-            • Combines Term Frequency and Inverse Document Frequency.<br>
-            • Reduces the influence of common words across documents.
-        </td>
-    </tr>
+                            <tr>
+                                <td><strong>Working Mechanism</strong></td>
+                                <td>
+                                    • Counts the frequency of a term within a document.<br>
+                                    • Higher occurrence results in a higher score.
+                                </td>
+                                <td>
+                                    • Combines Term Frequency and Inverse Document Frequency.<br>
+                                    • Reduces the influence of common words across documents.
+                                </td>
+                            </tr>
 
-    <tr>
-        <td><strong>Computational Complexity</strong></td>
-        <td>
-            <strong>O(|d|)</strong><br>
-            Requires scanning only the current document.
-        </td>
-        <td>
-            <strong>O(|d| + |D|)</strong><br>
-            Requires document scanning and corpus statistics.
-        </td>
-    </tr>
+                            <tr>
+                                <td><strong>Computational Complexity</strong></td>
+                                <td>
+                                    <strong>O(|d|)</strong><br>
+                                    Requires scanning only the current document.
+                                </td>
+                                <td>
+                                    <strong>O(|d| + |D|)</strong><br>
+                                    Requires document scanning and corpus statistics.
+                                </td>
+                            </tr>
 
-    <tr>
-        <td><strong>Strengths</strong></td>
-        <td>
-            • Easy to implement.<br>
-            • Fast computation.<br>
-            • Effective for simple frequency analysis.
-        </td>
-        <td>
-            • Highlights important words.<br>
-            • Reduces the effect of common terms.<br>
-            • Widely used in information retrieval.
-        </td>
-    </tr>
+                            <tr>
+                                <td><strong>Strengths</strong></td>
+                                <td>
+                                    • Easy to implement.<br>
+                                    • Fast computation.<br>
+                                    • Effective for simple frequency analysis.
+                                </td>
+                                <td>
+                                    • Highlights important words.<br>
+                                    • Reduces the effect of common terms.<br>
+                                    • Widely used in information retrieval.
+                                </td>
+                            </tr>
 
-    <tr>
-        <td><strong>Weaknesses</strong></td>
-        <td>
-            • Cannot measure word importance.<br>
-            • Gives high scores to common words.<br>
-            • Ignores corpus-level information.
-        </td>
-        <td>
-            • Ignores word order and context.<br>
-            • Requires corpus statistics.<br>
-            • Less effective for semantic understanding.
-        </td>
-    </tr>
+                            <tr>
+                                <td><strong>Weaknesses</strong></td>
+                                <td>
+                                    • Cannot measure word importance.<br>
+                                    • Gives high scores to common words.<br>
+                                    • Ignores corpus-level information.
+                                </td>
+                                <td>
+                                    • Ignores word order and context.<br>
+                                    • Requires corpus statistics.<br>
+                                    • Less effective for semantic understanding.
+                                </td>
+                            </tr>
 
-    <tr>
-        <td><strong>Suitable Applications</strong></td>
-        <td>
-            Keyword counting, log analysis, basic document statistics.
-        </td>
-        <td>
-            Search engines, document classification, information retrieval.
-        </td>
-    </tr>
-</tbody>
+                            <tr>
+                                <td><strong>Suitable Applications</strong></td>
+                                <td>
+                                    Keyword counting, log analysis, basic document statistics.
+                                </td>
+                                <td>
+                                    Search engines, document classification, information retrieval.
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
-                <div class="verdict"><i class="fas fa-gavel"></i>
-                    <div><strong>Verdict:</strong> Use <strong>TF-IDF</strong> instead of plain TF to prevent common
-                        fillers from ruining your document scores.</div>
-                </div>
+
             </div>
 
             <!-- Tab 3: Word2Vec vs FastText -->
@@ -235,82 +229,78 @@
 
 
                         <tbody>
-    <tr>
-        <td><strong>Working Mechanism</strong></td>
-        <td>
-            • Learns word representations from surrounding context words.<br>
-            • Generates a single vector for each word.
-        </td>
-        <td>
-            • Extends Word2Vec using character-level n-grams.<br>
-            • Generates vectors using both words and subword information.
-        </td>
-    </tr>
+                            <tr>
+                                <td><strong>Working Mechanism</strong></td>
+                                <td>
+                                    • Learns word representations from surrounding context words.<br>
+                                    • Generates a single vector for each word.
+                                </td>
+                                <td>
+                                    • Extends Word2Vec using character-level n-grams.<br>
+                                    • Generates vectors using both words and subword information.
+                                </td>
+                            </tr>
 
-    <tr>
-        <td><strong>Computational Complexity</strong></td>
-        <td>
-            <strong>O(V × D)</strong><br>
-            Depends on vocabulary size and embedding dimensions.
-        </td>
-        <td>
-            <strong>O((V + N-grams) × D)</strong><br>
-            Additional computation due to character n-grams.
-        </td>
-    </tr>
+                            <tr>
+                                <td><strong>Computational Complexity</strong></td>
+                                <td>
+                                    <strong>O(V × D)</strong><br>
+                                    Depends on vocabulary size and embedding dimensions.
+                                </td>
+                                <td>
+                                    <strong>O((V + N-grams) × D)</strong><br>
+                                    Additional computation due to character n-grams.
+                                </td>
+                            </tr>
 
-    <tr>
-        <td><strong>Strengths</strong></td>
-        <td>
-            • Captures semantic relationships effectively.<br>
-            • Lightweight model size.<br>
-            • Fast training and inference.
-        </td>
-        <td>
-            • Handles unseen and rare words.<br>
-            • Works well with spelling variations.<br>
-            • Effective for morphologically rich languages.
-        </td>
-    </tr>
+                            <tr>
+                                <td><strong>Strengths</strong></td>
+                                <td>
+                                    • Captures semantic relationships effectively.<br>
+                                    • Lightweight model size.<br>
+                                    • Fast training and inference.
+                                </td>
+                                <td>
+                                    • Handles unseen and rare words.<br>
+                                    • Works well with spelling variations.<br>
+                                    • Effective for morphologically rich languages.
+                                </td>
+                            </tr>
 
-    <tr>
-        <td><strong>Weaknesses</strong></td>
-        <td>
-            • Cannot handle out-of-vocabulary words well.<br>
-            • Ignores subword information.<br>
-            • One vector per word regardless of variations.
-        </td>
-        <td>
-            • Larger memory requirements.<br>
-            • Longer training time.<br>
-            • More complex model structure.
-        </td>
-    </tr>
+                            <tr>
+                                <td><strong>Weaknesses</strong></td>
+                                <td>
+                                    • Cannot handle out-of-vocabulary words well.<br>
+                                    • Ignores subword information.<br>
+                                    • One vector per word regardless of variations.
+                                </td>
+                                <td>
+                                    • Larger memory requirements.<br>
+                                    • Longer training time.<br>
+                                    • More complex model structure.
+                                </td>
+                            </tr>
 
-    <tr>
-        <td><strong>Suitable Applications</strong></td>
-        <td>
-            Recommendation systems, semantic similarity, news classification.
-        </td>
-        <td>
-            Spell correction, multilingual NLP, medical and technical text processing.
-        </td>
-    </tr>
-</tbody>
+                            <tr>
+                                <td><strong>Suitable Applications</strong></td>
+                                <td>
+                                    Recommendation systems, semantic similarity, news classification.
+                                </td>
+                                <td>
+                                    Spell correction, multilingual NLP, medical and technical text processing.
+                                </td>
+                            </tr>
+                        </tbody>
 
 
                     </table>
                 </div>
-                <div class="verdict"><i class="fas fa-gavel"></i>
-                    <div><strong>Verdict:</strong> Go with <strong>Word2Vec</strong> if your vocabulary is clean and
-                        static; choose <strong>FastText</strong> if you have spelling mistakes or rare technical terms.
-                    </div>
-                </div>
+
             </div>
 
-            
 
-            
+
+
 
         </div>
     </section>
