@@ -234,6 +234,52 @@ function showLocalFileWarning() {
     }
 }
 
+// Highlight navigation link corresponding to the current scroll section
+function initScrollSpy() {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = [];
+    
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        let targetId = '';
+        if (href.startsWith('#')) {
+            targetId = href.substring(1);
+        } else if (href.includes('#')) {
+            targetId = href.split('#')[1];
+        }
+        if (targetId) {
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                sections.push({ link, section: targetSection });
+            }
+        }
+    });
+
+    if (sections.length === 0) return;
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-30% 0px -60% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                sections.forEach(item => {
+                    if (item.section === entry.target) {
+                        item.link.classList.add('active');
+                    } else {
+                        item.link.classList.remove('active');
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(item => observer.observe(item.section));
+}
+
 // Initialize application on load
 document.addEventListener('DOMContentLoaded', async () => {
     // 0. Show CORS warning banner if run locally
@@ -254,4 +300,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 5. Scroll to targeted URL hash
     handleInitialHashScroll();
+
+    // 6. Highlight active section on scroll
+    initScrollSpy();
 });

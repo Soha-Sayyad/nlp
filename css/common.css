@@ -692,4 +692,6 @@ h6 {
     color: var(--primary) !important;
     background: rgba(184, 91, 70, 0.08) !important;
     font-weight: 700;
+    box-shadow: 0 0 12px rgba(184, 91, 70, 0.25);
+    border: 1px solid rgba(184, 91, 70, 0.15);
 }
