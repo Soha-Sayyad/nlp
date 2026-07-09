@@ -1,22 +1,9 @@
 #  NLP Knowledge Artifact Repository
-
-**Course:** CMCOR1PE301.1 — Natural Language Processing  
-**Institution:** Shah & Anchor Kutchhi Engineering College, University of Mumbai  
-**Academic Year:** 2026-27 | **Semester:** V | **Class:** TY B.Tech
-
 ---
 
 ##  About This Repository
 
-This repository contains a comprehensive **Knowledge Artifact Repository** developed as part of the Continuous Comprehensive Evaluation (CCE) for the Natural Language Processing course. It systematically captures, organizes, compares, and explains key NLP concepts covered in **Week 1**.
-
-The repository is designed as a reusable learning resource that helps beginners understand:
-- **What** the technique is
-- **Why** it is required
-- **How** it works
-- **When** it should be used
-- **Advantages and limitations**
-- **Real-world applications**
+This repository contains a comprehensive **Knowledge Artifact Repository** developed as part of the Continuous Comprehensive Evaluation (CCE) for the Natural Language Processing course. It systematically captures, organizes, compares, and explains key NLP concepts.
 
 ---
 
